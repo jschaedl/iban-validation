@@ -111,7 +111,7 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertFalse($this->validator->validate(new Iban('DE')));
         $this->assertCount(1, $this->validator->getViolations());
-        $this->assertTrue(array_search('The lenght of the given Iban is too short!', $this->validator->getViolations()) >= 0);
+        $this->assertTrue(array_search('The length of the given Iban is too short!', $this->validator->getViolations()) >= 0);
     }
 
     public function testIbanLocaleCodeIsInvalid()

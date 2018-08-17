@@ -12,6 +12,7 @@
 namespace Iban\Validation;
 
 use Iban\Validation\Exception\UnexpectedTypeException;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * Validates International Bank Account Numbers (IBANs).
@@ -108,6 +109,29 @@ class Validator
 
     private $violations = [];
 
+    private $options;
+
+    /**
+     * @param array $options
+     */
+    public function __construct($options = [])
+    {
+        $resolver = new OptionsResolver();
+        $this->configureOptions($resolver);
+
+        $this->options = $resolver->resolve($options);
+    }
+
+    protected function configureOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults(array(
+            'violation.invalid_length' => 'The length of the given Iban is too short!',
+            'violation.invalid_locale_code' => 'The locale code of the given Iban is not valid!',
+            'violation.invalid_format' => 'The format of the given Iban is not valid!',
+            'violation.invalid_checksum' => 'The checksum of the given Iban is not valid!',
+        ));
+    }
+
     /**
      * @param Iban $iban
      * @return bool
@@ -138,7 +162,7 @@ class Validator
         $isValid = !(strlen($iban) < Iban::IBAN_MIN_LENGTH);
 
         if (!$isValid) {
-            $this->violations[] = 'The lenght of the given Iban is too short!';
+            $this->violations[] = $this->options['violation.invalid_length'];
         }
 
         return $isValid;
@@ -155,7 +179,7 @@ class Validator
         $isValid = array_key_exists($localeCode, $this->formatMap);
 
         if (!$isValid) {
-            $this->violations[] = 'The locale code of the given Iban is not valid!';
+            $this->violations[] = $this->options['violation.invalid_locale_code'];
         }
 
         return $isValid;
@@ -173,7 +197,7 @@ class Validator
         $isValid = !(1 !== preg_match('/' . $this->formatMap[$localeCode] . '/', $accountIdentification));
 
         if (!$isValid) {
-            $this->violations[] = 'The format of the given Iban is not valid!';
+            $this->violations[] = $this->options['violation.invalid_format'];
         }
 
         return $isValid;
@@ -195,7 +219,7 @@ class Validator
         $isValid = '1' === $this->local_bcmod($invertedIban, '97');
 
         if (!$isValid) {
-            $this->violations[] = 'The checksum of the given Iban is not valid!';
+            $this->violations[] = $this->options['violation.invalid_checksum'];
         }
 
         return $isValid;
