@@ -42,7 +42,7 @@ if (!$isValid) {
 
 ```
 
-You can also customize the violation messages by providing them via configuration. Just create a `Validator passing a config array as constructor argument.
+You can also customize the violation messages by providing them via configuration. Just create a `Validator` passing a config array as constructor argument.
 
 ```php
 <?php
