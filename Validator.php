@@ -147,6 +147,8 @@ class Validator
             throw new UnexpectedTypeException($iban, Iban::class);
         }
 
+        $this->violations = [];
+
         return $this->isLengthValid($iban)
             && $this->isLocalCodeValid($iban)
             && $this->isFormatValid($iban)
