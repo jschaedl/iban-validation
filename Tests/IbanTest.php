@@ -17,7 +17,7 @@ class IbanTest extends \PHPUnit_Framework_TestCase
 {
     public function testIbanCreation()
     {
-        $iban = new IBAN('DE45500502011241539870');
+        $iban = new Iban('DE45500502011241539870');
 
         $this->assertEquals('DE', $iban->getLocaleCode());
         $this->assertEquals('45', $iban->getChecksum());
