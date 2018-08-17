@@ -106,6 +106,8 @@ class Validator
         'GB' => '[A-Z]{4}[0-9]{14}'
     ];
 
+    private $violations = [];
+
     /**
      * @param Iban $iban
      * @return bool
@@ -122,13 +124,24 @@ class Validator
             && $this->isChecksumValid($iban);
     }
 
+    public function getViolations()
+    {
+        return $this->violations;
+    }
+
     /**
      * @param Iban $iban
      * @return bool
      */
     private function isLengthValid($iban)
     {
-        return !(strlen($iban) < Iban::IBAN_MIN_LENGTH);
+        $isValid = !(strlen($iban) < Iban::IBAN_MIN_LENGTH);
+
+        if (!$isValid) {
+            $this->violations[] = 'The lenght of the given Iban is too short!';
+        }
+
+        return $isValid;
     }
 
     /**
@@ -139,7 +152,13 @@ class Validator
     {
         $localeCode = $iban->getLocaleCode();
 
-        return array_key_exists($localeCode, $this->formatMap);
+        $isValid = array_key_exists($localeCode, $this->formatMap);
+
+        if (!$isValid) {
+            $this->violations[] = 'The locale code of the given Iban is not valid!';
+        }
+
+        return $isValid;
     }
 
     /**
@@ -151,7 +170,13 @@ class Validator
         $localeCode = $iban->getLocaleCode();
         $accountIdentification = $iban->getAccountIdentification();
 
-        return !(1 !== preg_match('/' . $this->formatMap[$localeCode] . '/', $accountIdentification));
+        $isValid = !(1 !== preg_match('/' . $this->formatMap[$localeCode] . '/', $accountIdentification));
+
+        if (!$isValid) {
+            $this->violations[] = 'The format of the given Iban is not valid!';
+        }
+
+        return $isValid;
     }
 
     /**
@@ -167,7 +192,13 @@ class Validator
         $numericAccountIdentification = $this->getNumericAccountIdentification($accountIdentification);
         $invertedIban = $numericAccountIdentification . $numericLocalCode . $checksum;
 
-        return '1' === $this->local_bcmod($invertedIban, '97');
+        $isValid = '1' === $this->local_bcmod($invertedIban, '97');
+
+        if (!$isValid) {
+            $this->violations[] = 'The checksum of the given Iban is not valid!';
+        }
+
+        return $isValid;
     }
 
     /**

@@ -32,8 +32,14 @@ use Iban\Validation\Iban;
 $iban = new Iban('DE89 3704 0044 0532 0130 00');
 $validator = new Validator();
 
-$validator->validate($iban);    // true => DE89370400440532013000 is valid Iban
-                                // false => DE89370400440532013000 is invalid Iban
+$isValid = $validator->validate($iban);
+         
+if (!$isValid) {
+    foreach ($validator->getViolations() as $violation) {
+        echo $violation;
+    }
+}
+
 ```
 
 ---
