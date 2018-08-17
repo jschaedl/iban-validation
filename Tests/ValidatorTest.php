@@ -17,7 +17,6 @@ use Iban\Validation\Validator;
 class ValidatorTest extends \PHPUnit_Framework_TestCase
 {
     protected $validator;
-    protected $ibans;
 
     protected function setUp()
     {
