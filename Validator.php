@@ -21,6 +21,9 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  */
 class Validator
 {
+    /**
+     * @var array
+     */
     private $letterMap = [
         1 => 'A',
         2 => 'B',
@@ -50,6 +53,9 @@ class Validator
         26 => 'Z'
     ];
 
+    /**
+     * @var array
+     */
     private $formatMap = [
         'AL' => '[0-9]{8}[0-9A-Z]{16}',
         'AD' => '[0-9]{8}[0-9A-Z]{12}',
@@ -107,9 +113,16 @@ class Validator
         'GB' => '[A-Z]{4}[0-9]{14}'
     ];
 
-    private $violations = [];
 
+    /**
+     * @var array
+     */
     private $options;
+
+    /**
+     * @var array
+     */
+    private $violations;
 
     /**
      * @param array $options
@@ -120,16 +133,8 @@ class Validator
         $this->configureOptions($resolver);
 
         $this->options = $resolver->resolve($options);
-    }
 
-    protected function configureOptions(OptionsResolver $resolver)
-    {
-        $resolver->setDefaults(array(
-            'violation.invalid_length' => 'The length of the given Iban is too short!',
-            'violation.invalid_locale_code' => 'The locale code of the given Iban is not valid!',
-            'violation.invalid_format' => 'The format of the given Iban is not valid!',
-            'violation.invalid_checksum' => 'The checksum of the given Iban is not valid!',
-        ));
+        $this->violations = [];
     }
 
     /**
@@ -148,9 +153,25 @@ class Validator
             && $this->isChecksumValid($iban);
     }
 
+    /**
+     * @return array
+     */
     public function getViolations()
     {
         return $this->violations;
+    }
+
+    /**
+     * @param OptionsResolver $resolver
+     */
+    protected function configureOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults([
+            'violation.invalid_length' => 'The length of the given Iban is too short!',
+            'violation.invalid_locale_code' => 'The locale code of the given Iban is not valid!',
+            'violation.invalid_format' => 'The format of the given Iban is not valid!',
+            'violation.invalid_checksum' => 'The checksum of the given Iban is not valid!',
+        ]);
     }
 
     /**
