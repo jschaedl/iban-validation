@@ -122,11 +122,19 @@ class Validator
             && $this->isChecksumValid($iban);
     }
 
+    /**
+     * @param Iban $iban
+     * @return bool
+     */
     private function isLengthValid($iban)
     {
         return !(strlen($iban) < Iban::IBAN_MIN_LENGTH);
     }
 
+    /**
+     * @param Iban $iban
+     * @return bool
+     */
     private function isLocalCodeValid($iban)
     {
         $localeCode = $iban->getLocaleCode();
@@ -134,6 +142,10 @@ class Validator
         return array_key_exists($localeCode, $this->formatMap);
     }
 
+    /**
+     * @param Iban $iban
+     * @return bool
+     */
     private function isFormatValid($iban)
     {
         $localeCode = $iban->getLocaleCode();
@@ -142,6 +154,10 @@ class Validator
         return !(1 !== preg_match('/' . $this->formatMap[$localeCode] . '/', $accountIdentification));
     }
 
+    /**
+     * @param Iban $iban
+     * @return bool
+     */
     private function isChecksumValid($iban)
     {
         $localeCode = $iban->getLocaleCode();
@@ -151,19 +167,31 @@ class Validator
         $numericAccountIdentification = $this->getNumericAccountIdentification($accountIdentification);
         $invertedIban = $numericAccountIdentification . $numericLocalCode . $checksum;
 
-        return '1' === $this->local_bcmod($invertedIban, 97);
+        return '1' === $this->local_bcmod($invertedIban, '97');
     }
 
+    /**
+     * @param string $localeCode
+     * @return string
+     */
     private function getNumericLocaleCode($localeCode)
     {
         return $this->getNumericRepresentation($localeCode);
     }
 
+    /**
+     * @param string $accountIdentification
+     * @return string
+     */
     private function getNumericAccountIdentification($accountIdentification)
     {
         return $this->getNumericRepresentation($accountIdentification);
     }
 
+    /**
+     * @param string $letterRepresentation
+     * @return string
+     */
     private function getNumericRepresentation($letterRepresentation)
     {
         $numericRepresentation = '';
@@ -178,21 +206,26 @@ class Validator
         return $numericRepresentation;
     }
 
-    private function local_bcmod($x, $y)
+    /**
+     * @param string $operand
+     * @param string $modulus
+     * @return string
+     */
+    private function local_bcmod($operand, $modulus)
     {
         if (!function_exists('bcmod')) {
             $take = 5;
             $mod = '';
 
             do {
-                $a = (int)$mod . substr($x, 0, $take);
-                $x = substr($x, $take);
-                $mod = $a % $y;
-            } while (strlen($x));
+                $a = (int)$mod . substr($operand, 0, $take);
+                $operand = substr($operand, $take);
+                $mod = $a % $modulus;
+            } while (strlen($operand));
 
             return (string)$mod;
         } else {
-            return bcmod($x, $y);
+            return bcmod($operand, $modulus);
         }
     }
 }
