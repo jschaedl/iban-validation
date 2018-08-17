@@ -30,7 +30,12 @@ use Iban\Validation\Validator;
 use Iban\Validation\Iban;
 
 $iban = new Iban('DE89 3704 0044 0532 0130 00');
-$validator = new Validator();
+$validator = new Validator([
+    'violation.invalid_length' => 'The length of the given Iban is too short!',
+    'violation.invalid_locale_code' => 'The locale code of the given Iban is not valid!',
+    'violation.invalid_format' => 'The format of the given Iban is not valid!',
+    'violation.invalid_checksum' => 'The checksum of the given Iban is not valid!',
+]);
 
 $isValid = $validator->validate($iban);
          
