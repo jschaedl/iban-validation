@@ -73,9 +73,9 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-	 * @dataProvider validIbanDataProvider
-	 */
-	public function testValidIbans($iban)
+     * @dataProvider validIbanDataProvider
+     */
+    public function testValidIbans($iban)
     {
         $this->assertTrue($this->validator->validate(new Iban($iban)));
     }
