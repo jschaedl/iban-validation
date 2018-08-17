@@ -2,7 +2,7 @@
 	"name" : "jschaedl/iban-validation",
 	"license" : "MIT",
 	"type" : "library",
-	"description" : "A small library for validating International BankAccount Numbers (IBAN).",
+	"description" : "A small library for validating International BankAccount Numbers (IBANs).",
 	"keywords" : ["iban", "validation"],
 	"homepage" : "http://github.com/jschaedl/iban-validation",
 	"authors" : [{
