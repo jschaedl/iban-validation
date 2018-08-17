@@ -12,8 +12,9 @@
 namespace Iban\Validation\Tests;
 
 use Iban\Validation\Iban;
+use PHPUnit\Framework\TestCase;
 
-class IbanTest extends \PHPUnit_Framework_TestCase
+class IbanTest extends TestCase
 {
     public function testIbanCreation()
     {

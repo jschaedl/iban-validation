@@ -13,8 +13,9 @@ namespace Iban\Validation\Tests;
 
 use Iban\Validation\Iban;
 use Iban\Validation\Validator;
+use PHPUnit\Framework\TestCase;
 
-class ValidatorTest extends \PHPUnit_Framework_TestCase
+class ValidatorTest extends TestCase
 {
     /**
      * @var Validator
