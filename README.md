@@ -5,7 +5,7 @@ A small library for validating International Bankaccount Numbers (IBANs).
 [![Build Status](https://travis-ci.org/jschaedl/iban-validation.png)](https://travis-ci.org/jschaedl/iban-validation) 
 [![Latest Stable Version](https://poser.pugx.org/jschaedl/iban-validation/v/stable)](https://packagist.org/packages/jschaedl/iban-validation) [![Total Downloads](https://poser.pugx.org/jschaedl/iban-validation/downloads)](https://packagist.org/packages/jschaedl/iban-validation) 
 [![Latest Unstable Version](https://poser.pugx.org/jschaedl/iban/v/unstable)](https://packagist.org/packages/jschaedl/iban) [![License](https://poser.pugx.org/jschaedl/iban/license)](https://packagist.org/packages/jschaedl/iban)
-![PHP Version](https://img.shields.io/badge/version-PHP%205.3%2B-lightgrey.svg)
+![PHP Version](https://img.shields.io/badge/version-PHP%207.1%2B-lightgrey.svg)
 
 ## Development status
 
