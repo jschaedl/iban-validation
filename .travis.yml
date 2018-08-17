@@ -10,4 +10,4 @@ before_script:
     - cp phpunit.xml.dist phpunit.xml
 
 script: 
-    - vendor/bin/phpunit -c phpunit.xml Tests/
+    - vendor/bin/phpunit -c phpunit.xml
