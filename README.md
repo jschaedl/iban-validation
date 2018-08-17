@@ -75,7 +75,3 @@ phpunit -c phpunit.xml Tests/
 ## Author
 
 [Jan Schädlich](https://github.com/jschaedl)
-
-## License
-
-MIT Public License
