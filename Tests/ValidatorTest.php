@@ -151,7 +151,7 @@ class ValidatorTest extends TestCase
 
         $this->assertFalse($isValid);
         $this->assertCount(1, $violations);
-        $this->assertTrue(array_search('The requested country is not supported!', $violations) === 0);
+        $this->assertContains('The requested country is not supported!', $violations);
     }
 
     public function testIbanLengthValidation()
@@ -161,9 +161,9 @@ class ValidatorTest extends TestCase
 
         $this->assertFalse($isValid);
         $this->assertCount(3, $violations);
-        $this->assertTrue(array_search('The length of the given Iban is not valid!', $violations) === 0);
-        $this->assertTrue(array_search('The format of the given Iban is not valid!', $violations) === 1);
-        $this->assertTrue(array_search('The checksum of the given Iban is not valid!', $violations) === 2);
+        $this->assertContains('The length of the given Iban is not valid!', $violations);
+        $this->assertContains('The format of the given Iban is not valid!', $violations);
+        $this->assertContains('The checksum of the given Iban is not valid!', $violations);
     }
 
     public function testIbanFormatValidation()
@@ -173,8 +173,8 @@ class ValidatorTest extends TestCase
 
         $this->assertFalse($isValid);
         $this->assertCount(2, $violations);
-        $this->assertTrue(array_search('The format of the given Iban is not valid!', $violations) === 0);
-        $this->assertTrue(array_search('The checksum of the given Iban is not valid!', $violations) === 1);
+        $this->assertContains('The format of the given Iban is not valid!', $violations);
+        $this->assertContains('The checksum of the given Iban is not valid!', $violations);
     }
 
     public function testIbanChecksumValidation()
@@ -184,6 +184,6 @@ class ValidatorTest extends TestCase
 
         $this->assertFalse($isValid);
         $this->assertCount(1, $violations);
-        $this->assertTrue(array_search('The checksum of the given Iban is not valid!', $violations) === 0);
+        $this->assertContains('The checksum of the given Iban is not valid!', $violations);
     }
 }
