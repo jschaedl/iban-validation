@@ -9,6 +9,13 @@
  * file that was distributed with this source code.
  */
 
+/**
+ * This script reads the data from the iban_registry.txt provided by SWIFT and converts it into a yaml structure.
+ * An up to date iban registry file can be found here: https://www.swift.com/taxonomy/term/3876
+ *
+ * @author Jan Schädlich <mail@janschaedlich.de>
+ */
+
 $usage = "php swift.php iban_registry.txt > Swift/iban_registry.yaml";
 
 if (2 !== $argc) {
