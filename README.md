@@ -3,8 +3,14 @@
 A small library for validating International Bankaccount Numbers (IBANs) based on the IBAN Registry provided by SWIFT.
 See https://www.swift.com/taxonomy/term/3876 for more information.
 
-[![Build Status](https://travis-ci.org/jschaedl/iban-validation.png)](https://travis-ci.org/jschaedl/iban-validation) 
+[![Build Status](https://travis-ci.org/jschaedl/iban-validation.png)](https://travis-ci.org/jschaedl/iban-validation)
 ![PHP Version](https://img.shields.io/badge/version-PHP%207.1%2B-lightgrey.svg)
+
+[![Total Downloads](https://poser.pugx.org/jschaedl/iban-validation/downloads)](https://packagist.org/packages/jschaedl/iban-validation) 
+[![Latest Stable Version](https://poser.pugx.org/jschaedl/iban-validation/v/stable)](https://packagist.org/packages/jschaedl/iban-validation) 
+[![Latest Unstable Version](https://poser.pugx.org/jschaedl/iban-validation/v/unstable)](https://packagist.org/packages/jschaedl/iban-validation) 
+[![License](https://poser.pugx.org/jschaedl/iban-validation/license)](https://packagist.org/packages/jschaedl/iban-validation) 
+
 
 ## Development status
 
@@ -66,10 +72,12 @@ Then fix the bug you found or add your enhancements and make a pull request. Ple
 
 ### Unit Testing
 
-All pull requests must be accompanied by passing unit tests. This repository uses phpunit and Composer. You must run `composer install` to install this package's dependencies before the unit tests will run. You can run the test via:
+All pull requests must be accompanied by passing unit tests. This repository uses phpunit and Composer. 
+You must run `composer --dev install` to install this package's dependencies and `cp phpunit.xml.dist phpunit.xml` 
+before the unit tests will run. You can run the test via:
 
-```
-phpunit -c phpunit.xml Tests/
+```sh
+$ vendor/bin/phpunit -c phpunit.xml Tests/
 ```
 
 ---
