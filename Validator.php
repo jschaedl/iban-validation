@@ -99,18 +99,26 @@ class Validator
         $this->violations = [];
 
         try {
-            $this->validateLength($iban);
             $this->validateCountryCode($iban);
-            $this->validateFormat($iban);
-            $this->validateChecksum($iban);
         } catch (UnsupportedCountryCodeException $exception) {
             $this->violations[] = $this->options['violation.unsupported_country'];
+            return false; // return here because with an unsupported country code all other checks make no sense at all
+        }
+
+        try {
+            $this->validateLength($iban);
         } catch (InvalidLengthException $exception) {
             $this->violations[] = $this->options['violation.invalid_length'];
-        } catch (InvalidCountryCodeException $exception) {
-            $this->violations[] = $this->options['violation.invalid_country_code'];
+        }
+
+        try {
+            $this->validateFormat($iban);
         } catch (InvalidFormatException $exception) {
             $this->violations[] = $this->options['violation.invalid_format'];
+        }
+
+        try {
+            $this->validateChecksum($iban);
         } catch (InvalidChecksumException $exception) {
             $this->violations[] = $this->options['violation.invalid_checksum'];
         }
@@ -133,11 +141,21 @@ class Validator
     {
         $resolver->setDefaults([
             'violation.unsupported_country' => 'The requested country is not supported!',
-            'violation.invalid_length' => 'The length of the given Iban is too short!',
-            'violation.invalid_country_code' => 'The country code of the given Iban is not valid!',
+            'violation.invalid_length' => 'The length of the given Iban is not valid!',
             'violation.invalid_format' => 'The format of the given Iban is not valid!',
             'violation.invalid_checksum' => 'The checksum of the given Iban is not valid!',
         ]);
+    }
+
+    /**
+     * @param Iban $iban
+     * @throws UnsupportedCountryCodeException
+     */
+    protected function validateCountryCode($iban)
+    {
+        if (!$this->swiftRegistry->isCountryAvailable($iban->getCountryCode())) {
+            throw new UnsupportedCountryCodeException($iban);
+        }
     }
 
     /**
@@ -148,17 +166,6 @@ class Validator
     {
         if ((strlen($iban) !== $this->swiftRegistry->getIbanLength($iban->getCountryCode()))) {
             throw new InvalidLengthException($iban);
-        }
-    }
-
-    /**
-     * @param Iban $iban
-     * @throws InvalidCountryCodeException
-     */
-    protected function validateCountryCode($iban)
-    {
-        if (!$this->swiftRegistry->isCountryAvailable($iban->getCountryCode())) {
-            throw new InvalidCountryCodeException($iban);
         }
     }
 

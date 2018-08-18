@@ -124,7 +124,7 @@ class ValidatorTest extends TestCase
         yield ['AT611904300234573221'];
         yield ['BA39129007940028494'];
         yield ['BE685390047034'];
-        yield ['AA611904300234573201'];
+        yield ['VG611904300234573201'];
         yield ['ST68000200010192194210112'];
     }
 
@@ -144,43 +144,46 @@ class ValidatorTest extends TestCase
         $this->assertFalse($this->validator->validate(new \stdClass()));
     }
 
-    public function testIbanLenghtIsToShort()
+    public function testIbanCountryCodeValidation()
     {
-        $this->assertFalse($this->validator->validate(new Iban('DE')));
-        $this->assertCount(1, $this->validator->getViolations());
-        $this->assertTrue(array_search('The length of the given Iban is too short!', $this->validator->getViolations()) >= 0);
+        $isValid = $this->validator->validate(new Iban('ZZ89 3704 0044 0532 0130 00'));
+        $violations = $this->validator->getViolations();
+
+        $this->assertFalse($isValid);
+        $this->assertCount(1, $violations);
+        $this->assertTrue(array_search('The requested country is not supported!', $violations) === 0);
     }
 
-    public function testIbanLocaleCodeIsInvalid()
+    public function testIbanLengthValidation()
     {
-        $this->assertFalse($this->validator->validate(new Iban('ZZ89 3704 0044 0532 0130 00')));
-        $this->assertCount(1, $this->validator->getViolations());
-        $this->assertTrue(array_search('The requested country is not supported!', $this->validator->getViolations()) >= 0);
-        $this->assertTrue(array_search('The locale code of the given Iban is not valid!', $this->validator->getViolations()) >= 0);
+        $isValid = $this->validator->validate(new Iban('DE89 3704 0044 0530 7877 089'));
+        $violations = $this->validator->getViolations();
+
+        $this->assertFalse($isValid);
+        $this->assertCount(3, $violations);
+        $this->assertTrue(array_search('The length of the given Iban is not valid!', $violations) === 0);
+        $this->assertTrue(array_search('The format of the given Iban is not valid!', $violations) === 1);
+        $this->assertTrue(array_search('The checksum of the given Iban is not valid!', $violations) === 2);
     }
 
-    public function testIbanFormatIsInvalid()
+    public function testIbanFormatValidation()
     {
-        $this->assertFalse($this->validator->validate(new Iban('DE89 3704 0044 053 013 00')));
-        $this->assertCount(1, $this->validator->getViolations());
-        $this->assertTrue(array_search('The format of the given Iban is not valid!', $this->validator->getViolations()) >= 0);
+        $isValid = $this->validator->validate(new Iban('DE89 3704 0044 053A 013B 00'));
+        $violations = $this->validator->getViolations();
+
+        $this->assertFalse($isValid);
+        $this->assertCount(2, $violations);
+        $this->assertTrue(array_search('The format of the given Iban is not valid!', $violations) === 0);
+        $this->assertTrue(array_search('The checksum of the given Iban is not valid!', $violations) === 1);
     }
 
-    public function testIbanChecksumIsInvalid()
+    public function testIbanChecksumValidation()
     {
-        $this->assertFalse($this->validator->validate(new Iban('DE90 3704 0044 0532 0130 00')));
-        $this->assertCount(1, $this->validator->getViolations());
-        $this->assertTrue(array_search('The checksum of the given Iban is not valid!', $this->validator->getViolations()) >= 0);
-    }
+        $isValid = $this->validator->validate(new Iban('DE90 3704 0044 0532 0130 00'));
+        $violations = $this->validator->getViolations();
 
-    public function testIbanIsInvalid()
-    {
-        $this->assertFalse($this->validator->validate(new Iban('ZZ89 3704 004 053')));
-        $this->assertCount(1, $this->validator->getViolations());
-        $this->assertTrue(array_search('The requested country is not supported!', $this->validator->getViolations()) >= 0);
-        $this->assertTrue(array_search('The locale code of the given Iban is not valid!', $this->validator->getViolations()) >= 0);
-        $this->assertTrue(array_search('The locale code of the given Iban is not valid!', $this->validator->getViolations()) >= 0);
-        $this->assertTrue(array_search('The format of the given Iban is not valid!', $this->validator->getViolations()) >= 0);
-        $this->assertTrue(array_search('The checksum of the given Iban is not valid!', $this->validator->getViolations()) >= 0);
+        $this->assertFalse($isValid);
+        $this->assertCount(1, $violations);
+        $this->assertTrue(array_search('The checksum of the given Iban is not valid!', $violations) === 0);
     }
 }
