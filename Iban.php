@@ -96,6 +96,10 @@ class Iban
      */
     private function normalize($iban)
     {
-        return preg_replace('/\s+/', '', trim($iban));
+        $iban = trim(strtoupper($iban));
+        $iban = preg_replace('/^I?IBAN/', '', $iban);
+        $iban = preg_replace('/[^a-zA-Z0-9]/', '', $iban);
+
+        return preg_replace('/\s+/', '', $iban);
     }
 }
