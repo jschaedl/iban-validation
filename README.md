@@ -91,7 +91,7 @@ $ vendor/bin/phpunit -c phpunit.xml Tests/
    
 ## Author
 
-[Jan Schädlich](https://github.com/jschaedl)
+[Jan Schädlich](https://www.linkedin.com/in/janschaedlich)
 
 ## License
 
