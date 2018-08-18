@@ -18,6 +18,15 @@ This library is ready to use. The Iban validation should be fine, but there is n
 
 ---
 
+## Features
+
+* full country support of IBAN validation based on SWIFT Registry
+* customizable violation messages
+* simple to use object oriented api
+* high test coverage
+
+---
+
 ## Installation
 
 To install jschaedl/iban-validation via composer use
