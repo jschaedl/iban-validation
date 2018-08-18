@@ -1,6 +1,7 @@
 # iban-validation
 
-A small library for validating International Bankaccount Numbers (IBANs).
+A small library for validating International Bankaccount Numbers (IBANs) based on the IBAN Registry provided by SWIFT.
+See https://www.swift.com/taxonomy/term/3876 for more information.
 
 [![Build Status](https://travis-ci.org/jschaedl/iban-validation.png)](https://travis-ci.org/jschaedl/iban-validation) 
 ![PHP Version](https://img.shields.io/badge/version-PHP%207.1%2B-lightgrey.svg)
