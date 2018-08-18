@@ -46,9 +46,7 @@ use Iban\Validation\Iban;
 $iban = new Iban('DE89 3704 0044 0532 0130 00');
 $validator = new Validator();
 
-$isValid = $validator->validate($iban);
-         
-if (!$isValid) {
+if (!$validator->validate($iban)) {
     foreach ($validator->getViolations() as $violation) {
         echo $violation;
     }
