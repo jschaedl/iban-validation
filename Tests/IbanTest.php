@@ -20,13 +20,11 @@ class IbanTest extends TestCase
     {
         $iban = new Iban('DE45500502011241539870');
 
-        $this->assertEquals('DE', $iban->getLocaleCode());
+        $this->assertEquals('DE', $iban->getCountryCode());
         $this->assertEquals('45', $iban->getChecksum());
-        $this->assertEquals('50050201', $iban->getInstituteIdentification());
-        $this->assertEquals('1241539870', $iban->getBankAccountNumber());
-        $this->assertEquals('500502011241539870', $iban->getAccountIdentification());
+        $this->assertEquals('500502011241539870', $iban->getBban());
 
-        $this->assertEquals('DE45500502011241539870', (string) $iban);
-        $this->assertEquals('DE45 5005 0201 1241 5398 70', $iban->format());
+        $this->assertEquals('DE45500502011241539870', $iban->format(Iban::FORMAT_ELECTRONIC));
+        $this->assertEquals('DE45 5005 0201 1241 5398 70', $iban->format(Iban::FORMAT_PRINT));
     }
 }

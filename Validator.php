@@ -12,6 +12,8 @@
 namespace Iban\Validation;
 
 use Iban\Validation\Exception\UnexpectedTypeException;
+use Iban\Validation\Swift\Exception\UnsupportedCountryCodeException;
+use Iban\Validation\Swift\Registry;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
@@ -54,65 +56,9 @@ class Validator
     ];
 
     /**
-     * @var array
+     * @var Registry
      */
-    private $formatMap = [
-        'AL' => '[0-9]{8}[0-9A-Z]{16}',
-        'AD' => '[0-9]{8}[0-9A-Z]{12}',
-        'AT' => '[0-9]{16}',
-        'BE' => '[0-9]{12}',
-        'BA' => '[0-9]{16}',
-        'BG' => '[A-Z]{4}[0-9]{6}[0-9A-Z]{8}',
-        'HR' => '[0-9]{17}',
-        'CY' => '[0-9]{8}[0-9A-Z]{16}',
-        'CZ' => '[0-9]{20}',
-        'DK' => '[0-9]{14}',
-        'EE' => '[0-9]{16}',
-        'FO' => '[0-9]{14}',
-        'FI' => '[0-9]{14}',
-        'FR' => '[0-9]{10}[0-9A-Z]{11}[0-9]{2}',
-        'GE' => '[0-9A-Z]{2}[0-9]{16}',
-        'DE' => '[0-9]{18}',
-        'GI' => '[A-Z]{4}[0-9A-Z]{15}',
-        'GR' => '[0-9]{7}[0-9A-Z]{16}',
-        'GL' => '[0-9]{14}',
-        'HU' => '[0-9]{24}',
-        'IS' => '[0-9]{22}',
-        'IE' => '[0-9A-Z]{4}[0-9]{14}',
-        'IL' => '[0-9]{19}',
-        'IT' => '[A-Z][0-9]{10}[0-9A-Z]{12}',
-        'KZ' => '[0-9]{3}[0-9A-Z]{13}',
-        'KW' => '[A-Z]{4}[0-9]{22}',
-        'LV' => '[A-Z]{4}[0-9A-Z]{13}',
-        'LB' => '[0-9]{4}[0-9A-Z]{20}',
-        'LI' => '[0-9]{5}[0-9A-Z]{12}',
-        'LT' => '[0-9]{16}',
-        'LU' => '[0-9]{3}[0-9A-Z]{13}',
-        'MK' => '[0-9]{3}[0-9A-Z]{10}[0-9]{2}',
-        'MT' => '[A-Z]{4}[0-9]{5}[0-9A-Z]{18}',
-        'MR' => '[0-9]{23}',
-        'MU' => '[A-Z]{4}[0-9]{19}[A-Z]{3}',
-        'MC' => '[0-9]{10}[0-9A-Z]{11}[0-9]{2}',
-        'ME' => '[0-9]{18}',
-        'NL' => '[A-Z]{4}[0-9]{10}',
-        'NO' => '[0-9]{11}',
-        'PL' => '[0-9]{24}',
-        'PT' => '[0-9]{21}',
-        'RO' => '[A-Z]{4}[0-9A-Z]{16}',
-        'SM' => '[A-Z][0-9]{10}[0-9A-Z]{12}',
-        'SA' => '[0-9]{2}[0-9A-Z]{18}',
-        'RS' => '[0-9]{18}',
-        'SK' => '[0-9]{20}',
-        'SI' => '[0-9]{15}',
-        'ES' => '[0-9]{20}',
-        'SE' => '[0-9]{20}',
-        'CH' => '[0-9]{5}[0-9A-Z]{12}',
-        'TN' => '[0-9]{20}',
-        'TR' => '[0-9]{5}[0-9A-Z]{17}',
-        'AE' => '[0-9]{19}',
-        'GB' => '[A-Z]{4}[0-9]{14}'
-    ];
-
+    private $swiftRegistry;
 
     /**
      * @var array
@@ -129,6 +75,8 @@ class Validator
      */
     public function __construct($options = [])
     {
+        $this->swiftRegistry = new Registry();
+
         $resolver = new OptionsResolver();
         $this->configureOptions($resolver);
 
@@ -149,10 +97,18 @@ class Validator
 
         $this->violations = [];
 
-        return $this->isLengthValid($iban)
-            && $this->isLocalCodeValid($iban)
-            && $this->isFormatValid($iban)
-            && $this->isChecksumValid($iban);
+        $isValid = false;
+
+        try {
+            $isValid = $this->isLengthValid($iban)
+                && $this->isCountryCodeValid($iban)
+                && $this->isFormatValid($iban)
+                && $this->isChecksumValid($iban);
+        } catch (UnsupportedCountryCodeException $exception) {
+            $this->violations[] = 'violation.unsupported_country';
+        }
+
+        return $isValid;
     }
 
     /**
@@ -169,8 +125,9 @@ class Validator
     protected function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
+            'violation.unsupported_country' => 'The requested country is not supported!',
             'violation.invalid_length' => 'The length of the given Iban is too short!',
-            'violation.invalid_locale_code' => 'The locale code of the given Iban is not valid!',
+            'violation.invalid_country_code' => 'The country code of the given Iban is not valid!',
             'violation.invalid_format' => 'The format of the given Iban is not valid!',
             'violation.invalid_checksum' => 'The checksum of the given Iban is not valid!',
         ]);
@@ -182,7 +139,7 @@ class Validator
      */
     private function isLengthValid($iban)
     {
-        $isValid = !(strlen($iban) < Iban::IBAN_MIN_LENGTH);
+        $isValid = !(strlen($iban) < $this->swiftRegistry->getIbanLength($iban->getCountryCode()));
 
         if (!$isValid) {
             $this->violations[] = $this->options['violation.invalid_length'];
@@ -195,14 +152,12 @@ class Validator
      * @param Iban $iban
      * @return bool
      */
-    private function isLocalCodeValid($iban)
+    private function isCountryCodeValid($iban)
     {
-        $localeCode = $iban->getLocaleCode();
-
-        $isValid = array_key_exists($localeCode, $this->formatMap);
+        $isValid = $this->swiftRegistry->isCountryAvailable($iban->getCountryCode());
 
         if (!$isValid) {
-            $this->violations[] = $this->options['violation.invalid_locale_code'];
+            $this->violations[] = $this->options['violation.invalid_country_code'];
         }
 
         return $isValid;
@@ -214,10 +169,7 @@ class Validator
      */
     private function isFormatValid($iban)
     {
-        $localeCode = $iban->getLocaleCode();
-        $accountIdentification = $iban->getAccountIdentification();
-
-        $isValid = !(1 !== preg_match('/' . $this->formatMap[$localeCode] . '/', $accountIdentification));
+        $isValid = !(1 !== preg_match($this->swiftRegistry->getIbanRegex($iban->getCountryCode()), $iban));
 
         if (!$isValid) {
             $this->violations[] = $this->options['violation.invalid_format'];
@@ -232,12 +184,11 @@ class Validator
      */
     private function isChecksumValid($iban)
     {
-        $localeCode = $iban->getLocaleCode();
+        $numericBban = $this->getNumericRepresentation($iban->getBban());
+        $numericCountryCode = $this->getNumericRepresentation($iban->getCountryCode());
         $checksum = $iban->getChecksum();
-        $accountIdentification = $iban->getAccountIdentification();
-        $numericLocalCode = $this->getNumericLocaleCode($localeCode);
-        $numericAccountIdentification = $this->getNumericAccountIdentification($accountIdentification);
-        $invertedIban = $numericAccountIdentification . $numericLocalCode . $checksum;
+
+        $invertedIban = $numericBban . $numericCountryCode . $checksum;
 
         $isValid = '1' === $this->local_bcmod($invertedIban, '97');
 
@@ -246,24 +197,6 @@ class Validator
         }
 
         return $isValid;
-    }
-
-    /**
-     * @param string $localeCode
-     * @return string
-     */
-    private function getNumericLocaleCode($localeCode)
-    {
-        return $this->getNumericRepresentation($localeCode);
-    }
-
-    /**
-     * @param string $accountIdentification
-     * @return string
-     */
-    private function getNumericAccountIdentification($accountIdentification)
-    {
-        return $this->getNumericRepresentation($accountIdentification);
     }
 
     /**

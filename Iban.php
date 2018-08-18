@@ -14,31 +14,23 @@ namespace Iban\Validation;
 /**
  * Represents an International Bank Account Number (IBAN).
  *
- * LLCC IIII IIII BBBB BBBB BB
+ * LLCC BBBB BBBB BBBB BBBB BB
  * L => Locale
  * C => Checksum
- * I => Institute Identification
- * B => Bankaccount Number
+ * B => BBAN
  *
  * @author Jan Schädlich <mail@janschaedlich.de>
  */
 class Iban
 {
-    public const IBAN_MIN_LENGTH = 15;
+    public const FORMAT_ELECTRONIC = 'electronic';
+    public const FORMAT_PRINT = 'print';
 
-    private const LOCALE_CODE_OFFSET = 0;
-    private const LOCALE_CODE_LENGTH = 2;
-
+    private const COUNTRY_CODE_OFFSET = 0;
+    private const COUNTRY_CODE_LENGTH = 2;
     private const CHECKSUM_OFFSET = 2;
     private const CHECKSUM_LENGTH = 2;
-
-    private const INSTITUTE_IDENTIFICATION_OFFSET = 4;
-    private const INSTITUTE_IDENTIFICATION_LENGTH = 8;
-
-    private const BANKACCOUNT_NUMBER_OFFSET = 12;
-    private const BANKACCOUNT_NUMBER_LENGTH = 10;
-
-    private const ACCOUNT_IDENTIFICATION_OFFSET = 4;
+    private const BBAN_OFFSET = 4;
 
     /**
      * @var string
@@ -59,27 +51,27 @@ class Iban
     }
 
     /**
+     * @param string $type
      * @return string
      */
-    public function format()
+    public function format($type = self::FORMAT_PRINT)
     {
-        return sprintf(
-            '%s %s %s %s %s %s',
-            $this->getLocaleCode() . $this->getChecksum(),
-            substr($this->getInstituteIdentification(), 0, 4),
-            substr($this->getInstituteIdentification(), 4, 4),
-            substr($this->getBankAccountNumber(), 0, 4),
-            substr($this->getBankAccountNumber(), 4, 4),
-            substr($this->getBankAccountNumber(), 8, 2)
-        );
+        switch ($type) {
+            case self::FORMAT_ELECTRONIC:
+                return $this->iban;
+                break;
+            case self::FORMAT_PRINT:
+                return wordwrap($this->iban, 4, ' ', true);
+                break;
+        }
     }
 
     /**
      * @return string
      */
-    public function getLocaleCode()
+    public function getCountryCode()
     {
-        return substr($this->iban, self::LOCALE_CODE_OFFSET, self::LOCALE_CODE_LENGTH);
+        return substr($this->iban, self::COUNTRY_CODE_OFFSET, self::COUNTRY_CODE_LENGTH);
     }
 
     /**
@@ -93,25 +85,9 @@ class Iban
     /**
      * @return string
      */
-    public function getAccountIdentification()
+    public function getBban()
     {
-        return substr($this->iban, self::ACCOUNT_IDENTIFICATION_OFFSET);
-    }
-
-    /**
-     * @return string
-     */
-    public function getInstituteIdentification()
-    {
-        return substr($this->iban, self::INSTITUTE_IDENTIFICATION_OFFSET, self::INSTITUTE_IDENTIFICATION_LENGTH);
-    }
-
-    /**
-     * @return string
-     */
-    public function getBankAccountNumber()
-    {
-        return substr($this->iban, self::BANKACCOUNT_NUMBER_OFFSET, self::BANKACCOUNT_NUMBER_LENGTH);
+        return substr($this->iban, self::BBAN_OFFSET);
     }
 
     /**
