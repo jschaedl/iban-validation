@@ -97,3 +97,5 @@ foreach ($countryCodes as $key => $countryCode) {
 }
 
 echo(Yaml::dump($registry));
+
+exit(0);
