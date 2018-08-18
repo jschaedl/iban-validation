@@ -155,6 +155,7 @@ class ValidatorTest extends TestCase
     {
         $this->assertFalse($this->validator->validate(new Iban('ZZ89 3704 0044 0532 0130 00')));
         $this->assertCount(1, $this->validator->getViolations());
+        $this->assertTrue(array_search('The requested country is not supported!', $this->validator->getViolations()) >= 0);
         $this->assertTrue(array_search('The locale code of the given Iban is not valid!', $this->validator->getViolations()) >= 0);
     }
 
@@ -176,6 +177,7 @@ class ValidatorTest extends TestCase
     {
         $this->assertFalse($this->validator->validate(new Iban('ZZ89 3704 004 053')));
         $this->assertCount(1, $this->validator->getViolations());
+        $this->assertTrue(array_search('The requested country is not supported!', $this->validator->getViolations()) >= 0);
         $this->assertTrue(array_search('The locale code of the given Iban is not valid!', $this->validator->getViolations()) >= 0);
         $this->assertTrue(array_search('The locale code of the given Iban is not valid!', $this->validator->getViolations()) >= 0);
         $this->assertTrue(array_search('The format of the given Iban is not valid!', $this->validator->getViolations()) >= 0);

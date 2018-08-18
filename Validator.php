@@ -11,6 +11,10 @@
 
 namespace Iban\Validation;
 
+use Iban\Validation\Exception\InvalidChecksumException;
+use Iban\Validation\Exception\InvalidCountryCodeException;
+use Iban\Validation\Exception\InvalidFormatException;
+use Iban\Validation\Exception\InvalidLengthException;
 use Iban\Validation\Exception\UnexpectedTypeException;
 use Iban\Validation\Swift\Exception\UnsupportedCountryCodeException;
 use Iban\Validation\Swift\Registry;
@@ -94,18 +98,24 @@ class Validator
 
         $this->violations = [];
 
-        $isValid = false;
-
         try {
-            $isValid = $this->isLengthValid($iban)
-                && $this->isCountryCodeValid($iban)
-                && $this->isFormatValid($iban)
-                && $this->isChecksumValid($iban);
+            $this->validateLength($iban);
+            $this->validateCountryCode($iban);
+            $this->validateFormat($iban);
+            $this->validateChecksum($iban);
         } catch (UnsupportedCountryCodeException $exception) {
-            $this->violations[] = 'violation.unsupported_country';
+            $this->violations[] = $this->options['violation.unsupported_country'];
+        } catch (InvalidLengthException $exception) {
+            $this->violations[] = $this->options['violation.invalid_length'];
+        } catch (InvalidCountryCodeException $exception) {
+            $this->violations[] = $this->options['violation.invalid_country_code'];
+        } catch (InvalidFormatException $exception) {
+            $this->violations[] = $this->options['violation.invalid_format'];
+        } catch (InvalidChecksumException $exception) {
+            $this->violations[] = $this->options['violation.invalid_checksum'];
         }
 
-        return $isValid;
+        return 0 === count($this->violations);
     }
 
     /**
@@ -132,54 +142,42 @@ class Validator
 
     /**
      * @param Iban $iban
-     * @return bool
+     * @throws InvalidLengthException
      */
-    private function isLengthValid($iban)
+    protected function validateLength($iban)
     {
-        $isValid = !(strlen($iban) < $this->swiftRegistry->getIbanLength($iban->getCountryCode()));
-
-        if (!$isValid) {
-            $this->violations[] = $this->options['violation.invalid_length'];
+        if ((strlen($iban) !== $this->swiftRegistry->getIbanLength($iban->getCountryCode()))) {
+            throw new InvalidLengthException($iban);
         }
-
-        return $isValid;
     }
 
     /**
      * @param Iban $iban
-     * @return bool
+     * @throws InvalidCountryCodeException
      */
-    private function isCountryCodeValid($iban)
+    protected function validateCountryCode($iban)
     {
-        $isValid = $this->swiftRegistry->isCountryAvailable($iban->getCountryCode());
-
-        if (!$isValid) {
-            $this->violations[] = $this->options['violation.invalid_country_code'];
+        if (!$this->swiftRegistry->isCountryAvailable($iban->getCountryCode())) {
+            throw new InvalidCountryCodeException($iban);
         }
-
-        return $isValid;
     }
 
     /**
      * @param Iban $iban
-     * @return bool
+     * @throws InvalidLengthException
      */
-    private function isFormatValid($iban)
+    protected function validateFormat($iban)
     {
-        $isValid = !(1 !== preg_match($this->swiftRegistry->getIbanRegex($iban->getCountryCode()), $iban));
-
-        if (!$isValid) {
-            $this->violations[] = $this->options['violation.invalid_format'];
+        if ((1 !== preg_match($this->swiftRegistry->getIbanRegex($iban->getCountryCode()), $iban))) {
+            throw new InvalidFormatException($iban);
         }
-
-        return $isValid;
     }
 
     /**
      * @param Iban $iban
-     * @return bool
+     * @throws InvalidChecksumException
      */
-    private function isChecksumValid($iban)
+    protected function validateChecksum($iban)
     {
         $numericBban = $this->getNumericRepresentation($iban->getBban());
         $numericCountryCode = $this->getNumericRepresentation($iban->getCountryCode());
@@ -187,13 +185,9 @@ class Validator
 
         $invertedIban = $numericBban . $numericCountryCode . $checksum;
 
-        $isValid = '1' === $this->local_bcmod($invertedIban, '97');
-
-        if (!$isValid) {
-            $this->violations[] = $this->options['violation.invalid_checksum'];
+        if ('1' !== $this->local_bcmod($invertedIban, '97')) {
+            throw new InvalidChecksumException($iban);
         }
-
-        return $isValid;
     }
 
     /**
