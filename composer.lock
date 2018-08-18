@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "840bf54052d0501ffe03cde4ea465985",
+    "content-hash": "09f766b3b4a968fcb7cffa85bab2f860",
     "packages": [
         {
             "name": "symfony/options-resolver",
@@ -1590,7 +1590,8 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "symfony/options-resolver": 20,
-        "symfony/yaml": 20
+        "symfony/yaml": 20,
+        "phpunit/php-code-coverage": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

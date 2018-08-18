@@ -63,12 +63,12 @@ class Validator
     /**
      * @var array
      */
-    private $options;
+    private $options = [];
 
     /**
      * @var array
      */
-    private $violations;
+    private $violations = [];
 
     /**
      * @param array $options
@@ -79,10 +79,7 @@ class Validator
 
         $resolver = new OptionsResolver();
         $this->configureOptions($resolver);
-
         $this->options = $resolver->resolve($options);
-
-        $this->violations = [];
     }
 
     /**

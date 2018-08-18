@@ -13,10 +13,31 @@ namespace Iban\Validation\Swift;
 
 use Symfony\Component\Yaml\Yaml;
 
+/**
+ * Loads the iban_registry text file provided by SWIFT and parses it to yaml.
+ *
+ * @author Jan Schädlich <mail@janschaedlich.de>
+ */
 class RegistryLoader
 {
-    public function load(string $filename)
+    /**
+     * @var string
+     */
+    protected $filename;
+
+    /**
+     * @param string $filename
+     */
+    public function __construct($filename)
     {
-        return Yaml::parse(file_get_contents($filename));
+        $this->filename = $filename;
+    }
+
+    /**
+     * @return array
+     */
+    public function load()
+    {
+        return Yaml::parse(file_get_contents($this->filename));
     }
 }

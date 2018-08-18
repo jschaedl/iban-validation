@@ -11,8 +11,19 @@
 
 namespace Iban\Validation\Swift;
 
+/**
+ * Converts iban and bban structure notation used in iban_registry text file provided by SWIFT to common regex.
+ *
+ * Example: 'DE2!n8!n16!c' => 'DE\d{2}\d{8}[A-Z0-9]{16}'
+ *
+ * @author Jan Schädlich <mail@janschaedlich.de>
+ */
 class RegexConverter
 {
+    /**
+     * @param string $input
+     * @return string
+     */
     public function convert($input)
     {
         $input = preg_replace('/(^[A-Z]{2})/', '${1}', $input);

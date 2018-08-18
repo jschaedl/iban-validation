@@ -9,9 +9,28 @@
  * file that was distributed with this source code.
  */
 
-require_once __DIR__ . '/../vendor/autoload.php';
+$usage = "php swift.php iban_registry.txt > Swift/iban_registry.yaml";
 
-$lines = file(__DIR__ . '/iban_registry-201708r78.txt');
+if (2 !== $argc) {
+    echo 'Please provide path to iban_registry file provided by SWIFT!' . PHP_EOL;
+    echo 'Use: ' . $usage . PHP_EOL;
+    exit(1);
+}
+
+$filename = __DIR__ . '/' . $argv[1];
+
+if (!file_exists($filename)) {
+    echo 'Given iban_registry file does not exist!' . PHP_EOL;
+    exit(1);
+}
+
+
+require_once __DIR__ . '/vendor/autoload.php';
+
+use Iban\Validation\Swift\RegexConverter;
+use Symfony\Component\Yaml\Yaml;
+
+$lines = file($filename);
 
 $countryCodes = [];
 $countryNames = [];
@@ -49,7 +68,7 @@ foreach ($lines as $lineNumber => $line) {
     }
 }
 
-$regexConverter = new \Iban\Validation\Swift\RegexConverter();
+$regexConverter = new RegexConverter();
 
 $registry = [];
 foreach ($countryCodes as $key => $countryCode) {
@@ -70,4 +89,4 @@ foreach ($countryCodes as $key => $countryCode) {
     ];
 }
 
-echo(\Symfony\Component\Yaml\Yaml::dump($registry));
+echo(Yaml::dump($registry));

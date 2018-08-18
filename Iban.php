@@ -14,11 +14,6 @@ namespace Iban\Validation;
 /**
  * Represents an International Bank Account Number (IBAN).
  *
- * LLCC BBBB BBBB BBBB BBBB BB
- * L => Locale
- * C => Checksum
- * B => BBAN
- *
  * @author Jan Schädlich <mail@janschaedlich.de>
  */
 class Iban
@@ -45,6 +40,9 @@ class Iban
         $this->iban = $this->normalize($iban);
     }
 
+    /**
+     * @return string
+     */
     public function __toString()
     {
         return $this->iban;
@@ -62,6 +60,9 @@ class Iban
                 break;
             case self::FORMAT_PRINT:
                 return wordwrap($this->iban, 4, ' ', true);
+                break;
+            default:
+                return $this->iban;
                 break;
         }
     }

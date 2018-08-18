@@ -18,7 +18,7 @@ class IbanTest extends TestCase
 {
     public function testIbanCreation()
     {
-        $iban = new Iban('IBAN DE45500502011241539870');
+        $iban = new Iban('IBAN D E4 5 5 0 0 502 0 1 124 1 539 8 70');
 
         $this->assertEquals('DE', $iban->getCountryCode());
         $this->assertEquals('45', $iban->getChecksum());

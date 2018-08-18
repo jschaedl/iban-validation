@@ -1,0 +1,10 @@
+DE:
+    country_name: Germany
+    iban_structure: DE2!n8!n10!n
+    bban_structure: 8!n10!n
+    iban_regex: '/^DE\d{2}\d{8}\d{10}$/'
+    bban_regex: '/^\d{8}\d{10}$/'
+    iban_length: 22
+    bban_length: 18
+    iban_electronic_format_example: DE89370400440532013000
+    iban_print_format_example: 'DE89 3704 0044 0532 0130 00'

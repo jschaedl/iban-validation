@@ -13,6 +13,9 @@ namespace Iban\Validation\Swift\Exception;
 
 class UnsupportedCountryCodeException extends \RuntimeException
 {
+    /**
+     * @param string $countryCode
+     */
     public function __construct($countryCode)
     {
         parent::__construct(sprintf('Country with countryCode "%s" is not supported', $countryCode));
