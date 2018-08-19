@@ -24,7 +24,12 @@ class ValidatorTest extends TestCase
 
     protected function setUp()
     {
-        $this->validator = new Validator();
+        $this->validator = new Validator([
+            'violation.unsupported_country' => 'unsupported_country',
+            'violation.invalid_length' => 'invalid_length',
+            'violation.invalid_format' => 'invalid_format',
+            'violation.invalid_checksum' => 'invalid_checksum',
+        ]);
     }
 
     public function validIbanDataProvider()
@@ -151,7 +156,7 @@ class ValidatorTest extends TestCase
 
         $this->assertFalse($isValid);
         $this->assertCount(1, $violations);
-        $this->assertContains('The requested country is not supported!', $violations);
+        $this->assertContains('unsupported_country', $violations);
     }
 
     public function testIbanLengthValidation()
@@ -161,9 +166,9 @@ class ValidatorTest extends TestCase
 
         $this->assertFalse($isValid);
         $this->assertCount(3, $violations);
-        $this->assertContains('The length of the given Iban is not valid!', $violations);
-        $this->assertContains('The format of the given Iban is not valid!', $violations);
-        $this->assertContains('The checksum of the given Iban is not valid!', $violations);
+        $this->assertContains('invalid_length', $violations);
+        $this->assertContains('invalid_format', $violations);
+        $this->assertContains('invalid_checksum', $violations);
     }
 
     public function testIbanFormatValidation()
@@ -173,8 +178,8 @@ class ValidatorTest extends TestCase
 
         $this->assertFalse($isValid);
         $this->assertCount(2, $violations);
-        $this->assertContains('The format of the given Iban is not valid!', $violations);
-        $this->assertContains('The checksum of the given Iban is not valid!', $violations);
+        $this->assertContains('invalid_format', $violations);
+        $this->assertContains('invalid_checksum', $violations);
     }
 
     public function testIbanChecksumValidation()
@@ -184,6 +189,6 @@ class ValidatorTest extends TestCase
 
         $this->assertFalse($isValid);
         $this->assertCount(1, $violations);
-        $this->assertContains('The checksum of the given Iban is not valid!', $violations);
+        $this->assertContains('invalid_checksum', $violations);
     }
 }
