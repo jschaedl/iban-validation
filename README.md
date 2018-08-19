@@ -36,6 +36,8 @@ To install `jschaedl/iban-validation` via [composer](https://getcomposer.org/) u
 $ composer require jschaedl/iban-validation
 ```
 
+You can see this library on [Packagist](https://packagist.org/packages/jschaedl/iban-validation).
+
 ---
 
 ## Iban Validation
