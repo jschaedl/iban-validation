@@ -36,7 +36,7 @@ To install `jschaedl/iban-validation` via [composer](https://getcomposer.org/) u
 $ composer require jschaedl/iban-validation
 ```
 
-## Usage example
+## Iban Validation
 
 ```php
 <?php
@@ -52,6 +52,37 @@ if (!$validator->validate($iban)) {
         echo $violation;
     }
 }
+
+```
+
+## Iban Information
+
+```php
+<?php
+
+use Iban\Validation\Iban;
+use Iban\Validation\IbanInfo;
+
+$iban = new Iban('IBAN DE89 3704 0044 0532 0130 00');
+
+$countryCode = $iban->getCountryCode(); // DE
+$checksum = $iban->getChecksum(); // 89
+$bban = $iban->getBban(); // 370400440532013000
+
+$formattedIban = $iban->format(Iban::FORMAT_PRINT); // DE89 3704 0044 0532 0130 00
+$formattedIban = $iban->format(Iban::FORMAT_ELECTRONIC); // DE89370400440532013000
+
+
+$ibanInfo = new IbanInfo($iban);
+$countryName = $ibanInfo->getCountryName(); // Germany
+$ibanStructure = $ibanInfo->getIbanStructureSwift(); // DE2!n8!n10!n
+$bbanStructure = $ibanInfo->getBbanStructureSwift(); // 8!n10!n
+$ibanRegex = $ibanInfo->getIbanRegex(); // /^DE\d{2}\d{8}\d{10}$/
+$bbanRegex = $ibanInfo->getBbanRegex(); // /^\d{8}\d{10}$/
+$ibanLength = $ibanInfo->getIbanLength(); // 22
+$bbanLength = $ibanInfo->getBbanLength(); // 18
+$ibanPrintExample = $ibanInfo->getIbanPrintExample(); // DE89 3704 0044 0532 0130 00
+$ibanElectronicExample = $ibanInfo->getIbanElectronicExample(); // DE89370400440532013000
 
 ```
 

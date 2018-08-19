@@ -41,6 +41,8 @@ class RegistryTest extends TestCase
         $expectedData = $this->getData();
 
         $this->assertEquals($expectedData['DE']['country_name'], $this->registry->getCountryName('DE'));
+        $this->assertEquals($expectedData['DE']['iban_structure'], $this->registry->getIbanStructure('DE'));
+        $this->assertEquals($expectedData['DE']['bban_structure'], $this->registry->getBbanStructure('DE'));
         $this->assertEquals($expectedData['DE']['iban_regex'], $this->registry->getIbanRegex('DE'));
         $this->assertEquals($expectedData['DE']['bban_regex'], $this->registry->getBbanRegex('DE'));
         $this->assertEquals($expectedData['DE']['iban_length'], $this->registry->getIbanLength('DE'));

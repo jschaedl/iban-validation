@@ -12,7 +12,6 @@
 namespace Iban\Validation;
 
 use Iban\Validation\Exception\InvalidChecksumException;
-use Iban\Validation\Exception\InvalidCountryCodeException;
 use Iban\Validation\Exception\InvalidFormatException;
 use Iban\Validation\Exception\InvalidLengthException;
 use Iban\Validation\Exception\UnexpectedTypeException;
@@ -76,10 +75,15 @@ class Validator
 
     /**
      * @param array $options
+     * @param null|Registry $swiftRegistry
      */
-    public function __construct($options = [])
+    public function __construct($options = [], $swiftRegistry = null)
     {
-        $this->swiftRegistry = new Registry();
+        $this->swiftRegistry = $swiftRegistry;
+
+        if (null === $swiftRegistry) {
+            $this->swiftRegistry = new Registry();
+        }
 
         $resolver = new OptionsResolver();
         $this->configureOptions($resolver);

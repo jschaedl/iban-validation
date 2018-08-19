@@ -61,6 +61,28 @@ class Registry
     /**
      * @param string $countryCode
      * @return string
+     */
+    public function getIbanStructure($countryCode)
+    {
+        $this->guardAgainstUnsupportedCountryCode($countryCode);
+
+        return strval($this->registry[$countryCode]['iban_structure']);
+    }
+
+    /**
+     * @param string $countryCode
+     * @return string
+     */
+    public function getBbanStructure($countryCode)
+    {
+        $this->guardAgainstUnsupportedCountryCode($countryCode);
+
+        return strval($this->registry[$countryCode]['bban_structure']);
+    }
+
+    /**
+     * @param string $countryCode
+     * @return string
      * @throws UnsupportedCountryCodeException
      */
     public function getIbanRegex($countryCode)
