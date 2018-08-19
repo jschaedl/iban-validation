@@ -24,12 +24,13 @@ This library is ready to use. The Iban validation should be fine, but there is n
 * customizable violation messages
 * simple to use object oriented api
 * high test coverage
+* DIC friendly
 
 ---
 
 ## Installation
 
-To install jschaedl/iban-validation via composer use
+To install `jschaedl/iban-validation` via [composer](https://getcomposer.org/) use
 
 ```sh
 $ composer require jschaedl/iban-validation
