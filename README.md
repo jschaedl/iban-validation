@@ -127,3 +127,9 @@ $ vendor/bin/phpunit -c phpunit.xml Tests/
 ## License
 
 MIT License
+
+---
+
+## Release Status
+
+2018-08-19: [Version 1.0](https://github.com/jschaedl/iban-validation/releases/tag/1.0) has been released.
