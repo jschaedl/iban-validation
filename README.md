@@ -36,6 +36,8 @@ To install `jschaedl/iban-validation` via [composer](https://getcomposer.org/) u
 $ composer require jschaedl/iban-validation
 ```
 
+---
+
 ## Iban Validation
 
 ```php
@@ -52,6 +54,23 @@ if (!$validator->validate($iban)) {
         echo $violation;
     }
 }
+
+```
+
+You can also customize the violation messages by providing them via configuration. Just create a `Validator` passing a config array as constructor argument.
+
+```php
+<?php
+
+use Iban\Validation\Validator;
+
+$validator = new Validator([
+    'violation.unsupported_country' => 'The requested country is not supported!',
+    'violation.invalid_length' => 'The length of the given Iban is not valid!',
+    'violation.invalid_country_code' => 'The country code of the given Iban is not valid!',
+    'violation.invalid_format' => 'The format of the given Iban is not valid!',
+    'violation.invalid_checksum' => 'The checksum of the given Iban is not valid!',
+]);
 
 ```
 
@@ -83,23 +102,6 @@ $ibanLength = $ibanInfo->getIbanLength(); // 22
 $bbanLength = $ibanInfo->getBbanLength(); // 18
 $ibanPrintExample = $ibanInfo->getIbanPrintExample(); // DE89 3704 0044 0532 0130 00
 $ibanElectronicExample = $ibanInfo->getIbanElectronicExample(); // DE89370400440532013000
-
-```
-
-You can also customize the violation messages by providing them via configuration. Just create a `Validator` passing a config array as constructor argument.
-
-```php
-<?php
-
-use Iban\Validation\Validator;
-
-$validator = new Validator([
-    'violation.unsupported_country' => 'The requested country is not supported!',
-    'violation.invalid_length' => 'The length of the given Iban is not valid!',
-    'violation.invalid_country_code' => 'The country code of the given Iban is not valid!',
-    'violation.invalid_format' => 'The format of the given Iban is not valid!',
-    'violation.invalid_checksum' => 'The checksum of the given Iban is not valid!',
-]);
 
 ```
 
