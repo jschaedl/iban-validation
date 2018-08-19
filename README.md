@@ -134,4 +134,4 @@ MIT License
 
 ## Release Status
 
-2018-08-19: [Version 1.0](https://github.com/jschaedl/iban-validation/releases/tag/1.0) has been released.
+2018-08-19: [Version 1.0](https://github.com/jschaedl/iban-validation/releases/tag/v1.0) has been released.
