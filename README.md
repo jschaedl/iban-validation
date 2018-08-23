@@ -82,7 +82,7 @@ $validator = new Validator([
 <?php
 
 use Iban\Validation\Iban;
-use Iban\Validation\IbanInfo;
+use Iban\Validation\CountryInfo;
 
 $iban = new Iban('IBAN DE89 3704 0044 0532 0130 00');
 $iban->getCountryCode(); // 'DE'
@@ -91,16 +91,16 @@ $iban->getBban(); // '370400440532013000'
 $iban->format(Iban::FORMAT_PRINT); // 'DE89 3704 0044 0532 0130 00'
 $iban->format(Iban::FORMAT_ELECTRONIC); // 'DE89370400440532013000'
 
-$ibanInfo = new IbanInfo($iban);
-$ibanInfo->getCountryName(); // 'Germany'
-$ibanInfo->getIbanStructureSwift(); // 'DE2!n8!n10!n'
-$ibanInfo->getBbanStructureSwift(); // '8!n10!n'
-$ibanInfo->getIbanRegex(); // '/^DE\d{2}\d{8}\d{10}$/'
-$ibanInfo->getBbanRegex(); // '/^\d{8}\d{10}$/'
-$ibanInfo->getIbanLength(); // 22
-$ibanInfo->getBbanLength(); // 18
-$ibanInfo->getIbanPrintExample(); // 'DE89 3704 0044 0532 0130 00'
-$ibanInfo->getIbanElectronicExample(); // 'DE89370400440532013000'
+$countryInfo = new CountryInfo($iban->getCountryCode());
+$countryInfo->getCountryName(); // 'Germany'
+$countryInfo->getIbanStructureSwift(); // 'DE2!n8!n10!n'
+$countryInfo->getBbanStructureSwift(); // '8!n10!n'
+$countryInfo->getIbanRegex(); // '/^DE\d{2}\d{8}\d{10}$/'
+$countryInfo->getBbanRegex(); // '/^\d{8}\d{10}$/'
+$countryInfo->getIbanLength(); // 22
+$countryInfo->getBbanLength(); // 18
+$countryInfo->getIbanPrintExample(); // 'DE89 3704 0044 0532 0130 00'
+$countryInfo->getIbanElectronicExample(); // 'DE89370400440532013000'
 
 ```
 

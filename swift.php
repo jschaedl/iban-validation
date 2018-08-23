@@ -47,6 +47,8 @@ $ibanLength = [];
 $bbanLength = [];
 $ibanElectronicFormatExamples = [];
 $ibanPrintFormatExamples = [];
+$branchIdentifierPosition = [];
+$branchIdentifierStructure = [];
 
 foreach ($lines as $lineNumber => $line) {
     if (strpos($line, 'IBAN prefix country code (ISO 3166)') !== false) {
@@ -73,6 +75,13 @@ foreach ($lines as $lineNumber => $line) {
     if (strpos($line, 'IBAN print format example') !== false) {
         $ibanPrintFormatExamples = preg_split('/\t+/', $line);
     }
+    if (strpos($line, 'Branch identifier position within the BBAN') !== false) {
+        $branchIdentifierPosition = preg_split('/\t+/', $line);
+    }
+    if (strpos($line, 'Branch identifier pattern') !== false) {
+        $branchIdentifierStructure = preg_split('/\t+/', $line);
+    }
+
 }
 
 $regexConverter = new RegexConverter();
@@ -93,6 +102,9 @@ foreach ($countryCodes as $key => $countryCode) {
         'bban_length' => intval(trim($bbanLength[$key])),
         'iban_electronic_format_example' => trim($ibanElectronicFormatExamples[$key]),
         'iban_print_format_example' => trim($ibanPrintFormatExamples[$key]),
+        'branch_identifier_position' => trim($branchIdentifierPosition[$key]),
+        'branch_identifier_structure' => trim($branchIdentifierStructure[$key]),
+        'branch_identifier_regex' => empty(trim($branchIdentifierStructure[$key])) ? '' : '/^' . $regexConverter->convert(trim($branchIdentifierStructure[$key])) . '$/',
     ];
 }
 
