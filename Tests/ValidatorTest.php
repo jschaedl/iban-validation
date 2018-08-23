@@ -133,20 +133,24 @@ class ValidatorTest extends TestCase
         yield ['ST68000200010192194210112'];
     }
 
+    public function testItShouldCreateIbanWithIbanAsObject()
+    {
+        $iban = 'DE89370400440532013000';
+        $this->assertTrue($this->validator->validate(new Iban($iban)));
+    }
+
+    public function testItShouldCreateIbanWithIbanAsString()
+    {
+        $iban = 'DE89370400440532013000';
+        $this->assertTrue($this->validator->validate($iban));
+    }
+
     /**
      * @dataProvider invalidIbanDataProvider
      */
     public function testInvalidIbans($iban)
     {
         $this->assertFalse($this->validator->validate(new Iban($iban)));
-    }
-
-    /**
-     * @expectedException Iban\Validation\Exception\UnexpectedTypeException
-     */
-    public function testItShouldThrowExceptionForNonIban()
-    {
-        $this->assertFalse($this->validator->validate(new \stdClass()));
     }
 
     public function testIbanCountryCodeValidation()

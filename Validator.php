@@ -14,7 +14,6 @@ namespace Iban\Validation;
 use Iban\Validation\Exception\InvalidChecksumException;
 use Iban\Validation\Exception\InvalidFormatException;
 use Iban\Validation\Exception\InvalidLengthException;
-use Iban\Validation\Exception\UnexpectedTypeException;
 use Iban\Validation\Swift\Exception\UnsupportedCountryCodeException;
 use Iban\Validation\Swift\Registry;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -91,13 +90,13 @@ class Validator
     }
 
     /**
-     * @param Iban $iban
+     * @param string|Iban $iban
      * @return bool
      */
     public function validate($iban)
     {
         if (!$iban instanceof Iban) {
-            throw new UnexpectedTypeException($iban, Iban::class);
+            $iban = new Iban($iban);
         }
 
         $this->violations = [];
