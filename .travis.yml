@@ -1,13 +1,19 @@
 language: php
 
+cache:
+  directories:
+    - $HOME/.composer/cache/files
+
 php:
   - 7.2
   - 7.1
 
 before_script:
+    - phpenv config-rm xdebug.ini
     - composer self-update
-    - composer --prefer-source --dev install
-    - cp phpunit.xml.dist phpunit.xml
+    
+install:
+    - composer install --prefer-dist
 
 script: 
-    - vendor/bin/phpunit -c phpunit.xml
+    - vendor/bin/phpunit
