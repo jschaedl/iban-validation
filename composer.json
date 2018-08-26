@@ -4,7 +4,7 @@
 	"type" : "library",
 	"description" : "A small library for validating International BankAccount Numbers (IBANs).",
 	"keywords" : ["iban", "validation"],
-	"homepage" : "http://github.com/jschaedl/iban-validation",
+	"homepage" : "https://github.com/jschaedl/iban-validation",
 	"authors" : [{
 		"name" : "Jan Schaedlich",
 		"email" : "mail@janschaedlich.com",
@@ -13,7 +13,6 @@
 	"autoload": {
 		"psr-4": { "Iban\\Validation\\": "" }
 	},
-	"minimum-stability": "dev",
 	"extra": {
 		"branch-alias": {
 			"dev-master": "1.0-dev"
