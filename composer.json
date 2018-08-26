@@ -11,7 +11,10 @@
 		"homepage" : "https://www.linkedin.com/in/janschaedlich"
 	}],
 	"autoload": {
-		"psr-4": { "Iban\\Validation\\": "" }
+		"psr-4": { "Iban\\Validation\\": "src" }
+	},
+	"autoload-dev": {
+		"psr-4": { "Iban\\Validation\\Tests\\": "Tests" }
 	},
 	"extra": {
 		"branch-alias": {
