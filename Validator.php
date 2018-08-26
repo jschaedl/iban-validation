@@ -225,19 +225,19 @@ class Validator
      */
     private function local_bcmod($operand, $modulus)
     {
-        if (!function_exists('bcmod')) {
-            $take = 5;
-            $mod = '';
-
-            do {
-                $a = (int)$mod . substr($operand, 0, $take);
-                $operand = substr($operand, $take);
-                $mod = $a % $modulus;
-            } while (strlen($operand));
-
-            return (string)$mod;
-        } else {
+        if (function_exists('bcmod')) {
             return bcmod($operand, $modulus);
         }
+
+        $take = 5;
+        $mod = '';
+
+        do {
+            $a = (int)$mod . substr($operand, 0, $take);
+            $operand = substr($operand, $take);
+            $mod = $a % $modulus;
+        } while (strlen($operand));
+
+        return (string)$mod;
     }
 }
