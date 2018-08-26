@@ -13,7 +13,6 @@
 	"autoload": {
 		"psr-4": { "Iban\\Validation\\": "" }
 	},
-	"minimum-stability": "dev",
 	"extra": {
 		"branch-alias": {
 			"dev-master": "1.0-dev"
