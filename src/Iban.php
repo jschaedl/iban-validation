@@ -37,7 +37,7 @@ class Iban
      */
     public function __construct($iban)
     {
-        $this->iban = $this->normalize($iban);
+        $this->iban = $iban;
     }
 
     /**
@@ -45,7 +45,21 @@ class Iban
      */
     public function __toString()
     {
-        return $this->iban;
+        return $this->format();
+    }
+
+    /**
+     * @return string
+     */
+    public function getNormalizedIban()
+    {
+        $iban = $this->iban;
+
+        $iban = trim(strtoupper($iban));
+        $iban = preg_replace('/^I?IBAN/', '', $iban);
+        $iban = preg_replace('/[^a-zA-Z0-9]/', '', $iban);
+
+        return preg_replace('/\s+/', '', $iban);
     }
 
     /**
@@ -56,10 +70,10 @@ class Iban
     {
         switch ($type) {
             case self::FORMAT_ELECTRONIC:
-                return $this->iban;
+                return $this->getNormalizedIban();
                 break;
             case self::FORMAT_PRINT:
-                return wordwrap($this->iban, 4, ' ', true);
+                return wordwrap($this->getNormalizedIban(), 4, ' ', true);
                 break;
             default:
                 return $this->iban;
@@ -72,7 +86,7 @@ class Iban
      */
     public function getCountryCode()
     {
-        return substr($this->iban, self::COUNTRY_CODE_OFFSET, self::COUNTRY_CODE_LENGTH);
+        return substr($this->getNormalizedIban(), self::COUNTRY_CODE_OFFSET, self::COUNTRY_CODE_LENGTH);
     }
 
     /**
@@ -80,7 +94,7 @@ class Iban
      */
     public function getChecksum()
     {
-        return substr($this->iban, self::CHECKSUM_OFFSET, self::CHECKSUM_LENGTH);
+        return substr($this->getNormalizedIban(), self::CHECKSUM_OFFSET, self::CHECKSUM_LENGTH);
     }
 
     /**
@@ -88,19 +102,6 @@ class Iban
      */
     public function getBban()
     {
-        return substr($this->iban, self::BBAN_OFFSET);
-    }
-
-    /**
-     * @param string $iban
-     * @return string
-     */
-    private function normalize($iban)
-    {
-        $iban = trim(strtoupper($iban));
-        $iban = preg_replace('/^I?IBAN/', '', $iban);
-        $iban = preg_replace('/[^a-zA-Z0-9]/', '', $iban);
-
-        return preg_replace('/\s+/', '', $iban);
+        return substr($this->getNormalizedIban(), self::BBAN_OFFSET);
     }
 }
