@@ -20,6 +20,7 @@ class Iban
 {
     public const FORMAT_ELECTRONIC = 'electronic';
     public const FORMAT_PRINT = 'print';
+    public const FORMAT_ANONYMIZED = 'anonymized';
 
     private const COUNTRY_CODE_OFFSET = 0;
     private const COUNTRY_CODE_LENGTH = 2;
@@ -71,13 +72,12 @@ class Iban
         switch ($type) {
             case self::FORMAT_ELECTRONIC:
                 return $this->getNormalizedIban();
-                break;
             case self::FORMAT_PRINT:
                 return wordwrap($this->getNormalizedIban(), 4, ' ', true);
-                break;
+            case self::FORMAT_ANONYMIZED:
+                return str_pad(substr($this->getNormalizedIban(), -4), strlen($this->getNormalizedIban()), 'X', STR_PAD_LEFT);
             default:
                 return $this->iban;
-                break;
         }
     }
 
