@@ -167,7 +167,7 @@ class Validator
      */
     protected function validateLength($iban)
     {
-        if ((strlen($iban) !== $this->swiftRegistry->getIbanLength($iban->getCountryCode()))) {
+        if ((strlen($iban->getNormalizedIban()) !== $this->swiftRegistry->getIbanLength($iban->getCountryCode()))) {
             throw new InvalidLengthException($iban);
         }
     }
@@ -178,7 +178,7 @@ class Validator
      */
     protected function validateFormat($iban)
     {
-        if ((1 !== preg_match($this->swiftRegistry->getIbanRegex($iban->getCountryCode()), $iban))) {
+        if ((1 !== preg_match($this->swiftRegistry->getIbanRegex($iban->getCountryCode()), $iban->getNormalizedIban()))) {
             throw new InvalidFormatException($iban);
         }
     }
