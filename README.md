@@ -125,6 +125,7 @@ $ vendor/bin/phpunit
 ## Author
 
 [Jan Schädlich](https://www.linkedin.com/in/janschaedlich)
+
 [Contributors](https://github.com/jschaedl/iban-validation/graphs/contributors)
 
 ## License
