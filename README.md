@@ -90,6 +90,7 @@ $iban->getChecksum(); // '89'
 $iban->getBban(); // '370400440532013000'
 $iban->format(Iban::FORMAT_PRINT); // 'DE89 3704 0044 0532 0130 00'
 $iban->format(Iban::FORMAT_ELECTRONIC); // 'DE89370400440532013000'
+$iban->format(Iban::FORMAT_ANONYMIZED); // 'XXXXXXXXXXXXXXXXXX3000'
 
 $countryInfo = new CountryInfo('DE');
 $countryInfo->getCountryName(); // 'Germany'
