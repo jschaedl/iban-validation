@@ -114,11 +114,10 @@ Then fix the bug you found or add your enhancements and make a pull request. Ple
 ### Unit Testing
 
 All pull requests must be accompanied by passing unit tests. This repository uses phpunit and Composer. 
-You must run `composer --dev install` to install this package's dependencies and `cp phpunit.xml.dist phpunit.xml` 
-before the unit tests will run. You can run the test via:
+You must run `composer --dev install` to install this package's dependencies. You can run the tests via:
 
 ```sh
-$ vendor/bin/phpunit -c phpunit.xml Tests/
+$ vendor/bin/phpunit
 ```
 
 ---
@@ -126,6 +125,7 @@ $ vendor/bin/phpunit -c phpunit.xml Tests/
 ## Author
 
 [Jan Schädlich](https://www.linkedin.com/in/janschaedlich)
+[Contributors](https://github.com/jschaedl/iban-validation/graphs/contributors)
 
 ## License
 
