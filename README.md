@@ -136,4 +136,10 @@ MIT License
 
 ## Release Status
 
+2018-09-14: [Version 1.1](https://github.com/jschaedl/iban-validation/releases/tag/v1.1) has been released.
+
+* introduced `FORMAT_ANONYMIZED` IBAN format: `$iban->format(Iban::FORMAT_ANONYMIZED)`
+* cleanup IBAN creation logic
+* cleanup project structure
+
 2018-08-19: [Version 1.0](https://github.com/jschaedl/iban-validation/releases/tag/v1.0) has been released.
