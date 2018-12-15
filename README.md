@@ -136,6 +136,11 @@ MIT License
 
 ## Release Status
 
+2018-12-14: [Version 1.2](https://github.com/jschaedl/iban-validation/releases/tag/v1.2) has been released.
+
+* updated iban registry file to 201812r80
+* changed minimum version for yaml and option-resolver component to ^3.4|^4.1
+
 2018-09-14: [Version 1.1](https://github.com/jschaedl/iban-validation/releases/tag/v1.1) has been released.
 
 * introduced `FORMAT_ANONYMIZED` IBAN format: `$iban->format(Iban::FORMAT_ANONYMIZED)`
