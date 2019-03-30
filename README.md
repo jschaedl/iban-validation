@@ -69,7 +69,6 @@ use Iban\Validation\Validator;
 $validator = new Validator([
     'violation.unsupported_country' => 'The requested country is not supported!',
     'violation.invalid_length' => 'The length of the given Iban is not valid!',
-    'violation.invalid_country_code' => 'The country code of the given Iban is not valid!',
     'violation.invalid_format' => 'The format of the given Iban is not valid!',
     'violation.invalid_checksum' => 'The checksum of the given Iban is not valid!',
 ]);
