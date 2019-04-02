@@ -226,9 +226,11 @@ class Validator
     private function local_bcmod($operand, $modulus)
     {
         if (function_exists('bcmod')) {
-            bcscale(0);
+            $oldScale = bcscale(0);
+            $mod = bcmod($operand, $modulus);
+            bcscale($oldScale);
 
-            return bcmod($operand, $modulus);
+            return $mod;
         }
 
         $take = 5;
