@@ -226,7 +226,9 @@ class Validator
     private function local_bcmod($operand, $modulus)
     {
         if (function_exists('bcmod')) {
-            return bcmod($operand, $modulus, 0);
+            bcscale(0);
+
+            return bcmod($operand, $modulus);
         }
 
         $take = 5;
