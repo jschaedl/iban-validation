@@ -31,6 +31,6 @@
 		"friendsofphp/php-cs-fixer": "~2.0"
 	},
 	"suggest": {
-       	"ext-bcmath" : "This library makes use of bcmod function, so an installed bcmath extension is recommended."
+       		"ext-bcmath" : "This library makes use of bcmod function, so an installed bcmath extension is recommended."
 	}
 }
