@@ -226,7 +226,7 @@ class Validator
     private function local_bcmod($operand, $modulus)
     {
         if (function_exists('bcmod')) {
-            return version_compare (PHP_VERSION, '7.2') > 0
+            return version_compare(PHP_VERSION, '7.2') > 0
                 ? bcmod($operand, $modulus, 0)
                 : bcmod($operand, $modulus);
         }
