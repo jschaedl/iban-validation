@@ -806,7 +806,7 @@ SA:
     branch_identifier_regex: ''
 SC:
     country_name: Seychelles
-    iban_structure: SC2!n4!a2n!2n!16n!3!a
+    iban_structure: SC2!n4!a2!n2!n16!n3!a
     bban_structure: 4!a2!n2!n16!n3!a
     iban_regex: '/^SC\d{2}[A-Z]{4}\d{2}\d{2}\d{16}[A-Z]{3}$/'
     bban_regex: '/^[A-Z]{4}\d{2}\d{2}\d{16}[A-Z]{3}$/'
