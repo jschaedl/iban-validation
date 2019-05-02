@@ -138,7 +138,7 @@ MIT License
 2019-04-27: [Version 1.3](https://github.com/jschaedl/iban-validation/releases/tag/v1.3) has been released.
 
 * updated iban registry file
-* fixed #14: set correct scale for bcmod function
+* fixed https://github.com/jschaedl/iban-validation/issues/14: set correct scale for bcmod function
 
 2018-12-14: [Version 1.2](https://github.com/jschaedl/iban-validation/releases/tag/v1.2) has been released.
 
