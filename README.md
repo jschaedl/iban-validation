@@ -135,6 +135,10 @@ MIT License
 
 ## Release Status
 
+2019-11-25: [Version 1.4](https://github.com/jschaedl/iban-validation/releases/tag/v1.4) has been released.
+
+* added Symfony 5.0 support
+
 2019-04-27: [Version 1.3](https://github.com/jschaedl/iban-validation/releases/tag/v1.3) has been released.
 
 * updated iban registry file
