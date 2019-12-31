@@ -193,6 +193,10 @@ class Validator
         $numericCountryCode = $this->getNumericRepresentation($iban->getCountryCode());
         $checksum = $iban->getChecksum();
 
+        if (!preg_match('/^\d+$/', $checksum)) {
+            throw new InvalidChecksumException($iban);
+        }
+
         $invertedIban = $numericBban . $numericCountryCode . $checksum;
 
         if ('1' !== $this->local_bcmod($invertedIban, '97')) {
