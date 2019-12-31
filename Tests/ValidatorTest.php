@@ -131,6 +131,7 @@ class ValidatorTest extends TestCase
         yield ['BE685390047034'];
         yield ['VG611904300234573201'];
         yield ['ST68000200010192194210112'];
+        yield ['MCBKCWCU25727002'];
     }
 
     public function testItShouldCreateIbanWithIbanAsObject()
