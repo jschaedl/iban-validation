@@ -135,6 +135,11 @@ MIT License
 
 ## Release Status
 
+2020-05-20: [Version 1.5](https://github.com/jschaedl/iban-validation/releases/tag/v1.5) has been released.
+
+* [Bugfix] https://github.com/jschaedl/iban-validation/issues/24: properly fail on non-numeric country codes (@xabbuh)
+* [Fix] https://github.com/jschaedl/iban-validation/issues/23: run tests on PHP 7.3 and 7.4 (@xabbuh)
+
 2019-11-25: [Version 1.4](https://github.com/jschaedl/iban-validation/releases/tag/v1.4) has been released.
 
 * added Symfony 5.0 support
