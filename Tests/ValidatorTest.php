@@ -96,7 +96,7 @@ class ValidatorTest extends TestCase
         yield ['RO49AAAA1B31007593840000'];
         yield ['RS35260005601001611379'];
         yield ['SA0380000000608010167519'];
-        //yield ['SC18SSCB11010000000000001497'];  // given with invalid checksum by swift
+        yield ['SC18SSCB11010000000000001497USD'];
         yield ['SE4550000000058398257466'];
         yield ['SI56263300012039086'];
         yield ['SK3112000000198742637541'];
