@@ -104,4 +104,18 @@ class Iban
     {
         return substr($this->getNormalizedIban(), self::BBAN_OFFSET);
     }
+
+    /**
+     * @return string
+     */
+    public function getBbanBankIdentifier()
+    {
+        $countryInfo = new CountryInfo($this->getCountryCode());
+
+        return substr(
+            $this->getBban(),
+            $countryInfo->getBbanBankIdentifierStartPos(),
+            $countryInfo->getBbanBankIdentifierEndPos()
+        );
+    }
 }

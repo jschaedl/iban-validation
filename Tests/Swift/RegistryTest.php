@@ -49,6 +49,8 @@ class RegistryTest extends TestCase
         $this->assertEquals($expectedData['DE']['bban_length'], $this->registry->getBbanLength('DE'));
         $this->assertEquals($expectedData['DE']['iban_electronic_format_example'], $this->registry->getIbanElectronicFormatExample('DE'));
         $this->assertEquals($expectedData['DE']['iban_print_format_example'], $this->registry->getIbanPrintFormatExample('DE'));
+        $this->assertEquals(0, $this->registry->getBbanBankIdentifierStartPos('DE'));
+        $this->assertEquals(8, $this->registry->getBbanBankIdentifierEndPos('DE'));
     }
 
     /**

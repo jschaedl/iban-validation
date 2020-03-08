@@ -9,6 +9,7 @@
  */
 
 namespace Iban\Validation;
+
 use Iban\Validation\Swift\Exception\UnsupportedCountryCodeException;
 use Iban\Validation\Swift\Registry;
 
@@ -42,7 +43,7 @@ class CountryInfo
             $this->swiftRegistry = new Registry();
         }
 
-        if (!$this->swiftRegistry->isCountryAvailable($this->countryCode)){
+        if (!$this->swiftRegistry->isCountryAvailable($this->countryCode)) {
             throw new UnsupportedCountryCodeException($this->countryCode);
         }
     }
@@ -83,6 +84,16 @@ class CountryInfo
     public function getBbanLength()
     {
         return $this->swiftRegistry->getBbanLength($this->countryCode);
+    }
+
+    public function getBbanBankIdentifierStartPos()
+    {
+        return $this->swiftRegistry->getBbanBankIdentifierStartPos($this->countryCode);
+    }
+
+    public function getBbanBankIdentifierEndPos()
+    {
+        return $this->swiftRegistry->getBbanBankIdentifierEndPos($this->countryCode);
     }
 
     public function getIbanElectronicExample()

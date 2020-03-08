@@ -52,36 +52,41 @@ $branchIdentifierStructure = [];
 
 foreach ($lines as $lineNumber => $line) {
     if (strpos($line, 'IBAN prefix country code (ISO 3166)') !== false) {
-        $countryCodes = preg_split('/\t+/', $line);
+        $countryCodes = preg_split('/\t/', $line);
     }
     if (strpos($line, 'Name of country') !== false) {
-        $countryNames = preg_split('/\t+/', $line);
+        $countryNames = preg_split('/\t/', $line);
     }
     if (strpos($line, 'IBAN structure') !== false) {
-        $ibanStructure = preg_split('/\t+/', $line);
+        $ibanStructure = preg_split('/\t/', $line);
     }
     if (strpos($line, 'BBAN structure') !== false) {
-        $bbanStructure = preg_split('/\t+/', $line);
+        $bbanStructure = preg_split('/\t/', $line);
     }
     if (strpos($line, 'IBAN length') !== false) {
-        $ibanLength = preg_split('/\t+/', $line);
+        $ibanLength = preg_split('/\t/', $line);
     }
     if (strpos($line, 'BBAN length') !== false) {
-        $bbanLength = preg_split('/\t+/', $line);
+        $bbanLength = preg_split('/\t/', $line);
     }
     if (strpos($line, 'IBAN electronic format example') !== false) {
-        $ibanElectronicFormatExamples = preg_split('/\t+/', $line);
+        $ibanElectronicFormatExamples = preg_split('/\t/', $line);
     }
     if (strpos($line, 'IBAN print format example') !== false) {
-        $ibanPrintFormatExamples = preg_split('/\t+/', $line);
+        $ibanPrintFormatExamples = preg_split('/\t/', $line);
+    }
+    if (strpos($line, 'Bank identifier position within the BBAN') !== false) {
+        $bankIdentifierPosition = preg_split('/\t/', $line);
+    }
+    if (strpos($line, 'Bank identifier pattern') !== false) {
+        $bankIdentifierStructure = preg_split('/\t/', $line);
     }
     if (strpos($line, 'Branch identifier position within the BBAN') !== false) {
-        $branchIdentifierPosition = preg_split('/\t+/', $line);
+        $branchIdentifierPosition = preg_split('/\t/', $line);
     }
     if (strpos($line, 'Branch identifier pattern') !== false) {
-        $branchIdentifierStructure = preg_split('/\t+/', $line);
+        $branchIdentifierStructure = preg_split('/\t/', $line);
     }
-
 }
 
 $regexConverter = new RegexConverter();
@@ -94,14 +99,23 @@ foreach ($countryCodes as $key => $countryCode) {
 
     $registry[trim($countryCode)] = [
         'country_name' => trim($countryNames[$key]),
+
         'iban_structure' => trim($ibanStructure[$key]),
         'bban_structure' => trim($bbanStructure[$key]),
+
         'iban_regex' => '/^' . $regexConverter->convert(trim($ibanStructure[$key])) . '$/',
         'bban_regex' => '/^' . $regexConverter->convert(trim($bbanStructure[$key])) . '$/',
+
         'iban_length' => intval(trim($ibanLength[$key])),
         'bban_length' => intval(trim($bbanLength[$key])),
+
         'iban_electronic_format_example' => trim($ibanElectronicFormatExamples[$key]),
         'iban_print_format_example' => trim($ibanPrintFormatExamples[$key]),
+
+        'bank_identifier_position' => trim($bankIdentifierPosition[$key] === 'N/A' ? '' : $bankIdentifierPosition[$key]),
+        'bank_identifier_structure' => trim($bankIdentifierStructure[$key] === 'N/A' ? '' : $bankIdentifierStructure[$key]),
+        'bank_identifier_regex' => empty(trim($bankIdentifierStructure[$key] === 'N/A' ? '' : $bankIdentifierStructure[$key])) ? '' : '/^' . $regexConverter->convert(trim($bankIdentifierStructure[$key])) . '$/',
+
         'branch_identifier_position' => trim($branchIdentifierPosition[$key]),
         'branch_identifier_structure' => trim($branchIdentifierStructure[$key]),
         'branch_identifier_regex' => empty(trim($branchIdentifierStructure[$key])) ? '' : '/^' . $regexConverter->convert(trim($branchIdentifierStructure[$key])) . '$/',
