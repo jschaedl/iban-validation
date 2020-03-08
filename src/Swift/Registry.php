@@ -128,6 +128,34 @@ class Registry
         return intval($this->registry[$countryCode]['iban_length']);
     }
 
+    public function getBbanBankIdentifierStartPos($countryCode)
+    {
+        $this->guardAgainstUnsupportedCountryCode($countryCode);
+
+        if ('' === $this->registry[$countryCode]['bank_identifier_position']) {
+            return 0;
+        }
+
+        $positionString = substr($this->registry[$countryCode]['bank_identifier_position'], 0, 3);
+        $positionArray = explode('-', $positionString);
+
+        return intval(reset($positionArray))-1;
+    }
+
+    public function getBbanBankIdentifierEndPos($countryCode)
+    {
+        $this->guardAgainstUnsupportedCountryCode($countryCode);
+
+        if ('' === $this->registry[$countryCode]['bank_identifier_position']) {
+            return intval($this->registry[$countryCode]['iban_length']);
+        }
+
+        $positionString = substr($this->registry[$countryCode]['bank_identifier_position'], 0, 3);
+        $positionArray = explode('-', $positionString);
+
+        return intval(end($positionArray));
+    }
+
     /**
      * @param string $countryCode
      * @return string
