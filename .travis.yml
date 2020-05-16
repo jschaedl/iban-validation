@@ -17,5 +17,6 @@ before_script:
 install:
     - composer install --prefer-dist
 
-script: 
+script:
+    - vendor/bin/php-cs-fixer fix
     - vendor/bin/phpunit
