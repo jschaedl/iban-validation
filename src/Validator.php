@@ -72,11 +72,7 @@ class Validator
      */
     private $violations = [];
 
-    /**
-     * @param array         $options
-     * @param Registry|null $swiftRegistry
-     */
-    public function __construct($options = [], $swiftRegistry = null)
+    public function __construct(array $options = [], Registry $swiftRegistry = null)
     {
         $this->swiftRegistry = $swiftRegistry;
 
@@ -91,10 +87,8 @@ class Validator
 
     /**
      * @param string|Iban $iban
-     *
-     * @return bool
      */
-    public function validate($iban)
+    public function validate($iban): bool
     {
         if (!$iban instanceof Iban) {
             $iban = new Iban($iban);
@@ -131,10 +125,7 @@ class Validator
         return 0 === count($this->violations);
     }
 
-    /**
-     * @return array
-     */
-    public function getViolations()
+    public function getViolations(): array
     {
         return $this->violations;
     }
@@ -150,11 +141,9 @@ class Validator
     }
 
     /**
-     * @param Iban $iban
-     *
      * @throws UnsupportedCountryCodeException
      */
-    protected function validateCountryCode($iban)
+    protected function validateCountryCode(Iban $iban): void
     {
         if (!$this->swiftRegistry->isCountryAvailable($iban->getCountryCode())) {
             throw new UnsupportedCountryCodeException($iban);
@@ -162,11 +151,9 @@ class Validator
     }
 
     /**
-     * @param Iban $iban
-     *
      * @throws InvalidLengthException
      */
-    protected function validateLength($iban)
+    protected function validateLength(Iban $iban)
     {
         if ((strlen($iban->getNormalizedIban()) !== $this->swiftRegistry->getIbanLength($iban->getCountryCode()))) {
             throw new InvalidLengthException($iban);
@@ -174,11 +161,9 @@ class Validator
     }
 
     /**
-     * @param Iban $iban
-     *
      * @throws InvalidLengthException
      */
-    protected function validateFormat($iban)
+    protected function validateFormat(Iban $iban): void
     {
         if ((1 !== preg_match($this->swiftRegistry->getIbanRegex($iban->getCountryCode()), $iban->getNormalizedIban()))) {
             throw new InvalidFormatException($iban);
@@ -186,11 +171,9 @@ class Validator
     }
 
     /**
-     * @param Iban $iban
-     *
      * @throws InvalidChecksumException
      */
-    protected function validateChecksum($iban)
+    protected function validateChecksum(Iban $iban): void
     {
         $numericBban = $this->getNumericRepresentation($iban->getBban());
         $numericCountryCode = $this->getNumericRepresentation($iban->getCountryCode());
@@ -211,12 +194,7 @@ class Validator
         }
     }
 
-    /**
-     * @param string $letterRepresentation
-     *
-     * @return string
-     */
-    private function getNumericRepresentation($letterRepresentation)
+    private function getNumericRepresentation(string $letterRepresentation): string
     {
         $numericRepresentation = '';
         foreach (str_split($letterRepresentation) as $char) {
@@ -230,13 +208,7 @@ class Validator
         return $numericRepresentation;
     }
 
-    /**
-     * @param string $operand
-     * @param string $modulus
-     *
-     * @return string
-     */
-    private function local_bcmod($operand, $modulus)
+    private function local_bcmod(string $operand, string $modulus): string
     {
         if (function_exists('bcmod')) {
             return PHP_VERSION_ID >= 70200

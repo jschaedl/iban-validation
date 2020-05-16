@@ -33,26 +33,17 @@ class Iban
      */
     private $iban;
 
-    /**
-     * @param string $iban
-     */
-    public function __construct($iban)
+    public function __construct(string $iban)
     {
         $this->iban = $iban;
     }
 
-    /**
-     * @return string
-     */
-    public function __toString()
+    public function __toString(): string
     {
         return $this->format();
     }
 
-    /**
-     * @return string
-     */
-    public function getNormalizedIban()
+    public function getNormalizedIban(): string
     {
         $iban = $this->iban;
 
@@ -63,12 +54,7 @@ class Iban
         return preg_replace('/\s+/', '', $iban);
     }
 
-    /**
-     * @param string $type
-     *
-     * @return string
-     */
-    public function format($type = self::FORMAT_PRINT)
+    public function format(string $type = self::FORMAT_PRINT): string
     {
         switch ($type) {
             case self::FORMAT_ELECTRONIC:
@@ -82,34 +68,22 @@ class Iban
         }
     }
 
-    /**
-     * @return string
-     */
-    public function getCountryCode()
+    public function getCountryCode(): string
     {
         return substr($this->getNormalizedIban(), self::COUNTRY_CODE_OFFSET, self::COUNTRY_CODE_LENGTH);
     }
 
-    /**
-     * @return string
-     */
-    public function getChecksum()
+    public function getChecksum(): string
     {
         return substr($this->getNormalizedIban(), self::CHECKSUM_OFFSET, self::CHECKSUM_LENGTH);
     }
 
-    /**
-     * @return string
-     */
-    public function getBban()
+    public function getBban(): string
     {
         return substr($this->getNormalizedIban(), self::BBAN_OFFSET);
     }
 
-    /**
-     * @return string
-     */
-    public function getBbanBankIdentifier()
+    public function getBbanBankIdentifier(): string
     {
         $countryInfo = new CountryInfo($this->getCountryCode());
 

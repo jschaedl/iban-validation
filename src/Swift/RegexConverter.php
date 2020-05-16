@@ -20,12 +20,7 @@ namespace Iban\Validation\Swift;
  */
 class RegexConverter
 {
-    /**
-     * @param string $input
-     *
-     * @return string
-     */
-    public function convert($input)
+    public function convert(string $input): string
     {
         $input = preg_replace('/(^[A-Z]{2})/', '${1}', $input);
         $input = preg_replace('/(\d+)\!(n)/', '\d{${1}}', $input);

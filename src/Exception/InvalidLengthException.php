@@ -11,9 +11,12 @@
 
 namespace Iban\Validation\Exception;
 
+/**
+ * @author Jan Schädlich <mail@janschaedlich.de>
+ */
 class InvalidLengthException extends \RuntimeException
 {
-    public function __construct($iban)
+    public function __construct(string $iban)
     {
         parent::__construct(sprintf('Length of given IBAN "%s" is not valid!', $iban));
     }
