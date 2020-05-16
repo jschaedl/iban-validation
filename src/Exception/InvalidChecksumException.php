@@ -13,8 +13,17 @@ namespace Iban\Validation\Exception;
 
 class InvalidChecksumException extends \RuntimeException
 {
-    public function __construct($iban)
+    protected $validChecksum;
+
+    public function __construct($iban, $validChecksum)
     {
-        parent::__construct(sprintf('Checksum of given IBAN "%s" is not valid!', $iban));
+        $this->validChecksum = $validChecksum;
+
+        parent::__construct(sprintf('Checksum of given IBAN "%s" is not valid! Valid checksum is %s', $iban, $validChecksum));
+    }
+
+    public function getValidChecksum()
+    {
+        return $this->validChecksum;
     }
 }
