@@ -14,7 +14,7 @@
 		"psr-4": { "Iban\\Validation\\": "src" }
 	},
 	"autoload-dev": {
-		"psr-4": { "Iban\\Validation\\Tests\\": "Tests" }
+		"psr-4": { "Iban\\Validation\\Tests\\": "tests" }
 	},
 	"extra": {
 		"branch-alias": {
