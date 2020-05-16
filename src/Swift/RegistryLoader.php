@@ -25,18 +25,12 @@ class RegistryLoader
      */
     protected $filename;
 
-    /**
-     * @param string $filename
-     */
-    public function __construct($filename)
+    public function __construct(string $filename)
     {
         $this->filename = $filename;
     }
 
-    /**
-     * @return array
-     */
-    public function load()
+    public function load(): array
     {
         return Yaml::parse(file_get_contents($this->filename));
     }
