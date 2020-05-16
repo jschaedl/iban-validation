@@ -116,9 +116,9 @@ foreach ($countryCodes as $key => $countryCode) {
         'bank_identifier_structure' => trim($bankIdentifierStructure[$key] === 'N/A' ? '' : $bankIdentifierStructure[$key]),
         'bank_identifier_regex' => empty(trim($bankIdentifierStructure[$key] === 'N/A' ? '' : $bankIdentifierStructure[$key])) ? '' : '/^' . $regexConverter->convert(trim($bankIdentifierStructure[$key])) . '$/',
 
-        'branch_identifier_position' => trim($branchIdentifierPosition[$key]),
-        'branch_identifier_structure' => trim($branchIdentifierStructure[$key]),
-        'branch_identifier_regex' => empty(trim($branchIdentifierStructure[$key])) ? '' : '/^' . $regexConverter->convert(trim($branchIdentifierStructure[$key])) . '$/',
+        'branch_identifier_position' => trim($branchIdentifierPosition[$key] === 'N/A' ? '' : $branchIdentifierPosition[$key]),
+        'branch_identifier_structure' => trim($branchIdentifierStructure[$key] === 'N/A' ? '' : $branchIdentifierStructure[$key]),
+        'branch_identifier_regex' => empty(trim($branchIdentifierStructure[$key]) === 'N/A' ? '' : $branchIdentifierStructure[$key]) ? '' : '/^' . $regexConverter->convert(trim($branchIdentifierStructure[$key])) . '$/',
     ];
 }
 

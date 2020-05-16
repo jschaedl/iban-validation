@@ -302,6 +302,22 @@ EE:
     branch_identifier_position: ''
     branch_identifier_structure: ''
     branch_identifier_regex: ''
+EG:
+    country_name: Egypt
+    iban_structure: EG2!n4!n4!n17!n
+    bban_structure: 4!n4!n17!n
+    iban_regex: '/^EG\d{2}\d{4}\d{4}\d{17}$/'
+    bban_regex: '/^\d{4}\d{4}\d{17}$/'
+    iban_length: 29
+    bban_length: 25
+    iban_electronic_format_example: EG380019000500000000263180002
+    iban_print_format_example: EG380019000500000000263180002
+    bank_identifier_position: 1-4
+    bank_identifier_structure: 4!
+    bank_identifier_regex: /^4!$/
+    branch_identifier_position: 5-8
+    branch_identifier_structure: 4!
+    branch_identifier_regex: /^4!$/
 ES:
     country_name: Spain
     iban_structure: ES2!n4!n4!n1!n1!n10!n
@@ -992,9 +1008,9 @@ SA:
     branch_identifier_regex: ''
 SC:
     country_name: Seychelles
-    iban_structure: SC2!n4!a2n!2n!16n!3!a
+    iban_structure: SC2!n4!a2!n2!n16!n3!a
     bban_structure: 4!a2!n2!n16!n3!a
-    iban_regex: '/^SC\d{2}[A-Z]{4}2n!2n!16n![A-Z]{3}$/'
+    iban_regex: '/^SC\d{2}[A-Z]{4}\d{2}\d{2}\d{16}[A-Z]{3}$/'
     bban_regex: '/^[A-Z]{4}\d{2}\d{2}\d{16}[A-Z]{3}$/'
     iban_length: 31
     bban_length: 27
@@ -1096,10 +1112,10 @@ SV:
     bban_length: 24
     iban_electronic_format_example: SV62CENR00000000000000700025
     iban_print_format_example: 'SV 62 CENR 00000000000000700025'
-    bank_identifier_position: '5-8 (Internal use only not international)'
+    bank_identifier_position: 1-4
     bank_identifier_structure: 4!a
     bank_identifier_regex: '/^[A-Z]{4}$/'
-    branch_identifier_position: 1-4
+    branch_identifier_position: ''
     branch_identifier_structure: ''
     branch_identifier_regex: ''
 TL:
