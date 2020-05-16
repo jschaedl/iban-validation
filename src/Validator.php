@@ -54,7 +54,7 @@ class Validator
         23 => 'W',
         24 => 'X',
         25 => 'Y',
-        26 => 'Z'
+        26 => 'Z',
     ];
 
     /**
@@ -73,8 +73,8 @@ class Validator
     private $violations = [];
 
     /**
-     * @param array $options
-     * @param null|Registry $swiftRegistry
+     * @param array         $options
+     * @param Registry|null $swiftRegistry
      */
     public function __construct($options = [], $swiftRegistry = null)
     {
@@ -91,6 +91,7 @@ class Validator
 
     /**
      * @param string|Iban $iban
+     *
      * @return bool
      */
     public function validate($iban)
@@ -105,6 +106,7 @@ class Validator
             $this->validateCountryCode($iban);
         } catch (UnsupportedCountryCodeException $exception) {
             $this->violations[] = $this->options['violation.unsupported_country'];
+
             return false; // return here because with an unsupported country code all other checks make no sense at all
         }
 
@@ -137,9 +139,6 @@ class Validator
         return $this->violations;
     }
 
-    /**
-     * @param OptionsResolver $resolver
-     */
     protected function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
@@ -152,6 +151,7 @@ class Validator
 
     /**
      * @param Iban $iban
+     *
      * @throws UnsupportedCountryCodeException
      */
     protected function validateCountryCode($iban)
@@ -163,6 +163,7 @@ class Validator
 
     /**
      * @param Iban $iban
+     *
      * @throws InvalidLengthException
      */
     protected function validateLength($iban)
@@ -174,6 +175,7 @@ class Validator
 
     /**
      * @param Iban $iban
+     *
      * @throws InvalidLengthException
      */
     protected function validateFormat($iban)
@@ -185,6 +187,7 @@ class Validator
 
     /**
      * @param Iban $iban
+     *
      * @throws InvalidChecksumException
      */
     protected function validateChecksum($iban)
@@ -194,15 +197,15 @@ class Validator
         $checksum = $iban->getChecksum();
 
         if (!preg_match('/^\d+$/', $checksum)) {
-            $validChecksumIban = $numericBban . $numericCountryCode . '00';
+            $validChecksumIban = $numericBban.$numericCountryCode.'00';
             $validChecksum = 98 - intval($this->local_bcmod($validChecksumIban, '97'));
             throw new InvalidChecksumException($iban, $validChecksum);
         }
 
-        $invertedIban = $numericBban . $numericCountryCode . $checksum;
+        $invertedIban = $numericBban.$numericCountryCode.$checksum;
 
         if ('1' !== $this->local_bcmod($invertedIban, '97')) {
-            $validChecksumIban = $numericBban . $numericCountryCode . '00';
+            $validChecksumIban = $numericBban.$numericCountryCode.'00';
             $validChecksum = 98 - intval($this->local_bcmod($validChecksumIban, '97'));
             throw new InvalidChecksumException($iban, $validChecksum);
         }
@@ -210,6 +213,7 @@ class Validator
 
     /**
      * @param string $letterRepresentation
+     *
      * @return string
      */
     private function getNumericRepresentation($letterRepresentation)
@@ -229,6 +233,7 @@ class Validator
     /**
      * @param string $operand
      * @param string $modulus
+     *
      * @return string
      */
     private function local_bcmod($operand, $modulus)
@@ -243,11 +248,11 @@ class Validator
         $mod = '';
 
         do {
-            $a = (int)$mod . substr($operand, 0, $take);
+            $a = (int) $mod.substr($operand, 0, $take);
             $operand = substr($operand, $take);
             $mod = $a % $modulus;
         } while (strlen($operand));
 
-        return (string)$mod;
+        return (string) $mod;
     }
 }

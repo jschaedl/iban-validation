@@ -25,11 +25,11 @@ class RegistryTest extends TestCase
 
     protected function setUp()
     {
-        $this->registry = new Registry(new RegistryLoader(__DIR__ . '/iban_registry.yaml'));
+        $this->registry = new Registry(new RegistryLoader(__DIR__.'/iban_registry.yaml'));
     }
 
     /**
-     * @expectedException Iban\Validation\Swift\Exception\UnsupportedCountryCodeException
+     * @expectedException \Iban\Validation\Swift\Exception\UnsupportedCountryCodeException
      */
     public function testItShouldThrowExceptionForUnsupportedCountryCode()
     {
@@ -58,6 +58,6 @@ class RegistryTest extends TestCase
      */
     private function getData()
     {
-        return Yaml::parseFile(__DIR__ . '/iban_registry.yaml');
+        return Yaml::parseFile(__DIR__.'/iban_registry.yaml');
     }
 }

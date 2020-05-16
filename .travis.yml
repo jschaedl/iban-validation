@@ -18,5 +18,5 @@ install:
     - composer install --prefer-dist
 
 script:
-    - vendor/bin/php-cs-fixer fix
+    - vendor/bin/php-cs-fixer fix --dry-run
     - vendor/bin/phpunit

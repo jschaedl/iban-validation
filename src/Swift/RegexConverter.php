@@ -22,6 +22,7 @@ class RegexConverter
 {
     /**
      * @param string $input
+     *
      * @return string
      */
     public function convert($input)

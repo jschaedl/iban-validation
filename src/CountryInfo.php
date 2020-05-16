@@ -31,8 +31,8 @@ class CountryInfo
     private $swiftRegistry;
 
     /**
-     * @param string $countryCode
-     * @param null|Registry $swiftRegistry
+     * @param string        $countryCode
+     * @param Registry|null $swiftRegistry
      */
     public function __construct($countryCode, $swiftRegistry = null)
     {

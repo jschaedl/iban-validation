@@ -31,7 +31,7 @@ class Registry
     public function __construct($registryLoader = null)
     {
         if (null === $registryLoader) {
-            $registryLoader = new RegistryLoader(__DIR__ . '/iban_registry.yaml');
+            $registryLoader = new RegistryLoader(__DIR__.'/iban_registry.yaml');
         }
 
         $this->registry = $registryLoader->load();
@@ -39,6 +39,7 @@ class Registry
 
     /**
      * @param string $countryCode
+     *
      * @return bool
      */
     public function isCountryAvailable($countryCode)
@@ -48,7 +49,9 @@ class Registry
 
     /**
      * @param string $countryCode
+     *
      * @return string
+     *
      * @throws UnsupportedCountryCodeException
      */
     public function getCountryName($countryCode)
@@ -60,6 +63,7 @@ class Registry
 
     /**
      * @param string $countryCode
+     *
      * @return string
      */
     public function getIbanStructure($countryCode)
@@ -71,6 +75,7 @@ class Registry
 
     /**
      * @param string $countryCode
+     *
      * @return string
      */
     public function getBbanStructure($countryCode)
@@ -82,7 +87,9 @@ class Registry
 
     /**
      * @param string $countryCode
+     *
      * @return string
+     *
      * @throws UnsupportedCountryCodeException
      */
     public function getIbanRegex($countryCode)
@@ -94,7 +101,9 @@ class Registry
 
     /**
      * @param string $countryCode
+     *
      * @return string
+     *
      * @throws UnsupportedCountryCodeException
      */
     public function getBbanRegex($countryCode)
@@ -106,7 +115,9 @@ class Registry
 
     /**
      * @param string $countryCode
+     *
      * @return int
+     *
      * @throws UnsupportedCountryCodeException
      */
     public function getBbanLength($countryCode)
@@ -118,7 +129,9 @@ class Registry
 
     /**
      * @param string $countryCode
+     *
      * @return int
+     *
      * @throws UnsupportedCountryCodeException
      */
     public function getIbanLength($countryCode)
@@ -139,7 +152,7 @@ class Registry
         $positionString = substr($this->registry[$countryCode]['bank_identifier_position'], 0, 3);
         $positionArray = explode('-', $positionString);
 
-        return intval(reset($positionArray))-1;
+        return intval(reset($positionArray)) - 1;
     }
 
     public function getBbanBankIdentifierEndPos($countryCode)
@@ -158,7 +171,9 @@ class Registry
 
     /**
      * @param string $countryCode
+     *
      * @return string
+     *
      * @throws UnsupportedCountryCodeException
      */
     public function getIbanElectronicFormatExample($countryCode)
@@ -170,7 +185,9 @@ class Registry
 
     /**
      * @param string $countryCode
+     *
      * @return string
+     *
      * @throws UnsupportedCountryCodeException
      */
     public function getIbanPrintFormatExample($countryCode)
@@ -182,6 +199,7 @@ class Registry
 
     /**
      * @param string $countryCode
+     *
      * @throws UnsupportedCountryCodeException
      */
     private function guardAgainstUnsupportedCountryCode($countryCode)
