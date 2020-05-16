@@ -194,16 +194,16 @@ class Validator
         $checksum = $iban->getChecksum();
 
         if (!preg_match('/^\d+$/', $checksum)) {
-            throw new InvalidChecksumException($iban);
+            $validChecksumIban = $numericBban . $numericCountryCode . '00';
+            $validChecksum = 98 - intval($this->local_bcmod($validChecksumIban, '97'));
+            throw new InvalidChecksumException($iban, $validChecksum);
         }
 
         $invertedIban = $numericBban . $numericCountryCode . $checksum;
 
         if ('1' !== $this->local_bcmod($invertedIban, '97')) {
-
             $validChecksumIban = $numericBban . $numericCountryCode . '00';
             $validChecksum = 98 - intval($this->local_bcmod($validChecksumIban, '97'));
-
             throw new InvalidChecksumException($iban, $validChecksum);
         }
     }
