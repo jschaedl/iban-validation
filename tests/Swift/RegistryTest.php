@@ -11,6 +11,7 @@
 
 namespace Iban\Validation\Tests\Swift;
 
+use Iban\Validation\Swift\Exception\UnsupportedCountryCodeException;
 use Iban\Validation\Swift\Registry;
 use Iban\Validation\Swift\RegistryLoader;
 use PHPUnit\Framework\TestCase;
@@ -23,16 +24,15 @@ class RegistryTest extends TestCase
      */
     private $registry;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->registry = new Registry(new RegistryLoader(__DIR__.'/iban_registry.yaml'));
     }
 
-    /**
-     * @expectedException \Iban\Validation\Swift\Exception\UnsupportedCountryCodeException
-     */
     public function testItShouldThrowExceptionForUnsupportedCountryCode()
     {
+        $this->expectException(UnsupportedCountryCodeException::class);
+
         $this->registry->getIbanRegex('AA');
     }
 
