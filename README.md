@@ -136,6 +136,11 @@ MIT License
 
 ## Release Status
 
+2020-05-16: [Version 1.6](https://github.com/jschaedl/iban-validation/releases/tag/v1.6) has been released.
+
+* [Maintenance] update iban registry to version 86 (@jschaedl)
+* [Improvement] report checksum in `InvalidChecksumException` (@tugrul)
+
 2020-02-05: [Version 1.5](https://github.com/jschaedl/iban-validation/releases/tag/v1.5) has been released.
 
 * [Bugfix] https://github.com/jschaedl/iban-validation/issues/24: properly fail on non-numeric country codes (@xabbuh)
