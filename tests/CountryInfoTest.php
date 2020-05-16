@@ -12,7 +12,6 @@
 namespace Iban\Validation\Tests;
 
 use Iban\Validation\CountryInfo;
-use Iban\Validation\IbanInfo;
 use Iban\Validation\Swift\Exception\UnsupportedCountryCodeException;
 use Iban\Validation\Swift\Registry;
 use Iban\Validation\Swift\RegistryLoader;

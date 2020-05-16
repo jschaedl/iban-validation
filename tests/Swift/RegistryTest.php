@@ -24,9 +24,9 @@ class RegistryTest extends TestCase
      */
     private $registry;
 
-    protected function setUp():void
+    protected function setUp(): void
     {
-        $this->registry = new Registry(new RegistryLoader(__DIR__ . '/iban_registry.yaml'));
+        $this->registry = new Registry(new RegistryLoader(__DIR__.'/iban_registry.yaml'));
     }
 
     public function testItShouldThrowExceptionForUnsupportedCountryCode()
