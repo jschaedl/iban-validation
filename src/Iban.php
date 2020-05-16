@@ -65,6 +65,7 @@ class Iban
 
     /**
      * @param string $type
+     *
      * @return string
      */
     public function format($type = self::FORMAT_PRINT)

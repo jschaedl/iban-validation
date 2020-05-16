@@ -115,6 +115,7 @@ class ValidatorTest extends TestCase
 
     /**
      * @dataProvider validIbanDataProvider
+     *
      * @param $iban
      */
     public function testValidIbans($iban)

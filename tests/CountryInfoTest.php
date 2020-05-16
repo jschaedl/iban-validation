@@ -12,8 +12,6 @@
 namespace Iban\Validation\Tests;
 
 use Iban\Validation\CountryInfo;
-use Iban\Validation\Iban;
-use Iban\Validation\IbanInfo;
 use Iban\Validation\Swift\Registry;
 use Iban\Validation\Swift\RegistryLoader;
 use PHPUnit\Framework\TestCase;
@@ -30,12 +28,12 @@ class CountryInfoTest extends TestCase
     {
         $this->countryInfo = new CountryInfo(
             'DE',
-            new Registry(new RegistryLoader(__DIR__ . '/Swift/iban_registry.yaml'))
+            new Registry(new RegistryLoader(__DIR__.'/Swift/iban_registry.yaml'))
         );
     }
 
     /**
-     * @expectedException Iban\Validation\Swift\Exception\UnsupportedCountryCodeException
+     * @expectedException \Iban\Validation\Swift\Exception\UnsupportedCountryCodeException
      */
     public function testItShouldThrowUnsupportedCountryCodeException()
     {
@@ -62,6 +60,6 @@ class CountryInfoTest extends TestCase
      */
     private function getData()
     {
-        return Yaml::parseFile(__DIR__ . '/Swift/iban_registry.yaml');
+        return Yaml::parseFile(__DIR__.'/Swift/iban_registry.yaml');
     }
 }
