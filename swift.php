@@ -96,30 +96,30 @@ foreach ($countryCodes as $key => $countryCode) {
     }
 
     $registry[trim($countryCode)] = [
-        'country_name' => trim($countryNames[$key]),
+        'country_name' => isset($countryNames[$key]) ? trim($countryNames[$key]) : '',
 
-        'iban_structure' => trim($ibanStructure[$key]),
-        'bban_structure' => trim($bbanStructure[$key]),
+        'iban_structure' => isset($ibanStructure[$key]) ? trim($ibanStructure[$key]) : '',
+        'bban_structure' => isset($bbanStructure[$key]) ? trim($bbanStructure[$key]) : '',
 
-        'iban_regex' => '/^'.$regexConverter->convert(trim($ibanStructure[$key])).'$/',
-        'bban_regex' => '/^'.$regexConverter->convert(trim($bbanStructure[$key])).'$/',
+        'iban_regex' => isset($ibanStructure[$key]) ? '/^'.$regexConverter->convert(trim($ibanStructure[$key])).'$/' : '',
+        'bban_regex' => isset($bbanStructure[$key]) ? '/^'.$regexConverter->convert(trim($bbanStructure[$key])).'$/' : '',
 
-        'iban_length' => intval(trim($ibanLength[$key])),
-        'bban_length' => intval(trim($bbanLength[$key])),
+        'iban_length' => isset($ibanLength[$key]) ? intval(trim($ibanLength[$key])) : '',
+        'bban_length' => isset($bbanLength[$key]) ? intval(trim($bbanLength[$key])) : '',
 
-        'iban_electronic_format_example' => trim($ibanElectronicFormatExamples[$key]),
-        'iban_print_format_example' => trim($ibanPrintFormatExamples[$key]),
+        'iban_electronic_format_example' => isset($ibanElectronicFormatExamples[$key]) ? trim($ibanElectronicFormatExamples[$key]) : '',
+        'iban_print_format_example' => isset($ibanPrintFormatExamples[$key]) ? trim($ibanPrintFormatExamples[$key]) : '',
 
-        'bank_identifier_position' => trim('N/A' === $bankIdentifierPosition[$key] ? '' : $bankIdentifierPosition[$key]),
-        'bank_identifier_structure' => trim('N/A' === $bankIdentifierStructure[$key] ? '' : $bankIdentifierStructure[$key]),
+        'bank_identifier_position' => isset($bankIdentifierPosition[$key]) ? (trim('N/A' === $bankIdentifierPosition[$key] ? '' : $bankIdentifierPosition[$key])) : '',
+        'bank_identifier_structure' => isset($bankIdentifierStructure[$key]) ? (trim('N/A' === $bankIdentifierStructure[$key] ? '' : $bankIdentifierStructure[$key])) : '',
         'bank_identifier_regex' => empty(trim('N/A' === $bankIdentifierStructure[$key] ? '' : $bankIdentifierStructure[$key])) ? '' : '/^'.$regexConverter->convert(trim($bankIdentifierStructure[$key])).'$/',
 
-        'branch_identifier_position' => trim('N/A' === $branchIdentifierPosition[$key] ? '' : $branchIdentifierPosition[$key]),
-        'branch_identifier_structure' => trim('N/A' === $branchIdentifierStructure[$key] ? '' : $branchIdentifierStructure[$key]),
+        'branch_identifier_position' => isset($branchIdentifierPosition[$key]) ? (trim('N/A' === $branchIdentifierPosition[$key] ? '' : $branchIdentifierPosition[$key])) : '',
+        'branch_identifier_structure' => isset($branchIdentifierStructure[$key]) ? (trim('N/A' === $branchIdentifierStructure[$key] ? '' : $branchIdentifierStructure[$key])) : '',
         'branch_identifier_regex' => empty('N/A' === trim($branchIdentifierStructure[$key]) ? '' : $branchIdentifierStructure[$key]) ? '' : '/^'.$regexConverter->convert(trim($branchIdentifierStructure[$key])).'$/',
     ];
 }
-
+echo sprintf('# %s', basename($filename)).PHP_EOL.PHP_EOL;
 echo Yaml::dump($registry);
 
 exit(0);
