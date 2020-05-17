@@ -26,38 +26,6 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class Validator
 {
     /**
-     * @var array
-     */
-    private $letterMap = [
-        1 => 'A',
-        2 => 'B',
-        3 => 'C',
-        4 => 'D',
-        5 => 'E',
-        6 => 'F',
-        7 => 'G',
-        8 => 'H',
-        9 => 'I',
-        10 => 'J',
-        11 => 'K',
-        12 => 'L',
-        13 => 'M',
-        14 => 'N',
-        15 => 'O',
-        16 => 'P',
-        17 => 'Q',
-        18 => 'R',
-        19 => 'S',
-        20 => 'T',
-        21 => 'U',
-        22 => 'V',
-        23 => 'W',
-        24 => 'X',
-        25 => 'Y',
-        26 => 'Z',
-    ];
-
-    /**
      * @var Registry
      */
     private $swiftRegistry;
@@ -171,55 +139,53 @@ class Validator
      */
     protected function validateChecksum(Iban $iban): void
     {
-        $numericBban = $this->getNumericRepresentation($iban->getBban());
-        $numericCountryCode = $this->getNumericRepresentation($iban->getCountryCode());
-        $checksum = $iban->getChecksum();
+        $invertedIban = self::convertToBigInt($iban->getBban().$iban->getCountryCode().$iban->getChecksum());
 
-        if (!preg_match('/^\d+$/', $checksum)) {
-            $validChecksumIban = $numericBban.$numericCountryCode.'00';
-            $validChecksum = 98 - intval($this->local_bcmod($validChecksumIban, '97'));
-            throw new InvalidChecksumException($iban, (string) $validChecksum);
+        if (!preg_match('/^\d+$/', $iban->getChecksum())) {
+            $validChecksum = 98 - intval(self::bigIntModulo97($invertedIban));
+            throw new InvalidChecksumException($iban->format(), (string) $validChecksum);
         }
 
-        $invertedIban = $numericBban.$numericCountryCode.$checksum;
-
-        if ('1' !== $this->local_bcmod($invertedIban, '97')) {
-            $validChecksumIban = $numericBban.$numericCountryCode.'00';
-            $validChecksum = 98 - intval($this->local_bcmod($validChecksumIban, '97'));
-            throw new InvalidChecksumException($iban, (string) $validChecksum);
+        if ('1' !== self::bigIntModulo97($invertedIban)) {
+            $validChecksum = 98 - intval(self::bigIntModulo97($invertedIban));
+            throw new InvalidChecksumException($iban->format(), (string) $validChecksum);
         }
     }
 
-    private function getNumericRepresentation(string $letterRepresentation): string
+    private static function convertToBigInt(string $string): string
     {
-        $numericRepresentation = '';
-        foreach (str_split($letterRepresentation) as $char) {
-            if (array_search($char, $this->letterMap)) {
-                $numericRepresentation .= (int) array_search($char, $this->letterMap) + 9;
-            } else {
-                $numericRepresentation .= $char;
+        $chars = str_split($string);
+        $bigInt = '';
+
+        foreach ($chars as $char) {
+            if (ctype_upper($char)) {
+                $bigInt .= (\ord($char) - 55);
+                continue;
             }
+            $bigInt .= $char;
         }
 
-        return $numericRepresentation;
+        return $bigInt;
     }
 
-    private function local_bcmod(string $operand, string $modulus): ?string
+    private static function bigIntModulo97(string $bigInt): ?string
     {
+        $modulus = '97';
+
         if (function_exists('bcmod')) {
             return PHP_VERSION_ID >= 70200
-                ? bcmod($operand, $modulus, 0)
-                : bcmod($operand, $modulus);
+                ? bcmod($bigInt, $modulus, 0)
+                : bcmod($bigInt, $modulus);
         }
 
         $take = 5;
         $mod = '';
 
         do {
-            $a = intval($mod.substr($operand, 0, $take));
-            $operand = substr($operand, $take);
+            $a = intval($mod.substr($bigInt, 0, $take));
+            $bigInt = substr($bigInt, $take);
             $mod = $a % $modulus;
-        } while (strlen($operand));
+        } while (strlen($bigInt));
 
         return (string) $mod;
     }
