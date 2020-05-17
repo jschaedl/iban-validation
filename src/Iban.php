@@ -11,6 +11,8 @@
 
 namespace Iban\Validation;
 
+use Iban\Validation\Exception\CanNotBeNormalizedException;
+
 /**
  * Represents an International Bank Account Number (IBAN).
  *
@@ -45,13 +47,13 @@ class Iban
 
     public function getNormalizedIban(): string
     {
-        $iban = $this->iban;
+        $normalizedIban = trim(strtoupper($this->iban));
 
-        $iban = trim(strtoupper($iban));
-        $iban = preg_replace('/^I?IBAN/', '', $iban);
-        $iban = preg_replace('/[^a-zA-Z0-9]/', '', $iban);
+        if (null === $normalizedIban = preg_replace(['/^I?IBAN/', '/[^a-zA-Z0-9]/', '/\s+/'], '', $normalizedIban)) {
+            throw new CanNotBeNormalizedException($this->iban);
+        }
 
-        return preg_replace('/\s+/', '', $iban);
+        return $normalizedIban;
     }
 
     public function format(string $type = self::FORMAT_PRINT): string

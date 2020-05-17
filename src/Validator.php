@@ -74,11 +74,7 @@ class Validator
 
     public function __construct(array $options = [], Registry $swiftRegistry = null)
     {
-        $this->swiftRegistry = $swiftRegistry;
-
-        if (null === $swiftRegistry) {
-            $this->swiftRegistry = new Registry();
-        }
+        $this->swiftRegistry = $swiftRegistry ?? new Registry();
 
         $resolver = new OptionsResolver();
         $this->configureOptions($resolver);
@@ -130,7 +126,7 @@ class Validator
         return $this->violations;
     }
 
-    protected function configureOptions(OptionsResolver $resolver)
+    protected function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'violation.unsupported_country' => 'The requested country is not supported!',
@@ -153,7 +149,7 @@ class Validator
     /**
      * @throws InvalidLengthException
      */
-    protected function validateLength(Iban $iban)
+    protected function validateLength(Iban $iban): void
     {
         if ((strlen($iban->getNormalizedIban()) !== $this->swiftRegistry->getIbanLength($iban->getCountryCode()))) {
             throw new InvalidLengthException($iban);
@@ -182,7 +178,7 @@ class Validator
         if (!preg_match('/^\d+$/', $checksum)) {
             $validChecksumIban = $numericBban.$numericCountryCode.'00';
             $validChecksum = 98 - intval($this->local_bcmod($validChecksumIban, '97'));
-            throw new InvalidChecksumException($iban, $validChecksum);
+            throw new InvalidChecksumException($iban, (string) $validChecksum);
         }
 
         $invertedIban = $numericBban.$numericCountryCode.$checksum;
@@ -190,7 +186,7 @@ class Validator
         if ('1' !== $this->local_bcmod($invertedIban, '97')) {
             $validChecksumIban = $numericBban.$numericCountryCode.'00';
             $validChecksum = 98 - intval($this->local_bcmod($validChecksumIban, '97'));
-            throw new InvalidChecksumException($iban, $validChecksum);
+            throw new InvalidChecksumException($iban, (string) $validChecksum);
         }
     }
 
@@ -199,7 +195,7 @@ class Validator
         $numericRepresentation = '';
         foreach (str_split($letterRepresentation) as $char) {
             if (array_search($char, $this->letterMap)) {
-                $numericRepresentation .= array_search($char, $this->letterMap) + 9;
+                $numericRepresentation .= (int) array_search($char, $this->letterMap) + 9;
             } else {
                 $numericRepresentation .= $char;
             }
@@ -208,7 +204,7 @@ class Validator
         return $numericRepresentation;
     }
 
-    private function local_bcmod(string $operand, string $modulus): string
+    private function local_bcmod(string $operand, string $modulus): ?string
     {
         if (function_exists('bcmod')) {
             return PHP_VERSION_ID >= 70200
@@ -220,7 +216,7 @@ class Validator
         $mod = '';
 
         do {
-            $a = (int) $mod.substr($operand, 0, $take);
+            $a = intval($mod.substr($operand, 0, $take));
             $operand = substr($operand, $take);
             $mod = $a % $modulus;
         } while (strlen($operand));

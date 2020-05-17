@@ -11,6 +11,7 @@
 
 namespace Iban\Validation\Swift;
 
+use Iban\Validation\Swift\Exception\RegistryLoaderException;
 use Symfony\Component\Yaml\Yaml;
 
 /**
@@ -32,6 +33,10 @@ class RegistryLoader
 
     public function load(): array
     {
-        return Yaml::parse(file_get_contents($this->filename));
+        if (false === $content = file_get_contents($this->filename)) {
+            throw new RegistryLoaderException($this->filename);
+        }
+
+        return Yaml::parse($content);
     }
 }
