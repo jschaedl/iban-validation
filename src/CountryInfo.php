@@ -33,11 +33,7 @@ class CountryInfo
     public function __construct(string $countryCode, Registry $swiftRegistry = null)
     {
         $this->countryCode = $countryCode;
-        $this->swiftRegistry = $swiftRegistry;
-
-        if (null === $swiftRegistry) {
-            $this->swiftRegistry = new Registry();
-        }
+        $this->swiftRegistry = $swiftRegistry ?? new Registry();
 
         if (!$this->swiftRegistry->isCountryAvailable($this->countryCode)) {
             throw new UnsupportedCountryCodeException($this->countryCode);
@@ -69,22 +65,22 @@ class CountryInfo
         return $this->swiftRegistry->getBbanRegex($this->countryCode);
     }
 
-    public function getIbanLength(): string
+    public function getIbanLength(): int
     {
         return $this->swiftRegistry->getIbanLength($this->countryCode);
     }
 
-    public function getBbanLength(): string
+    public function getBbanLength(): int
     {
         return $this->swiftRegistry->getBbanLength($this->countryCode);
     }
 
-    public function getBbanBankIdentifierStartPos(): string
+    public function getBbanBankIdentifierStartPos(): int
     {
         return $this->swiftRegistry->getBbanBankIdentifierStartPos($this->countryCode);
     }
 
-    public function getBbanBankIdentifierEndPos(): string
+    public function getBbanBankIdentifierEndPos(): int
     {
         return $this->swiftRegistry->getBbanBankIdentifierEndPos($this->countryCode);
     }

@@ -18,6 +18,6 @@ class UnsupportedCountryCodeException extends \RuntimeException
 {
     public function __construct(string $countryCode)
     {
-        parent::__construct(sprintf('Country with countryCode "%s" is not supported', $countryCode));
+        parent::__construct(sprintf('Country with countryCode "%s" is not supported.', $countryCode));
     }
 }
