@@ -173,9 +173,7 @@ class Validator
         $modulus = '97';
 
         if (function_exists('bcmod')) {
-            return PHP_VERSION_ID >= 70200
-                ? bcmod($bigInt, $modulus, 0)
-                : bcmod($bigInt, $modulus);
+            return bcmod($bigInt, $modulus, 0);
         }
 
         $take = 5;
