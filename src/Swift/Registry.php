@@ -17,6 +17,8 @@ use Iban\Validation\Swift\Exception\UnsupportedCountryCodeException;
  * Provides access to the loaded data from the iban_registry text file provided by SWIFT.
  *
  * @author Jan Schädlich <mail@janschaedlich.de>
+ *
+ * @final since 1.7
  */
 class Registry
 {
@@ -38,6 +40,7 @@ class Registry
     }
 
     /**
+     * @private since 1.7
      * @param string $countryCode
      * @return bool
      */
