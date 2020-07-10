@@ -22,10 +22,8 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  * Validates International Bank Account Numbers (IBANs).
  *
  * @author Jan Schädlich <mail@janschaedlich.de>
- *
- * @final since 1.7
  */
-class Validator
+final class Validator
 {
     /**
      * @var Registry
@@ -143,7 +141,7 @@ class Validator
     {
         $invertedIban = self::convertToBigInt($iban->bban().$iban->countryCode().$iban->checksum());
 
-        if (!preg_match('/^\d+$/', $iban->getChecksum())) {
+        if (!preg_match('/^\d+$/', $iban->checksum())) {
             $validChecksum = 98 - intval(self::bigIntModulo97($invertedIban));
             throw new InvalidChecksumException($iban->format(), (string) $validChecksum);
         }
