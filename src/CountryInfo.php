@@ -32,58 +32,47 @@ class CountryInfo
      */
     private $swiftRegistry;
 
-    /**
-     * @param string $countryCode
-     * @param null|Registry $swiftRegistry
-     */
-    public function __construct($countryCode, $swiftRegistry = null)
+    public function __construct(string $countryCode, Registry $swiftRegistry = null)
     {
         $this->countryCode = $countryCode;
-        $this->swiftRegistry = $swiftRegistry;
-
-        if (null === $swiftRegistry) {
-            $this->swiftRegistry = new Registry();
-        }
+        $this->swiftRegistry = $swiftRegistry ?? new Registry();
 
         if (!$this->swiftRegistry->isCountryAvailable($this->countryCode)) {
             throw new UnsupportedCountryCodeException($this->countryCode);
         }
     }
 
-    /**
-     * @return string
-     */
-    public function getCountryName()
+    public function getCountryName(): string
     {
         return $this->swiftRegistry->getCountryName($this->countryCode);
     }
 
-    public function getIbanStructureSwift()
+    public function getIbanStructureSwift(): string
     {
         return $this->swiftRegistry->getIbanStructure($this->countryCode);
     }
 
-    public function getBbanStructureSwift()
+    public function getBbanStructureSwift(): string
     {
         return $this->swiftRegistry->getBbanStructure($this->countryCode);
     }
 
-    public function getIbanRegex()
+    public function getIbanRegex(): string
     {
         return $this->swiftRegistry->getIbanRegex($this->countryCode);
     }
 
-    public function getBbanRegex()
+    public function getBbanRegex(): string
     {
         return $this->swiftRegistry->getBbanRegex($this->countryCode);
     }
 
-    public function getIbanLength()
+    public function getIbanLength(): int
     {
         return $this->swiftRegistry->getIbanLength($this->countryCode);
     }
 
-    public function getBbanLength()
+    public function getBbanLength(): int
     {
         return $this->swiftRegistry->getBbanLength($this->countryCode);
     }
@@ -91,7 +80,7 @@ class CountryInfo
     /**
      * @deprecated since 1.7
      */
-    public function getBbanBankIdentifierStartPos()
+    public function getBbanBankIdentifierStartPos(): int
     {
         return $this->swiftRegistry->getBbanBankIdentifierStartPos($this->countryCode);
     }
@@ -99,17 +88,17 @@ class CountryInfo
     /**
      * @deprecated since 1.7
      */
-    public function getBbanBankIdentifierEndPos()
+    public function getBbanBankIdentifierEndPos(): int
     {
         return $this->swiftRegistry->getBbanBankIdentifierEndPos($this->countryCode);
     }
 
-    public function getIbanElectronicExample()
+    public function getIbanElectronicExample(): string
     {
         return $this->swiftRegistry->getIbanElectronicFormatExample($this->countryCode);
     }
 
-    public function getIbanPrintExample()
+    public function getIbanPrintExample(): string
     {
         return $this->swiftRegistry->getIbanPrintFormatExample($this->countryCode);
     }
