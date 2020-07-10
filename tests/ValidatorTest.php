@@ -15,7 +15,7 @@ use Iban\Validation\Iban;
 use Iban\Validation\Validator;
 use PHPUnit\Framework\TestCase;
 
-class ValidatorTest extends TestCase
+final class ValidatorTest extends TestCase
 {
     /**
      * @var Validator

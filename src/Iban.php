@@ -12,11 +12,14 @@
 namespace Iban\Validation;
 
 use Iban\Validation\Exception\CanNotBeNormalizedException;
+use Iban\Validation\Swift\Registry;
 
 /**
  * Represents an International Bank Account Number (IBAN).
  *
  * @author Jan Schädlich <mail@janschaedlich.de>
+ *
+ * @final since 1.7
  */
 class Iban
 {
@@ -45,6 +48,9 @@ class Iban
         return $this->format();
     }
 
+    /**
+     * @private since 1.7
+     */
     public function getNormalizedIban(): string
     {
         $normalizedIban = trim(strtoupper($this->iban));
@@ -70,29 +76,75 @@ class Iban
         }
     }
 
+    /**
+     * @deprecated since 1.7, use method countryCode() instead.
+     */
     public function getCountryCode(): string
+    {
+        @trigger_error(sprintf('The "%s" method is deprecated since 1.7, use "%s::countryCode()" instead.', __METHOD__, Iban::class), E_USER_DEPRECATED);
+
+        return substr($this->getNormalizedIban(), self::COUNTRY_CODE_OFFSET, self::COUNTRY_CODE_LENGTH);
+    }
+
+    public function countryCode(): string
     {
         return substr($this->getNormalizedIban(), self::COUNTRY_CODE_OFFSET, self::COUNTRY_CODE_LENGTH);
     }
 
+    /**
+     * @deprecated since 1.7, use method checksum() instead.
+     */
     public function getChecksum(): string
+    {
+        @trigger_error(sprintf('The "%s" method is deprecated since 1.7, use "%s::checksum()" instead.', __METHOD__, Iban::class), E_USER_DEPRECATED);
+
+        return substr($this->getNormalizedIban(), self::CHECKSUM_OFFSET, self::CHECKSUM_LENGTH);
+    }
+
+    public function checksum(): string
     {
         return substr($this->getNormalizedIban(), self::CHECKSUM_OFFSET, self::CHECKSUM_LENGTH);
     }
 
+    /**
+     * @deprecated since 1.7, use method bban() instead.
+     */
     public function getBban(): string
+    {
+        @trigger_error(sprintf('The "%s" method is deprecated since 1.7, use "%s::bban()" instead.', __METHOD__, Iban::class), E_USER_DEPRECATED);
+
+        return substr($this->getNormalizedIban(), self::BBAN_OFFSET);
+    }
+
+    public function bban(): string
     {
         return substr($this->getNormalizedIban(), self::BBAN_OFFSET);
     }
 
+    /**
+     * @deprecated since 1.7, use method bbanBankIdentifier() instead.
+     */
     public function getBbanBankIdentifier(): string
     {
-        $countryInfo = new CountryInfo($this->getCountryCode());
+        @trigger_error(sprintf('The "%s" method is deprecated since 1.7, use "%s::bbanBankIdentifier()" instead.', __METHOD__, Iban::class), E_USER_DEPRECATED);
+
+        $registry = new Registry();
 
         return substr(
-            $this->getBban(),
-            $countryInfo->getBbanBankIdentifierStartPos(),
-            $countryInfo->getBbanBankIdentifierEndPos()
+            $this->bban(),
+            $registry->getBbanBankIdentifierStartPos($this->countryCode()),
+            $registry->getBbanBankIdentifierEndPos($this->countryCode())
+        );
+    }
+
+    public function bbanBankIdentifier(): string
+    {
+        $registry = new Registry();
+
+        return substr(
+            $this->bban(),
+            $registry->getBbanBankIdentifierStartPos($this->countryCode()),
+            $registry->getBbanBankIdentifierEndPos($this->countryCode())
         );
     }
 }

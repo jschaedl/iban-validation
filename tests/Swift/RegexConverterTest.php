@@ -14,7 +14,7 @@ namespace Iban\Validation\Tests\Swift;
 use Iban\Validation\Swift\RegexConverter;
 use PHPUnit\Framework\TestCase;
 
-class RegexConverterTest extends TestCase
+final class RegexConverterTest extends TestCase
 {
     public function testConvertToRegex()
     {

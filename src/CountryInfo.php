@@ -17,6 +17,8 @@ use Iban\Validation\Swift\Registry;
  * Represents IBAN country information.
  *
  * @author Jan Schädlich <mail@janschaedlich.de>
+ *
+ * @final since 1.7
  */
 class CountryInfo
 {
@@ -75,11 +77,17 @@ class CountryInfo
         return $this->swiftRegistry->getBbanLength($this->countryCode);
     }
 
+    /**
+     * @deprecated since 1.7
+     */
     public function getBbanBankIdentifierStartPos(): int
     {
         return $this->swiftRegistry->getBbanBankIdentifierStartPos($this->countryCode);
     }
 
+    /**
+     * @deprecated since 1.7
+     */
     public function getBbanBankIdentifierEndPos(): int
     {
         return $this->swiftRegistry->getBbanBankIdentifierEndPos($this->countryCode);

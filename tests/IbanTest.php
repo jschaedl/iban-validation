@@ -14,7 +14,7 @@ namespace Iban\Validation\Tests;
 use Iban\Validation\Iban;
 use PHPUnit\Framework\TestCase;
 
-class IbanTest extends TestCase
+final class IbanTest extends TestCase
 {
     /**
      * @dataProvider ibanProvider
@@ -31,10 +31,10 @@ class IbanTest extends TestCase
     ) {
         $iban = new Iban($iban);
 
-        $this->assertEquals($expectedCountryCode, $iban->getCountryCode());
-        $this->assertEquals($expectedChecksum, $iban->getChecksum());
-        $this->assertEquals($expectedBban, $iban->getBban());
-        $this->assertEquals($expectedBbanBankIdentifier, $iban->getBbanBankIdentifier());
+        $this->assertEquals($expectedCountryCode, $iban->countryCode());
+        $this->assertEquals($expectedChecksum, $iban->checksum());
+        $this->assertEquals($expectedBban, $iban->bban());
+        $this->assertEquals($expectedBbanBankIdentifier, $iban->bbanBankIdentifier());
 
         $this->assertEquals($expectedFormatElectronic, $iban->format(Iban::FORMAT_ELECTRONIC));
         $this->assertEquals($expectedFormatPrint, $iban->format(Iban::FORMAT_PRINT));

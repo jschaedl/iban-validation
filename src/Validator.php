@@ -22,6 +22,8 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  * Validates International Bank Account Numbers (IBANs).
  *
  * @author Jan Schädlich <mail@janschaedlich.de>
+ *
+ * @final since 1.7
  */
 class Validator
 {
@@ -109,7 +111,7 @@ class Validator
      */
     protected function validateCountryCode(Iban $iban): void
     {
-        if (!$this->swiftRegistry->isCountryAvailable($iban->getCountryCode())) {
+        if (!$this->swiftRegistry->isCountryAvailable($iban->countryCode())) {
             throw new UnsupportedCountryCodeException($iban);
         }
     }
@@ -119,7 +121,7 @@ class Validator
      */
     protected function validateLength(Iban $iban): void
     {
-        if ((strlen($iban->getNormalizedIban()) !== $this->swiftRegistry->getIbanLength($iban->getCountryCode()))) {
+        if ((strlen($iban->getNormalizedIban()) !== $this->swiftRegistry->getIbanLength($iban->countryCode()))) {
             throw new InvalidLengthException($iban);
         }
     }
@@ -129,7 +131,7 @@ class Validator
      */
     protected function validateFormat(Iban $iban): void
     {
-        if ((1 !== preg_match($this->swiftRegistry->getIbanRegex($iban->getCountryCode()), $iban->getNormalizedIban()))) {
+        if ((1 !== preg_match($this->swiftRegistry->getIbanRegex($iban->countryCode()), $iban->getNormalizedIban()))) {
             throw new InvalidFormatException($iban);
         }
     }
@@ -139,7 +141,7 @@ class Validator
      */
     protected function validateChecksum(Iban $iban): void
     {
-        $invertedIban = self::convertToBigInt($iban->getBban().$iban->getCountryCode().$iban->getChecksum());
+        $invertedIban = self::convertToBigInt($iban->bban().$iban->countryCode().$iban->checksum());
 
         if (!preg_match('/^\d+$/', $iban->getChecksum())) {
             $validChecksum = 98 - intval(self::bigIntModulo97($invertedIban));

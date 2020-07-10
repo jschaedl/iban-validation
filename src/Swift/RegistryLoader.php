@@ -18,6 +18,8 @@ use Symfony\Component\Yaml\Yaml;
  * Loads the iban_registry text file provided by SWIFT and parses it to yaml.
  *
  * @author Jan Schädlich <mail@janschaedlich.de>
+ *
+ * @final since 1.7
  */
 class RegistryLoader
 {

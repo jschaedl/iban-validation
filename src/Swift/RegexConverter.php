@@ -19,6 +19,10 @@ use Iban\Validation\Swift\Exception\RegexConversionException;
  * Example: 'DE2!n8!n16!c' => 'DE\d{2}\d{8}[A-Z0-9]{16}'
  *
  * @author Jan Schädlich <mail@janschaedlich.de>
+ *
+ * @internal the RegexConverter is an internal helper class, you should not use it directly
+ *
+ * @final since 1.7
  */
 class RegexConverter
 {
