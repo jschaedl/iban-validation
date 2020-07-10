@@ -19,7 +19,7 @@ use Iban\Validation\Swift\RegistryLoader;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Yaml\Yaml;
 
-class CountryInfoTest extends TestCase
+final class CountryInfoTest extends TestCase
 {
     /**
      * @var CountryInfo

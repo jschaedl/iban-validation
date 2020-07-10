@@ -22,6 +22,8 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  * Validates International Bank Account Numbers (IBANs).
  *
  * @author Jan Schädlich <mail@janschaedlich.de>
+ *
+ * @final since 1.7
  */
 class Validator
 {
@@ -156,7 +158,7 @@ class Validator
      */
     protected function validateCountryCode($iban)
     {
-        if (!$this->swiftRegistry->isCountryAvailable($iban->getCountryCode())) {
+        if (!$this->swiftRegistry->isCountryAvailable($iban->countryCode())) {
             throw new UnsupportedCountryCodeException($iban);
         }
     }
@@ -167,7 +169,7 @@ class Validator
      */
     protected function validateLength($iban)
     {
-        if ((strlen($iban->getNormalizedIban()) !== $this->swiftRegistry->getIbanLength($iban->getCountryCode()))) {
+        if ((strlen($iban->getNormalizedIban()) !== $this->swiftRegistry->getIbanLength($iban->countryCode()))) {
             throw new InvalidLengthException($iban);
         }
     }
@@ -178,7 +180,7 @@ class Validator
      */
     protected function validateFormat($iban)
     {
-        if ((1 !== preg_match($this->swiftRegistry->getIbanRegex($iban->getCountryCode()), $iban->getNormalizedIban()))) {
+        if ((1 !== preg_match($this->swiftRegistry->getIbanRegex($iban->countryCode()), $iban->getNormalizedIban()))) {
             throw new InvalidFormatException($iban);
         }
     }
@@ -189,9 +191,9 @@ class Validator
      */
     protected function validateChecksum($iban)
     {
-        $numericBban = $this->getNumericRepresentation($iban->getBban());
-        $numericCountryCode = $this->getNumericRepresentation($iban->getCountryCode());
-        $checksum = $iban->getChecksum();
+        $numericBban = $this->getNumericRepresentation($iban->bban());
+        $numericCountryCode = $this->getNumericRepresentation($iban->countryCode());
+        $checksum = $iban->checksum();
 
         if (!preg_match('/^\d+$/', $checksum)) {
             $validChecksumIban = $numericBban . $numericCountryCode . '00';

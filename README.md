@@ -84,10 +84,10 @@ use Iban\Validation\Iban;
 use Iban\Validation\CountryInfo;
 
 $iban = new Iban('IBAN DE89 3704 0044 0532 0130 00');
-$iban->getCountryCode(); // 'DE'
-$iban->getChecksum(); // '89'
-$iban->getBban(); // '370400440532013000'
-$iban->getBbanBankIdentifier(); // '37040044'
+$iban->countryCode(); // 'DE'
+$iban->checksum(); // '89'
+$iban->bban(); // '370400440532013000'
+$iban->bbanBankIdentifier(); // '37040044'
 $iban->format(Iban::FORMAT_PRINT); // 'DE89 3704 0044 0532 0130 00'
 $iban->format(Iban::FORMAT_ELECTRONIC); // 'DE89370400440532013000'
 $iban->format(Iban::FORMAT_ANONYMIZED); // 'XXXXXXXXXXXXXXXXXX3000'

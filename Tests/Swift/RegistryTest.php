@@ -16,7 +16,7 @@ use Iban\Validation\Swift\RegistryLoader;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Yaml\Yaml;
 
-class RegistryTest extends TestCase
+final class RegistryTest extends TestCase
 {
     /**
      * @var Registry
