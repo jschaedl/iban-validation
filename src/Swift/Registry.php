@@ -17,10 +17,8 @@ use Iban\Validation\Swift\Exception\UnsupportedCountryCodeException;
  * Provides access to the loaded data from the iban_registry text file provided by SWIFT.
  *
  * @author Jan Schädlich <mail@janschaedlich.de>
- *
- * @final since 1.7
  */
-class Registry
+final class Registry
 {
     /**
      * @var array
@@ -39,9 +37,6 @@ class Registry
         $this->registry = $registryLoader->load();
     }
 
-    /**
-     * @private since 1.7
-     */
     public function isCountryAvailable(string $countryCode): bool
     {
         return array_key_exists($countryCode, $this->registry);

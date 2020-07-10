@@ -21,10 +21,8 @@ use Iban\Validation\Swift\Exception\RegexConversionException;
  * @author Jan Schädlich <mail@janschaedlich.de>
  *
  * @internal the RegexConverter is an internal helper class, you should not use it directly
- *
- * @final since 1.7
  */
-class RegexConverter
+final class RegexConverter
 {
     public function convert(string $input): string
     {

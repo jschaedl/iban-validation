@@ -1,6 +1,22 @@
 CHANGELOG
 =========
 
+2.0.0
+-----
+
+ * Removed method `Iban::getCountryCode()`, use `Iban::countryCode()` instead.
+ * Removed method `Iban::getChecksum()`, use `Iban::checksum()` instead.
+ * Removed method `Iban::getBban()`, use `Iban::bban()` instead.
+ * Removed method `Iban::getBbanBankIdentifier()`, use `Iban::bbanBankIdentifier()` instead.
+ * Removed method `CountryInfo::getBbanBankIdentifierStartPos()`.
+ * Removed method `CountryInfo::getBbanBankIdentifierEndPos()`.
+ * Made `RegexConverter` final.
+ * Made `Registry` final.
+ * Made `RegistryLoader` final.
+ * Made `CountryInfo` final.
+ * Made `Validator` final.
+ * Made `Iban` final.
+
 1.7.0
 -----
 
