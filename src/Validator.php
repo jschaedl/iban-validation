@@ -22,43 +22,9 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  * Validates International Bank Account Numbers (IBANs).
  *
  * @author Jan Schädlich <mail@janschaedlich.de>
- *
- * @final since 1.7
  */
-class Validator
+final class Validator
 {
-    /**
-     * @var array
-     */
-    private $letterMap = [
-        1 => 'A',
-        2 => 'B',
-        3 => 'C',
-        4 => 'D',
-        5 => 'E',
-        6 => 'F',
-        7 => 'G',
-        8 => 'H',
-        9 => 'I',
-        10 => 'J',
-        11 => 'K',
-        12 => 'L',
-        13 => 'M',
-        14 => 'N',
-        15 => 'O',
-        16 => 'P',
-        17 => 'Q',
-        18 => 'R',
-        19 => 'S',
-        20 => 'T',
-        21 => 'U',
-        22 => 'V',
-        23 => 'W',
-        24 => 'X',
-        25 => 'Y',
-        26 => 'Z'
-    ];
-
     /**
      * @var Registry
      */
@@ -74,17 +40,9 @@ class Validator
      */
     private $violations = [];
 
-    /**
-     * @param array $options
-     * @param null|Registry $swiftRegistry
-     */
-    public function __construct($options = [], $swiftRegistry = null)
+    public function __construct(array $options = [], Registry $swiftRegistry = null)
     {
-        $this->swiftRegistry = $swiftRegistry;
-
-        if (null === $swiftRegistry) {
-            $this->swiftRegistry = new Registry();
-        }
+        $this->swiftRegistry = $swiftRegistry ?? new Registry();
 
         $resolver = new OptionsResolver();
         $this->configureOptions($resolver);
@@ -93,9 +51,8 @@ class Validator
 
     /**
      * @param string|Iban $iban
-     * @return bool
      */
-    public function validate($iban)
+    public function validate($iban): bool
     {
         if (!$iban instanceof Iban) {
             $iban = new Iban($iban);
@@ -107,6 +64,7 @@ class Validator
             $this->validateCountryCode($iban);
         } catch (UnsupportedCountryCodeException $exception) {
             $this->violations[] = $this->options['violation.unsupported_country'];
+
             return false; // return here because with an unsupported country code all other checks make no sense at all
         }
 
@@ -131,18 +89,12 @@ class Validator
         return 0 === count($this->violations);
     }
 
-    /**
-     * @return array
-     */
-    public function getViolations()
+    public function getViolations(): array
     {
         return $this->violations;
     }
 
-    /**
-     * @param OptionsResolver $resolver
-     */
-    protected function configureOptions(OptionsResolver $resolver)
+    protected function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'violation.unsupported_country' => 'The requested country is not supported!',
@@ -153,10 +105,9 @@ class Validator
     }
 
     /**
-     * @param Iban $iban
      * @throws UnsupportedCountryCodeException
      */
-    protected function validateCountryCode($iban)
+    protected function validateCountryCode(Iban $iban): void
     {
         if (!$this->swiftRegistry->isCountryAvailable($iban->countryCode())) {
             throw new UnsupportedCountryCodeException($iban);
@@ -164,10 +115,9 @@ class Validator
     }
 
     /**
-     * @param Iban $iban
      * @throws InvalidLengthException
      */
-    protected function validateLength($iban)
+    protected function validateLength(Iban $iban): void
     {
         if ((strlen($iban->getNormalizedIban()) !== $this->swiftRegistry->getIbanLength($iban->countryCode()))) {
             throw new InvalidLengthException($iban);
@@ -175,10 +125,9 @@ class Validator
     }
 
     /**
-     * @param Iban $iban
      * @throws InvalidLengthException
      */
-    protected function validateFormat($iban)
+    protected function validateFormat(Iban $iban): void
     {
         if ((1 !== preg_match($this->swiftRegistry->getIbanRegex($iban->countryCode()), $iban->getNormalizedIban()))) {
             throw new InvalidFormatException($iban);
@@ -186,70 +135,56 @@ class Validator
     }
 
     /**
-     * @param Iban $iban
      * @throws InvalidChecksumException
      */
-    protected function validateChecksum($iban)
+    protected function validateChecksum(Iban $iban): void
     {
-        $numericBban = $this->getNumericRepresentation($iban->bban());
-        $numericCountryCode = $this->getNumericRepresentation($iban->countryCode());
-        $checksum = $iban->checksum();
+        $invertedIban = self::convertToBigInt($iban->bban().$iban->countryCode().$iban->checksum());
 
-        if (!preg_match('/^\d+$/', $checksum)) {
-            $validChecksumIban = $numericBban . $numericCountryCode . '00';
-            $validChecksum = 98 - intval($this->local_bcmod($validChecksumIban, '97'));
-            throw new InvalidChecksumException($iban, $validChecksum);
+        if (!preg_match('/^\d+$/', $iban->checksum())) {
+            $validChecksum = 98 - intval(self::bigIntModulo97($invertedIban));
+            throw new InvalidChecksumException($iban->format(), (string) $validChecksum);
         }
 
-        $invertedIban = $numericBban . $numericCountryCode . $checksum;
-
-        if ('1' !== $this->local_bcmod($invertedIban, '97')) {
-            $validChecksumIban = $numericBban . $numericCountryCode . '00';
-            $validChecksum = 98 - intval($this->local_bcmod($validChecksumIban, '97'));
-            throw new InvalidChecksumException($iban, $validChecksum);
+        if ('1' !== self::bigIntModulo97($invertedIban)) {
+            $validChecksum = 98 - intval(self::bigIntModulo97($invertedIban));
+            throw new InvalidChecksumException($iban->format(), (string) $validChecksum);
         }
     }
 
-    /**
-     * @param string $letterRepresentation
-     * @return string
-     */
-    private function getNumericRepresentation($letterRepresentation)
+    private static function convertToBigInt(string $string): string
     {
-        $numericRepresentation = '';
-        foreach (str_split($letterRepresentation) as $char) {
-            if (array_search($char, $this->letterMap)) {
-                $numericRepresentation .= array_search($char, $this->letterMap) + 9;
-            } else {
-                $numericRepresentation .= $char;
+        $chars = str_split($string);
+        $bigInt = '';
+
+        foreach ($chars as $char) {
+            if (ctype_upper($char)) {
+                $bigInt .= (\ord($char) - 55);
+                continue;
             }
+            $bigInt .= $char;
         }
 
-        return $numericRepresentation;
+        return $bigInt;
     }
 
-    /**
-     * @param string $operand
-     * @param string $modulus
-     * @return string
-     */
-    private function local_bcmod($operand, $modulus)
+    private static function bigIntModulo97(string $bigInt): ?string
     {
+        $modulus = '97';
+
         if (function_exists('bcmod')) {
-            return PHP_VERSION_ID >= 70200
-                ? bcmod($operand, $modulus, 0)
-                : bcmod($operand, $modulus);
+            return bcmod($bigInt, $modulus, 0);
         }
 
         $take = 5;
         $mod = '';
 
         do {
-            $a = (int)$mod . substr($operand, 0, $take);
-            $operand = substr($operand, $take);
+            $a = intval($mod.substr($bigInt, 0, $take));
+            $bigInt = substr($bigInt, $take);
             $mod = $a % $modulus;
-        } while (strlen($operand));
+        } while (strlen($bigInt));
 
-        return (string)$mod;
+        return (string) $mod;
     }
 }

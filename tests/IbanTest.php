@@ -51,7 +51,7 @@ final class IbanTest extends TestCase
             '50050201',
             'DE45500502011241539870',
             'DE45 5005 0201 1241 5398 70',
-            'XXXXXXXXXXXXXXXXXX9870'
+            'XXXXXXXXXXXXXXXXXX9870',
         ];
 
         yield [
@@ -62,7 +62,7 @@ final class IbanTest extends TestCase
             '50050',
             'CH4550050201124153987',
             'CH45 5005 0201 1241 5398 7',
-            'XXXXXXXXXXXXXXXXX3987'
+            'XXXXXXXXXXXXXXXXX3987',
         ];
 
         yield [
@@ -73,7 +73,7 @@ final class IbanTest extends TestCase
             '0002',
             'ST68000200010192194210112',
             'ST68 0002 0001 0192 1942 1011 2',
-            'XXXXXXXXXXXXXXXXXXXXX0112'
+            'XXXXXXXXXXXXXXXXXXXXX0112',
         ];
 
         yield [
@@ -84,7 +84,7 @@ final class IbanTest extends TestCase
             '109010140000071219812874',
             'PL61109010140000071219812874',
             'PL61 1090 1014 0000 0712 1981 2874',
-            'XXXXXXXXXXXXXXXXXXXXXXXX2874'
+            'XXXXXXXXXXXXXXXXXXXXXXXX2874',
         ];
     }
 }

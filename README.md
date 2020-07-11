@@ -4,7 +4,7 @@ A small library for validating International Bankaccount Numbers (IBANs) based o
 See https://www.swift.com/standards/data-standards/iban for more information.
 
 [![Build Status](https://travis-ci.org/jschaedl/iban-validation.png)](https://travis-ci.org/jschaedl/iban-validation)
-![PHP Version](https://img.shields.io/badge/version-PHP%207.1%2B-lightgrey.svg)
+![PHP Version](https://img.shields.io/badge/version-PHP%207.3%2B-lightgrey.svg)
 
 [![Total Downloads](https://poser.pugx.org/jschaedl/iban-validation/downloads)](https://packagist.org/packages/jschaedl/iban-validation) 
 [![Latest Stable Version](https://poser.pugx.org/jschaedl/iban-validation/v/stable)](https://packagist.org/packages/jschaedl/iban-validation) 

@@ -11,35 +11,32 @@
 
 namespace Iban\Validation\Swift;
 
+use Iban\Validation\Swift\Exception\RegistryLoaderException;
 use Symfony\Component\Yaml\Yaml;
 
 /**
  * Loads the iban_registry text file provided by SWIFT and parses it to yaml.
  *
  * @author Jan Schädlich <mail@janschaedlich.de>
- *
- * @final since 1.7
  */
-class RegistryLoader
+final class RegistryLoader
 {
     /**
      * @var string
      */
     protected $filename;
 
-    /**
-     * @param string $filename
-     */
-    public function __construct($filename)
+    public function __construct(string $filename)
     {
         $this->filename = $filename;
     }
 
-    /**
-     * @return array
-     */
-    public function load()
+    public function load(): array
     {
-        return Yaml::parse(file_get_contents($this->filename));
+        if (false === $content = file_get_contents($this->filename)) {
+            throw new RegistryLoaderException($this->filename);
+        }
+
+        return Yaml::parse($content);
     }
 }
