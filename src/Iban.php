@@ -11,16 +11,15 @@
 
 namespace Iban\Validation;
 
+use Iban\Validation\Exception\CanNotBeNormalizedException;
 use Iban\Validation\Swift\Registry;
 
 /**
  * Represents an International Bank Account Number (IBAN).
  *
  * @author Jan Schädlich <mail@janschaedlich.de>
- *
- * @final since 1.7
  */
-class Iban
+final class Iban
 {
     public const FORMAT_ELECTRONIC = 'electronic';
     public const FORMAT_PRINT = 'print';
@@ -37,42 +36,28 @@ class Iban
      */
     private $iban;
 
-    /**
-     * @param string $iban
-     */
-    public function __construct($iban)
+    public function __construct(string $iban)
     {
         $this->iban = $iban;
     }
 
-    /**
-     * @return string
-     */
-    public function __toString()
+    public function __toString(): string
     {
         return $this->format();
     }
 
-    /**
-     * @private since 1.7
-     * @return string
-     */
-    public function getNormalizedIban()
+    public function getNormalizedIban(): string
     {
-        $iban = $this->iban;
+        $normalizedIban = trim(strtoupper($this->iban));
 
-        $iban = trim(strtoupper($iban));
-        $iban = preg_replace('/^I?IBAN/', '', $iban);
-        $iban = preg_replace('/[^a-zA-Z0-9]/', '', $iban);
+        if (null === $normalizedIban = preg_replace(['/^I?IBAN/', '/[^a-zA-Z0-9]/', '/\s+/'], '', $normalizedIban)) {
+            throw new CanNotBeNormalizedException($this->iban);
+        }
 
-        return preg_replace('/\s+/', '', $iban);
+        return $normalizedIban;
     }
 
-    /**
-     * @param string $type
-     * @return string
-     */
-    public function format($type = self::FORMAT_PRINT)
+    public function format(string $type = self::FORMAT_PRINT): string
     {
         switch ($type) {
             case self::FORMAT_ELECTRONIC:
@@ -86,31 +71,9 @@ class Iban
         }
     }
 
-    /**
-     * @deprecated since 1.7, use method countryCode() instead.
-     * @return string
-     */
-    public function getCountryCode()
-    {
-        @trigger_error(sprintf('The "%s" method is deprecated since 1.7, use "%s::countryCode()" instead.', __METHOD__, Iban::class), E_USER_DEPRECATED);
-
-        return substr($this->getNormalizedIban(), self::COUNTRY_CODE_OFFSET, self::COUNTRY_CODE_LENGTH);
-    }
-
     public function countryCode(): string
     {
         return substr($this->getNormalizedIban(), self::COUNTRY_CODE_OFFSET, self::COUNTRY_CODE_LENGTH);
-    }
-
-    /**
-     * @deprecated since 1.7, use method checksum() instead.
-     * @return string
-     */
-    public function getChecksum()
-    {
-        @trigger_error(sprintf('The "%s" method is deprecated since 1.7, use "%s::checksum()" instead.', __METHOD__, Iban::class), E_USER_DEPRECATED);
-
-        return substr($this->getNormalizedIban(), self::CHECKSUM_OFFSET, self::CHECKSUM_LENGTH);
     }
 
     public function checksum(): string
@@ -118,37 +81,9 @@ class Iban
         return substr($this->getNormalizedIban(), self::CHECKSUM_OFFSET, self::CHECKSUM_LENGTH);
     }
 
-    /**
-     * @deprecated since 1.7, use method bban() instead.
-     * @return string
-     */
-    public function getBban()
-    {
-        @trigger_error(sprintf('The "%s" method is deprecated since 1.7, use "%s::bban()" instead.', __METHOD__, Iban::class), E_USER_DEPRECATED);
-
-        return substr($this->getNormalizedIban(), self::BBAN_OFFSET);
-    }
-
     public function bban(): string
     {
         return substr($this->getNormalizedIban(), self::BBAN_OFFSET);
-    }
-
-    /**
-     * @deprecated since 1.7, use method bbanBankIdentifier() instead.
-     * @return string
-     */
-    public function getBbanBankIdentifier()
-    {
-        @trigger_error(sprintf('The "%s" method is deprecated since 1.7, use "%s::bbanBankIdentifier()" instead.', __METHOD__, Iban::class), E_USER_DEPRECATED);
-
-        $registry = new Registry();
-
-        return substr(
-            $this->bban(),
-            $registry->getBbanBankIdentifierStartPos($this->countryCode()),
-            $registry->getBbanBankIdentifierEndPos($this->countryCode())
-        );
     }
 
     public function bbanBankIdentifier(): string

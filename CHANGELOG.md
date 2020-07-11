@@ -1,5 +1,29 @@
 # CHANGELOG
 
+## [Version 2.0.0](https://github.com/jschaedl/iban-validation/releases/tag/v2.0.0)
+
+Unreleased
+
+### Changed
+
+ * Made `RegexConverter` final. Thanks to [@jschaedl](https://github.com/jschaedl)!
+ * Made `Registry` final. Thanks to [@jschaedl](https://github.com/jschaedl)!
+ * Made `RegistryLoader` final. Thanks to [@jschaedl](https://github.com/jschaedl)!
+ * Made `CountryInfo` final. Thanks to [@jschaedl](https://github.com/jschaedl)!
+ * Made `Validator` final. Thanks to [@jschaedl](https://github.com/jschaedl)!
+ * Made `Iban` final. Thanks to [@jschaedl](https://github.com/jschaedl)!
+
+### Removed
+
+ * Removed method `Iban::getCountryCode()`, use `Iban::countryCode()` instead. Thanks to [@jschaedl](https://github.com/jschaedl)!
+ * Removed method `Iban::getChecksum()`, use `Iban::checksum()` instead. Thanks to [@jschaedl](https://github.com/jschaedl)!
+ * Removed method `Iban::getBban()`, use `Iban::bban()` instead. Thanks to [@jschaedl](https://github.com/jschaedl)!
+ * Removed method `Iban::getBbanBankIdentifier()`, use `Iban::bbanBankIdentifier()` instead. Thanks to [@jschaedl](https://github.com/jschaedl)!
+ * Removed method `CountryInfo::getBbanBankIdentifierStartPos()`. Thanks to [@jschaedl](https://github.com/jschaedl)!
+ * Removed method `CountryInfo::getBbanBankIdentifierEndPos()`. Thanks to [@jschaedl](https://github.com/jschaedl)!
+
+---
+
 ## [Version 1.7.0](https://github.com/jschaedl/iban-validation/releases/tag/v1.7.0)
 
 Unreleased

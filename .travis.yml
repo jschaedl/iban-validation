@@ -7,8 +7,6 @@ cache:
 php:
   - 7.4
   - 7.3
-  - 7.2
-  - 7.1
 
 before_script:
     - phpenv config-rm xdebug.ini
@@ -17,5 +15,7 @@ before_script:
 install:
     - composer install --prefer-dist
 
-script: 
+script:
+    - vendor/bin/php-cs-fixer fix --dry-run
+    - vendor/bin/phpstan analyze
     - vendor/bin/phpunit

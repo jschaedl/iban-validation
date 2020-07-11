@@ -9,15 +9,15 @@
  * file that was distributed with this source code.
  */
 
-namespace Iban\Validation\Exception;
+namespace Iban\Validation\Swift\Exception;
 
 /**
  * @author Jan Schädlich <mail@janschaedlich.de>
  */
-class InvalidFormatException extends \RuntimeException
+class RegexConversionException extends \RuntimeException
 {
-    public function __construct(string $iban)
+    public function __construct(string $input)
     {
-        parent::__construct(sprintf('Format of given IBAN "%s" is not valid.', $iban));
+        parent::__construct(sprintf('Can not convert given input "%s".', $input));
     }
 }

@@ -11,6 +11,8 @@
 
 namespace Iban\Validation\Swift;
 
+use Iban\Validation\Swift\Exception\RegexConversionException;
+
 /**
  * Converts iban and bban structure notation used in iban_registry text file provided by SWIFT to common regex.
  *
@@ -18,23 +20,30 @@ namespace Iban\Validation\Swift;
  *
  * @author Jan Schädlich <mail@janschaedlich.de>
  *
- * @internal The RegexConverter is an internal helper class, you should not use it directly.
- *
- * @final since 1.7
+ * @internal the RegexConverter is an internal helper class, you should not use it directly
  */
-class RegexConverter
+final class RegexConverter
 {
-    /**
-     * @param string $input
-     * @return string
-     */
-    public function convert($input)
+    public function convert(string $input): string
     {
-        $input = preg_replace('/(^[A-Z]{2})/', '${1}', $input);
-        $input = preg_replace('/(\d+)\!(n)/', '\d{${1}}', $input);
-        $input = preg_replace('/(\d+)\!(c)/', '[A-Z0-9]{${1}}', $input);
-        $input = preg_replace('/(\d+)\!(a)/', '[A-Z]{${1}}', $input);
+        $searchPatterns = [
+            '/(^[A-Z]{2})/',
+            '/(\d+)\!(n)/',
+            '/(\d+)\!(c)/',
+            '/(\d+)\!(a)/',
+        ];
 
-        return $input;
+        $replacements = [
+            '${1}',
+            '\d{${1}}',
+            '[A-Z0-9]{${1}}',
+            '[A-Z]{${1}}',
+        ];
+
+        if (null === $convertedInput = preg_replace($searchPatterns, $replacements, $input)) {
+            throw new RegexConversionException($input);
+        }
+
+        return $convertedInput;
     }
 }
