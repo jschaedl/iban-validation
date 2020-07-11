@@ -108,6 +108,7 @@ $countryInfo->getIbanElectronicExample(); // 'DE89370400440532013000'
 ---
  
 ## How to contribute
+
 If you want to fix some bugs or want to enhance some functionality, please fork the master branch and create your own development branch. 
 Then fix the bug you found or add your enhancements and make a pull request. Please commit your changes in tiny steps and add a detailed description on every commit. 
 
@@ -131,39 +132,3 @@ $ vendor/bin/phpunit
 ## License
 
 MIT License
-
----
-
-## Release Status
-
-2020-05-16: [Version 1.6](https://github.com/jschaedl/iban-validation/releases/tag/v1.6) has been released.
-
-* [Maintenance] update iban registry to version 86 (@jschaedl)
-* [Improvement] report checksum in `InvalidChecksumException` (@tugrul)
-
-2020-02-05: [Version 1.5](https://github.com/jschaedl/iban-validation/releases/tag/v1.5) has been released.
-
-* [Bugfix] https://github.com/jschaedl/iban-validation/issues/24: properly fail on non-numeric country codes (@xabbuh)
-* [Fix] https://github.com/jschaedl/iban-validation/issues/23: run tests on PHP 7.3 and 7.4 (@xabbuh)
-
-2019-11-25: [Version 1.4](https://github.com/jschaedl/iban-validation/releases/tag/v1.4) has been released.
-
-* added Symfony 5.0 support
-
-2019-04-27: [Version 1.3](https://github.com/jschaedl/iban-validation/releases/tag/v1.3) has been released.
-
-* updated iban registry file
-* fixed https://github.com/jschaedl/iban-validation/issues/14: set correct scale for bcmod function
-
-2018-12-14: [Version 1.2](https://github.com/jschaedl/iban-validation/releases/tag/v1.2) has been released.
-
-* updated iban registry file to 201812r80
-* changed minimum version for yaml and option-resolver component to ^3.4|^4.1
-
-2018-09-14: [Version 1.1](https://github.com/jschaedl/iban-validation/releases/tag/v1.1) has been released.
-
-* introduced `FORMAT_ANONYMIZED` IBAN format: `$iban->format(Iban::FORMAT_ANONYMIZED)`
-* cleanup IBAN creation logic
-* cleanup project structure
-
-2018-08-19: [Version 1.0](https://github.com/jschaedl/iban-validation/releases/tag/v1.0) has been released.
