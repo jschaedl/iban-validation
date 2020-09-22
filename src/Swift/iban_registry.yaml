@@ -190,6 +190,22 @@ CH:
     branch_identifier_position: ''
     branch_identifier_structure: ''
     branch_identifier_regex: ''
+CM:
+    country_name: Cameroon
+    iban_structure: CM2!n23!n
+    bban_structure: 23!n
+    iban_regex: '/^CM\d{2}\d{23}$/'
+    bban_regex: '/^\d{23}$/'
+    iban_length: 27
+    bban_length: 23
+    iban_electronic_format_example: CM2110002000300277976315008
+    iban_print_format_example: 'CM21 1000 2000 3002 7797 6315 008'
+    bank_identifier_position:
+    bank_identifier_structure:
+    bank_identifier_regex: ''
+    branch_identifier_position: ''
+    branch_identifier_structure: ''
+    branch_identifier_regex: ''
 CR:
     country_name: 'Costa Rica'
     iban_structure: CR2!n4!n14!n
