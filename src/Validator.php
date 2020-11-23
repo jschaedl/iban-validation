@@ -168,7 +168,7 @@ final class Validator
         return $bigInt;
     }
 
-    private static function bigIntModulo97(string $bigInt): ?string
+    private static function bigIntModulo97(string $bigInt): string
     {
         $modulus = '97';
 
