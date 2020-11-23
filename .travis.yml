@@ -5,9 +5,9 @@ cache:
     - $HOME/.composer/cache/files
 
 php:
+  - 8.0snapshot
   - 7.4
   - 7.3
-  - 8.0snapshot
 
 before_script:
     - phpenv config-rm xdebug.ini
