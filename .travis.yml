@@ -16,9 +16,7 @@ before_script:
     - composer self-update
 
 install:
-    - if [ "$TRAVIS_PHP_VERSION" = "8.0snapshot" ]; then composer remove --dev friendsofphp/php-cs-fixer --no-update --no-interaction; fi;
     - composer install --prefer-dist
 
 script:
-    - if [ "$TRAVIS_PHP_VERSION" != "8.0snapshot" ]; then vendor/bin/php-cs-fixer fix --dry-run; fi;
     - vendor/bin/phpunit
