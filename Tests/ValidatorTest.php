@@ -22,7 +22,7 @@ final class ValidatorTest extends TestCase
      */
     protected $validator;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->validator = new Validator([
             'violation.unsupported_country' => 'unsupported_country',
