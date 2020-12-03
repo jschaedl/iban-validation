@@ -23,12 +23,11 @@
 	},
 	"require" : {
 		"php" : ">=7.1.3",
-		"symfony/options-resolver": "^3.4.43|^4.4.11|^5.0.11",
-		"symfony/yaml": "^3.4.44|^4.4.12|^5.1.4"
+		"symfony/options-resolver": "^3.4|^4.4.11|^5.1",
+		"symfony/yaml": "^3.4|^4.4.9|^5.1"
 	},
 	"require-dev" : {
-		"phpunit/phpunit" : "^7.5|^9.0",
-		"friendsofphp/php-cs-fixer": "~2.0"
+		"phpunit/phpunit" : "^7|^8|^9"
 	},
 	"suggest": {
        		"ext-bcmath" : "This library makes use of bcmod function, so an installed bcmath extension is recommended."
