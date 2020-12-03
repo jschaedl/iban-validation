@@ -21,12 +21,14 @@ Unreleased
  * Removed method `Iban::getBbanBankIdentifier()`, use `Iban::bbanBankIdentifier()` instead. Thanks to [@jschaedl](https://github.com/jschaedl)!
  * Removed method `CountryInfo::getBbanBankIdentifierStartPos()`. Thanks to [@jschaedl](https://github.com/jschaedl)!
  * Removed method `CountryInfo::getBbanBankIdentifierEndPos()`. Thanks to [@jschaedl](https://github.com/jschaedl)!
+ * Dropped support for PHP `7.1`. Thanks to [@jschaedl](https://github.com/jschaedl)!
+ * Dropped support for PHPUnit 7. Thanks to [@jschaedl](https://github.com/jschaedl)!
 
 ---
 
 ## [Version 1.7.0](https://github.com/jschaedl/iban-validation/releases/tag/v1.7.0)
 
-Unreleased
+Released on December 3rd 2020
 
 ### Changed
 
@@ -39,6 +41,7 @@ Unreleased
  * Marked `CountryInfo` as `@final`, you should not extend it anymore. Thanks to [@jschaedl](https://github.com/jschaedl)!
  * Marked `Validator` as `@final`, you should not extend it anymore. Thanks to [@jschaedl](https://github.com/jschaedl)!
  * Marked `Iban` as `@final`, you should not extend it anymore. Thanks to [@jschaedl](https://github.com/jschaedl)!
+ * Changed the PHP version constraint to `>=7.1` to allow PHP 8. Thanks to [@chris-doehring](https://github.com/chris-doehring)!
 
 ### Deprecated
 

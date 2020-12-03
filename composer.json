@@ -7,7 +7,7 @@
 	"homepage" : "https://github.com/jschaedl/iban-validation",
 	"authors" : [{
 		"name" : "Jan Schaedlich",
-		"email" : "mail@janschaedlich.com",
+		"email" : "mail@janschaedlich.de",
 		"homepage" : "https://www.linkedin.com/in/janschaedlich"
 	}],
 	"autoload": {
@@ -18,18 +18,16 @@
 	},
 	"extra": {
 		"branch-alias": {
-			"dev-master": "2.0-dev"
+			"dev-master": "2.x-dev"
 		}
 	},
 	"require" : {
-		"php" : "^7.3",
-		"symfony/options-resolver": "^3.4|^4.1|^5.0",
-		"symfony/yaml": "^3.4|^4.1|^5.0"
+		"php" : ">=7.2",
+		"symfony/options-resolver": "^3.4|^4.4.11|^5.1",
+		"symfony/yaml": "^3.4|^4.4.9|^5.1"
 	},
 	"require-dev" : {
-		"phpunit/phpunit" : "^9.1",
-		"friendsofphp/php-cs-fixer": "^2.16.3",
-		"phpstan/phpstan": "^0.12.25"
+		"phpunit/phpunit" : "^8|^9"
 	},
 	"suggest": {
        		"ext-bcmath" : "This library makes use of bcmod function, so an installed bcmath extension is recommended."
