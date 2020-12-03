@@ -1,15 +1,32 @@
-help: ## Displays this list of targets with descriptions
-	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z_\-\.]+:.*?## / {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
+COMPOSER_BIN := composer
+PHP_BIN := php
+PHIVE_BIN := phive
+PHP_CS_FIXER_BIN := ./tools/php-cs-fixer
+PHPSTAN_BIN	:= ./tools/phpstan
+PHPUNIT_BIN	:= ./tools/phpunit.phar
 
-it: coding-standards static-code-analysis tests ## Runs the coding-standards, static-code-analysis, and tests targets
+.PHONY: it tools-install composer-install tests tests-coverage php-cs-check php-cs-fix phpstan
 
-coding-standards: ## Run php-cs-fixer
-	vendor/bin/php-cs-fixer fix --diff --diff-format=udiff --verbose
+it: tools-install tests
 
-static-code-analysis: ## Run phpstan
-	vendor/bin/phpstan analyze
+tools-install:
+	gpg --keyserver hkps://keyserver.ubuntu.com --receive-keys E82B2FB314E9906E 4AA394086372C20A 8E730BA25823D8B5 CF1A108D0E7AE720 8A03EA3B385DBAA1
+	$(PHIVE_BIN) --no-progress install --copy --trust-gpg-keys E82B2FB314E9906E,4AA394086372C20A,8E730BA25823D8B5,CF1A108D0E7AE720,8A03EA3B385DBAA1 --force-accept-unsigned
 
-tests: ## Run phpunit
-	vendor/bin/phpunit
+composer-install:
+	$(COMPOSER_BIN) install --optimize-autoloader
 
-.PHONY: help coding-standards static-code-analysis tests
+tests: composer-install
+	$(PHPUNIT_BIN) -c .
+
+tests-coverage: composer-install
+	$(PHPUNIT_BIN) -c . --coverage-html coverage
+
+php-cs-check:
+	PHP_CS_FIXER_FUTURE_MODE=1 $(PHP_CS_FIXER_BIN) fix --allow-risky=yes --diff --diff-format=udiff --using-cache=no --verbose --dry-run
+
+php-cs-fix:
+	PHP_CS_FIXER_FUTURE_MODE=1 $(PHP_CS_FIXER_BIN) fix --allow-risky=yes
+
+phpstan:
+	$(PHPSTAN_BIN) analyse
