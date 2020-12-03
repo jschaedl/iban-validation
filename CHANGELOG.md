@@ -15,6 +15,8 @@ Unreleased
  * Marked `CountryInfo` as `@final`, you should not extend it anymore. Thanks to [@jschaedl](https://github.com/jschaedl)!
  * Marked `Validator` as `@final`, you should not extend it anymore. Thanks to [@jschaedl](https://github.com/jschaedl)!
  * Marked `Iban` as `@final`, you should not extend it anymore. Thanks to [@jschaedl](https://github.com/jschaedl)!
+ * Change the php version constraint to `>=7.1` to allow php 8
+ * Update the minimum required symfony packages to support php 8
 
 ### Deprecated
 
