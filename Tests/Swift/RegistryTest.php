@@ -29,9 +29,6 @@ final class RegistryTest extends TestCase
         $this->registry = new Registry(new RegistryLoader(__DIR__ . '/iban_registry.yaml'));
     }
 
-    /**
-     * @expectedException Iban\Validation\Swift\Exception\UnsupportedCountryCodeException
-     */
     public function testItShouldThrowExceptionForUnsupportedCountryCode()
     {
         $this->expectException(UnsupportedCountryCodeException::class);
