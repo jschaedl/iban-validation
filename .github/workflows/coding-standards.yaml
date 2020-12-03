@@ -1,0 +1,44 @@
+on:
+    pull_request:
+    push:
+        branches:
+            - master
+        tags:
+            - "**"
+
+name: "Coding standards"
+
+jobs:
+    coding-standards:
+        name: "Coding standards"
+
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: "Checkout"
+              uses: actions/checkout@v2
+
+            - name: "Cache tools installed with phive"
+              uses: actions/cache@v2
+              with:
+                  path: |
+                      ~/.phive
+                  key: phive-${{ runner.os }}-${{ matrix.php-version }}-${{ hashFiles('.phive/phars.xml') }}
+                  restore-keys: |
+                      phive-${{ runner.os }}-${{ matrix.php-version }}-
+                      phive-${{ runner.os }}-
+                      phive-
+
+            - name: Setup PHP
+              uses: shivammathur/setup-php@v2
+              with:
+                  php-version: 7.2
+                  extensions: mbstring, xml, ctype, iconv, bcmath
+                  coverage: none
+                  tools: phive
+
+            - name: "Install tools with phive"
+              run: make tools-install
+
+            - name: "Check cs"
+              run: make php-cs-check

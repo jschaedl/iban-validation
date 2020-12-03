@@ -22,7 +22,7 @@ Unreleased
  * Removed method `CountryInfo::getBbanBankIdentifierStartPos()`. Thanks to [@jschaedl](https://github.com/jschaedl)!
  * Removed method `CountryInfo::getBbanBankIdentifierEndPos()`. Thanks to [@jschaedl](https://github.com/jschaedl)!
  * Dropped support for PHP `7.1`. Thanks to [@jschaedl](https://github.com/jschaedl)!
- * Dropped support for PHPUnit 7. Thanks to [@jschaedl](https://github.com/jschaedl)!
+ * Removed all composer dev dependencies. Thanks to [@jschaedl](https://github.com/jschaedl)!
 
 ---
 

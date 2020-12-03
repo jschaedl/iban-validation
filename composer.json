@@ -26,9 +26,6 @@
 		"symfony/options-resolver": "^3.4|^4.4.11|^5.1",
 		"symfony/yaml": "^3.4|^4.4.9|^5.1"
 	},
-	"require-dev" : {
-		"phpunit/phpunit" : "^8|^9"
-	},
 	"suggest": {
        		"ext-bcmath" : "This library makes use of bcmod function, so an installed bcmath extension is recommended."
 	}

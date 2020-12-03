@@ -6,17 +6,13 @@ on:
         tags:
             - "**"
 
-name: "Tests"
+name: "Static analysis"
 
 jobs:
-    tests:
-        name: "Tests on PHP ${{ matrix.php-version }}"
+    static-code-analysis-phpstan:
+        name: "Static Code Analysis by PHPStan"
 
         runs-on: ubuntu-latest
-
-        strategy:
-            matrix:
-                php-version: [7.2, 7.3, 7.4, 8.0]
 
         steps:
             - name: "Checkout"
@@ -36,7 +32,7 @@ jobs:
             - name: Setup PHP
               uses: shivammathur/setup-php@v2
               with:
-                  php-version: ${{ matrix.php-version }}
+                  php-version: 7.2
                   extensions: mbstring, xml, ctype, iconv, bcmath
                   coverage: none
                   tools: phive, composer:v2
@@ -58,9 +54,8 @@ jobs:
             - name: "Install tools with phive"
               run: make tools-install
 
-            - name: "Update PHPUnit for PHP 8"
-              if: ${{ matrix.php-version == 8.0 }}
-              run: phive --no-progress update phpunit
+            - name: "Install dependencies with composer"
+              run: composer install --no-interaction --no-progress --no-suggest --optimize-autoloader
 
-            - name: "Run tests"
-              run: make tests
+            - name: PHPStan
+              run: make phpstan
