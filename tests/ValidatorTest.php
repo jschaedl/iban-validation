@@ -46,6 +46,7 @@ final class ValidatorTest extends TestCase
         yield ['BR1800360305000010009795493C1'];
         yield ['BY13NBRB3600900000002Z00AB00'];
         yield ['CH9300762011623852957'];
+        yield ['CM2110002000300277976315008'];
         yield ['CR05015202001026284066'];
         yield ['CY17002001280000001200527600'];
         yield ['CZ6508000000192000145399'];
