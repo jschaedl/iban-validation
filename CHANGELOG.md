@@ -1,5 +1,20 @@
 # CHANGELOG
 
+## [Version 1.7.1](https://github.com/jschaedl/iban-validation/releases/tag/v1.7.1)
+
+Not yet released
+
+### Updated
+
+ * Updated iban registry to version 88. Thanks to [@jschaedl](https://github.com/jschaedl)!
+    * IBANs for Libya can now be validated.
+
+### Fixed
+
+ * Fixed README.md. Thanks to [@jschaedl](https://github.com/jschaedl)!
+
+---
+
 ## [Version 1.7.0](https://github.com/jschaedl/iban-validation/releases/tag/v1.7.0)
 
 Released on December 3rd 2020

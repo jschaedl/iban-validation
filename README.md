@@ -3,12 +3,11 @@
 A small library for validating International Bankaccount Numbers (IBANs) based on the IBAN Registry provided by SWIFT.
 See https://www.swift.com/standards/data-standards/iban for more information.
 
-[![Build Status](https://travis-ci.org/jschaedl/iban-validation.png)](https://travis-ci.org/jschaedl/iban-validation)
+[![Build Status](https://github.com/jschaedl/iban-validation/workflows/Tests/badge.svg)](https://github.com/jschaedl/iban-validation)
 ![PHP Version](https://img.shields.io/badge/version-PHP%207.1%2B-lightgrey.svg)
-
-[![Total Downloads](https://poser.pugx.org/jschaedl/iban-validation/downloads)](https://packagist.org/packages/jschaedl/iban-validation) 
 [![Latest Stable Version](https://poser.pugx.org/jschaedl/iban-validation/v/stable)](https://packagist.org/packages/jschaedl/iban-validation) 
-[![Latest Unstable Version](https://poser.pugx.org/jschaedl/iban-validation/v/unstable)](https://packagist.org/packages/jschaedl/iban-validation) 
+[![Latest Unstable Version](https://poser.pugx.org/jschaedl/iban-validation/v/unstable)](https://packagist.org/packages/jschaedl/iban-validation)
+[![Total Downloads](https://poser.pugx.org/jschaedl/iban-validation/downloads)](https://packagist.org/packages/jschaedl/iban-validation) 
 [![License](https://poser.pugx.org/jschaedl/iban-validation/license)](https://packagist.org/packages/jschaedl/iban-validation) 
 
 
@@ -22,7 +21,7 @@ This library is ready to use. The Iban validation should be fine, but there is n
 
 * full country support of IBAN validation based on SWIFT Registry
 * customizable violation messages
-* simple to use object oriented api
+* simple to use object-oriented api
 * high test coverage
 * DIC friendly
 
@@ -109,12 +108,12 @@ $countryInfo->getIbanElectronicExample(); // 'DE89370400440532013000'
  
 ## How to contribute
 
-If you want to fix some bugs or want to enhance some functionality, please fork the master branch and create your own development branch. 
-Then fix the bug you found or add your enhancements and make a pull request. Please commit your changes in tiny steps and add a detailed description on every commit. 
+If you want to fix some bugs or want to enhance some functionality, please fork one of the release branches and create your own development branch.
+Then fix the bug you found or add your enhancements and make a pull request. Please commit your changes in tiny steps and add a detailed description on every commit.
 
 ### Unit Testing
 
-All pull requests must be accompanied by passing unit tests. This repository uses phpunit and Composer. 
+All pull requests must be accompanied by passing unit tests. This repository uses PHPUnit and Composer.
 You must run `composer --dev install` to install this package's dependencies. You can run the tests via:
 
 ```sh
