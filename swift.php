@@ -92,6 +92,7 @@ foreach ($lines as $lineNumber => $line) {
 $regexConverter = new RegexConverter();
 
 $registry = [];
+
 foreach ($countryCodes as $key => $countryCode) {
     if (0 === $key) {
         continue;

@@ -80,6 +80,7 @@ final class ValidatorTest extends TestCase
         yield ['LT121000011101001000'];
         yield ['LU280019400644750000'];
         yield ['LV80BANK0000435195001'];
+        yield ['LY83002048000020100120361'];
         yield ['MC5811222000010123456789030'];
         yield ['MD24AG000225100013104168'];
         yield ['ME25505000012345678951'];
@@ -102,7 +103,7 @@ final class ValidatorTest extends TestCase
         yield ['SI56263300012039086'];
         yield ['SK3112000000198742637541'];
         yield ['SM86U0322509800000000270100'];
-        // yield ['ST68000200010192194210112']; // iban with invalid checksum given by swift
+        //yield ['ST68000200010192194210112']; // iban with invalid checksum given by swift
         yield ['SV62CENR00000000000000700025'];
         yield ['TL380080012345678910157'];
         yield ['TN5910006035183598478831'];
