@@ -25,18 +25,12 @@ class Registry
     /**
      * @var array
      */
-    protected $registry;
+    private $registry;
 
-    /**
-     * @param RegistryLoader $registryLoader
-     */
-    public function __construct($registryLoader = null)
+    public function __construct(string $registryFile = null)
     {
-        if (null === $registryLoader) {
-            $registryLoader = new RegistryLoader(__DIR__ . '/iban_registry.yaml');
-        }
-
-        $this->registry = $registryLoader->load();
+            $this->registry = include $registryFile
+                ?? dirname(__DIR__, 2) . '/Resource/iban_registry_202009r88.php';
     }
 
     /**
