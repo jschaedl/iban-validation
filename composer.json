@@ -23,8 +23,8 @@
 	},
 	"require" : {
 		"php" : ">=7.2",
-		"symfony/options-resolver": "^3.4|^4.4.11|^5.1",
-		"symfony/yaml": "^3.4|^4.4.9|^5.1"
+		"symfony/options-resolver": "^3.4|^4.4.11|^5.1|^6.0",
+		"symfony/yaml": "^3.4|^4.4.9|^5.1|^6.0"
 	},
 	"suggest": {
        		"ext-bcmath" : "This library makes use of bcmod function, so an installed bcmath extension is recommended."
