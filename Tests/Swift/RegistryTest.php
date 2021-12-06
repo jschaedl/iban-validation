@@ -26,7 +26,7 @@ final class RegistryTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->registry = new Registry(new RegistryLoader(__DIR__ . '/iban_registry.yaml'));
+        $this->registry = new Registry();
     }
 
     public function testItShouldThrowExceptionForUnsupportedCountryCode()
@@ -57,6 +57,6 @@ final class RegistryTest extends TestCase
      */
     private function getData()
     {
-        return Yaml::parseFile(__DIR__ . '/iban_registry.yaml');
+        return include dirname(__DIR__, 2) . '/Resource/iban_registry_202009r88.php';
     }
 }

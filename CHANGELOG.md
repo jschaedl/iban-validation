@@ -1,8 +1,13 @@
 # CHANGELOG
 
-## [Version 1.7.1](https://github.com/jschaedl/iban-validation/releases/tag/v1.7.1)
+## [Version 1.8.0](https://github.com/jschaedl/iban-validation/releases/tag/v1.8)
 
-Not yet released
+Unreleased
+
+### Changed
+
+ * Removed symfony/yaml dependency and loaded Swift registry data as PHP array to improve performance. Thanks to [@jschaedl](https://github.com/jschaedl)!
+ * Added support for symfony/option-resolver version `^6`. Thanks to [@Philipp91](https://github.com/Philipp91)!
 
 ### Updated
 
