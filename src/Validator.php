@@ -125,7 +125,7 @@ final class Validator
     }
 
     /**
-     * @throws InvalidLengthException
+     * @throws InvalidFormatException
      */
     private function validateFormat(Iban $iban): void
     {
