@@ -90,6 +90,7 @@ foreach ($lines as $lineNumber => $line) {
 $regexConverter = new RegexConverter();
 
 $registry = [];
+
 foreach ($countryCodes as $key => $countryCode) {
     if (0 === $key) {
         continue;
@@ -119,7 +120,11 @@ foreach ($countryCodes as $key => $countryCode) {
         'branch_identifier_regex' => empty('N/A' === trim($branchIdentifierStructure[$key]) ? '' : $branchIdentifierStructure[$key]) ? '' : '/^'.$regexConverter->convert(trim($branchIdentifierStructure[$key])).'$/',
     ];
 }
+
+echo '<?php '.PHP_EOL.PHP_EOL;
 echo sprintf('# %s', basename($filename)).PHP_EOL.PHP_EOL;
-echo Yaml::dump($registry);
+echo 'return '.PHP_EOL;
+echo var_export($registry, true);
+echo ';'.PHP_EOL;
 
 exit(0);

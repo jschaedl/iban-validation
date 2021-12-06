@@ -20,7 +20,7 @@ This library is ready to use. The Iban validation should be fine, but there is n
 
 * full country support of IBAN validation based on SWIFT Registry
 * customizable violation messages
-* simple to use object oriented api
+* simple to use object-oriented api
 * high test coverage
 * DIC friendly
 
@@ -112,7 +112,7 @@ Then fix the bug you found or add your enhancements and make a pull request. Ple
 
 ### Unit Testing
 
-All pull requests must be accompanied by passing unit tests. This repository uses phpunit and Composer. 
+All pull requests must be accompanied by passing unit tests. This repository uses PHPUnit and Composer.
 You must run `composer --dev install` to install this package's dependencies. You can run the tests via:
 
 ```sh
