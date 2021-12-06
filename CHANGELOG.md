@@ -1,22 +1,48 @@
 # CHANGELOG
 
+## [Version 2.0.0](https://github.com/jschaedl/iban-validation/releases/tag/v2.0.0)
+
+Unreleased
+
+### Changed
+
+* Made `RegexConverter` final. Thanks to [@jschaedl](https://github.com/jschaedl)!
+* Made `Registry` final. Thanks to [@jschaedl](https://github.com/jschaedl)!
+* Made `RegistryLoader` final. Thanks to [@jschaedl](https://github.com/jschaedl)!
+* Made `CountryInfo` final. Thanks to [@jschaedl](https://github.com/jschaedl)!
+* Made `Validator` final. Thanks to [@jschaedl](https://github.com/jschaedl)!
+* Made `Iban` final. Thanks to [@jschaedl](https://github.com/jschaedl)!
+
+### Removed
+
+* Removed method `Iban::getCountryCode()`, use `Iban::countryCode()` instead. Thanks to [@jschaedl](https://github.com/jschaedl)!
+* Removed method `Iban::getChecksum()`, use `Iban::checksum()` instead. Thanks to [@jschaedl](https://github.com/jschaedl)!
+* Removed method `Iban::getBban()`, use `Iban::bban()` instead. Thanks to [@jschaedl](https://github.com/jschaedl)!
+* Removed method `Iban::getBbanBankIdentifier()`, use `Iban::bbanBankIdentifier()` instead. Thanks to [@jschaedl](https://github.com/jschaedl)!
+* Removed method `CountryInfo::getBbanBankIdentifierStartPos()`. Thanks to [@jschaedl](https://github.com/jschaedl)!
+* Removed method `CountryInfo::getBbanBankIdentifierEndPos()`. Thanks to [@jschaedl](https://github.com/jschaedl)!
+* Dropped support for PHP `7.1`. Thanks to [@jschaedl](https://github.com/jschaedl)!
+* Removed all composer dev dependencies. Thanks to [@jschaedl](https://github.com/jschaedl)!
+
+---
+
 ## [Version 1.8.0](https://github.com/jschaedl/iban-validation/releases/tag/v1.8.0)
 
 Released on December 6th 2021
 
 ### Changed
 
- * Removed symfony/yaml dependency and loaded Swift registry data as PHP array to improve performance. Thanks to [@jschaedl](https://github.com/jschaedl)!
- * Added support for symfony/option-resolver version `^6`. Thanks to [@Philipp91](https://github.com/Philipp91)!
+* Removed symfony/yaml dependency and loaded Swift registry data as PHP array to improve performance. Thanks to [@jschaedl](https://github.com/jschaedl)!
+* Added support for symfony/option-resolver version `^6`. Thanks to [@Philipp91](https://github.com/Philipp91)!
 
 ### Updated
 
- * Updated iban registry to version 88. Thanks to [@jschaedl](https://github.com/jschaedl)!
-    * IBANs for Libya can now be validated.
+* Updated iban registry to version 88. Thanks to [@jschaedl](https://github.com/jschaedl)!
+   * IBANs for Libya can now be validated.
 
 ### Fixed
 
- * Fixed README.md. Thanks to [@jschaedl](https://github.com/jschaedl)!
+* Fixed README.md. Thanks to [@jschaedl](https://github.com/jschaedl)!
 
 ---
 
@@ -54,11 +80,11 @@ Released on May 5th 2020
 
 ### Added
 
- * Added checksum reporting in `InvalidChecksumException`. Thanks to [@tugrul](https://github.com/tugrul)!
+* Added checksum reporting in `InvalidChecksumException`. Thanks to [@tugrul](https://github.com/tugrul)!
 
 ### Updated
 
- * Updated iban registry to version 86. Thanks to [@jschaedl](https://github.com/jschaedl)!
+* Updated iban registry to version 86. Thanks to [@jschaedl](https://github.com/jschaedl)!
 
 ---
 
@@ -68,17 +94,17 @@ Released on February 5th 2020
 
 ### Fixed
 
- * Properly fail on non-numeric country codes. Thanks to [@xabbuh](https://github.com/xabbuh)!
+* Properly fail on non-numeric country codes. Thanks to [@xabbuh](https://github.com/xabbuh)!
 
 ---
 
 ## [Version 1.4](https://github.com/jschaedl/iban-validation/releases/tag/v1.4)
 
-Release on November 25th 2019 
+Release on November 25th 2019
 
 ### Added
 
- * Added Symfony 5.0 support. Thanks to [@jschaedl](https://github.com/jschaedl)!
+* Added Symfony 5.0 support. Thanks to [@jschaedl](https://github.com/jschaedl)!
 
 ---
 
@@ -88,11 +114,11 @@ Release on April 27th 2019
 
 ### Fixed
 
- * Set correct scale for bcmod function. Thanks to [@CodeDuck42](https://github.com/CodeDuck42)!
+* Set correct scale for bcmod function. Thanks to [@CodeDuck42](https://github.com/CodeDuck42)!
 
 ### Updated
 
- * Updated iban registry. Thanks to [@jschaedl](https://github.com/jschaedl)
+* Updated iban registry. Thanks to [@jschaedl](https://github.com/jschaedl)
 
 ---
 
@@ -102,11 +128,11 @@ Released on December 14th 2018
 
 ### Changed
 
- * Changed minimum version for yaml and option-resolver component to ^3.4|^4.1. Thanks to [@jschaedl](https://github.com/jschaedl)!
+* Changed minimum version for yaml and option-resolver component to ^3.4|^4.1. Thanks to [@jschaedl](https://github.com/jschaedl)!
 
 ### Updated
- 
- * Updated iban registry file to version 80. Thanks to [@jschaedl](https://github.com/jschaedl)!
+
+* Updated iban registry file to version 80. Thanks to [@jschaedl](https://github.com/jschaedl)!
 
 ---
 
@@ -116,7 +142,7 @@ Released on September 14th 2018
 
 ### Added
 
- * Added `FORMAT_ANONYMIZED` IBAN format: `$iban->format(Iban::FORMAT_ANONYMIZED)`. Thanks to [@jschaedl](https://github.com/jschaedl)!
+* Added `FORMAT_ANONYMIZED` IBAN format: `$iban->format(Iban::FORMAT_ANONYMIZED)`. Thanks to [@jschaedl](https://github.com/jschaedl)!
 
 ---
 

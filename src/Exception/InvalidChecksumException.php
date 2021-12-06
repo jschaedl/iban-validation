@@ -11,18 +11,24 @@
 
 namespace Iban\Validation\Exception;
 
+/**
+ * @author Jan Schädlich <mail@janschaedlich.de>
+ */
 class InvalidChecksumException extends \RuntimeException
 {
+    /**
+     * @var string
+     */
     protected $validChecksum;
 
-    public function __construct($iban, $validChecksum)
+    public function __construct(string $iban, string $validChecksum)
     {
         $this->validChecksum = $validChecksum;
 
-        parent::__construct(sprintf('Checksum of given IBAN "%s" is not valid! Valid checksum is %s', $iban, $validChecksum));
+        parent::__construct(sprintf('Checksum of given IBAN "%s" is not valid. Valid checksum is "%s".', $iban, $validChecksum));
     }
 
-    public function getValidChecksum()
+    public function getValidChecksum(): string
     {
         return $this->validChecksum;
     }

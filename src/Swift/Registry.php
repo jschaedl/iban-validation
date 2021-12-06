@@ -17,10 +17,8 @@ use Iban\Validation\Swift\Exception\UnsupportedCountryCodeException;
  * Provides access to the loaded data from the iban_registry text file provided by SWIFT.
  *
  * @author Jan Schädlich <mail@janschaedlich.de>
- *
- * @final since 1.7
  */
-class Registry
+final class Registry
 {
     /**
      * @var array
@@ -29,48 +27,33 @@ class Registry
 
     public function __construct(string $registryFile = null)
     {
-            $this->registry = require $registryFile
-                ?? dirname(__DIR__, 2) . '/Resource/iban_registry_202009r88.php';
+        $this->registry = require $registryFile
+            ?? dirname(__DIR__, 2) . '/Resource/iban_registry_202009r88.php';
     }
 
-    /**
-     * @private since 1.7
-     * @param string $countryCode
-     * @return bool
-     */
-    public function isCountryAvailable($countryCode)
+    public function isCountryAvailable(string $countryCode): bool
     {
         return array_key_exists($countryCode, $this->registry);
     }
 
     /**
-     * @param string $countryCode
-     * @return string
      * @throws UnsupportedCountryCodeException
      */
-    public function getCountryName($countryCode)
+    public function getCountryName(string $countryCode): string
     {
         $this->guardAgainstUnsupportedCountryCode($countryCode);
 
         return strval($this->registry[$countryCode]['country_name']);
     }
 
-    /**
-     * @param string $countryCode
-     * @return string
-     */
-    public function getIbanStructure($countryCode)
+    public function getIbanStructure(string $countryCode): string
     {
         $this->guardAgainstUnsupportedCountryCode($countryCode);
 
         return strval($this->registry[$countryCode]['iban_structure']);
     }
 
-    /**
-     * @param string $countryCode
-     * @return string
-     */
-    public function getBbanStructure($countryCode)
+    public function getBbanStructure(string $countryCode): string
     {
         $this->guardAgainstUnsupportedCountryCode($countryCode);
 
@@ -78,11 +61,9 @@ class Registry
     }
 
     /**
-     * @param string $countryCode
-     * @return string
      * @throws UnsupportedCountryCodeException
      */
-    public function getIbanRegex($countryCode)
+    public function getIbanRegex(string $countryCode): string
     {
         $this->guardAgainstUnsupportedCountryCode($countryCode);
 
@@ -90,11 +71,9 @@ class Registry
     }
 
     /**
-     * @param string $countryCode
-     * @return string
      * @throws UnsupportedCountryCodeException
      */
-    public function getBbanRegex($countryCode)
+    public function getBbanRegex(string $countryCode): string
     {
         $this->guardAgainstUnsupportedCountryCode($countryCode);
 
@@ -102,11 +81,9 @@ class Registry
     }
 
     /**
-     * @param string $countryCode
-     * @return int
      * @throws UnsupportedCountryCodeException
      */
-    public function getBbanLength($countryCode)
+    public function getBbanLength(string $countryCode): int
     {
         $this->guardAgainstUnsupportedCountryCode($countryCode);
 
@@ -114,18 +91,16 @@ class Registry
     }
 
     /**
-     * @param string $countryCode
-     * @return int
      * @throws UnsupportedCountryCodeException
      */
-    public function getIbanLength($countryCode)
+    public function getIbanLength(string $countryCode): int
     {
         $this->guardAgainstUnsupportedCountryCode($countryCode);
 
         return intval($this->registry[$countryCode]['iban_length']);
     }
 
-    public function getBbanBankIdentifierStartPos($countryCode)
+    public function getBbanBankIdentifierStartPos(string $countryCode): int
     {
         $this->guardAgainstUnsupportedCountryCode($countryCode);
 
@@ -136,10 +111,10 @@ class Registry
         $positionString = substr($this->registry[$countryCode]['bank_identifier_position'], 0, 3);
         $positionArray = explode('-', $positionString);
 
-        return intval(reset($positionArray))-1;
+        return intval(reset($positionArray)) - 1;
     }
 
-    public function getBbanBankIdentifierEndPos($countryCode)
+    public function getBbanBankIdentifierEndPos(string $countryCode): int
     {
         $this->guardAgainstUnsupportedCountryCode($countryCode);
 
@@ -154,11 +129,9 @@ class Registry
     }
 
     /**
-     * @param string $countryCode
-     * @return string
      * @throws UnsupportedCountryCodeException
      */
-    public function getIbanElectronicFormatExample($countryCode)
+    public function getIbanElectronicFormatExample(string $countryCode): string
     {
         $this->guardAgainstUnsupportedCountryCode($countryCode);
 
@@ -166,11 +139,9 @@ class Registry
     }
 
     /**
-     * @param string $countryCode
-     * @return string
      * @throws UnsupportedCountryCodeException
      */
-    public function getIbanPrintFormatExample($countryCode)
+    public function getIbanPrintFormatExample(string $countryCode): string
     {
         $this->guardAgainstUnsupportedCountryCode($countryCode);
 
@@ -178,10 +149,9 @@ class Registry
     }
 
     /**
-     * @param string $countryCode
      * @throws UnsupportedCountryCodeException
      */
-    private function guardAgainstUnsupportedCountryCode($countryCode)
+    private function guardAgainstUnsupportedCountryCode(string $countryCode): void
     {
         if (!$this->isCountryAvailable($countryCode)) {
             throw new UnsupportedCountryCodeException($countryCode);

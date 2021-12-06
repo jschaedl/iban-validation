@@ -14,10 +14,10 @@ namespace Iban\Validation\Exception;
 /**
  * @author Jan Schädlich <mail@janschaedlich.de>
  */
-class InvalidFormatException extends \RuntimeException
+class CanNotBeNormalizedException extends \RuntimeException
 {
     public function __construct(string $iban)
     {
-        parent::__construct(sprintf('Format of given IBAN "%s" is not valid.', $iban));
+        parent::__construct(sprintf('Given IBAN "%s" can not be normalized.', $iban));
     }
 }
