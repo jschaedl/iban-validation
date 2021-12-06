@@ -27,10 +27,16 @@ class Registry
      */
     private $registry;
 
-    public function __construct(string $registryFile = null)
+    /**
+     * @param RegistryLoaderInterface $registryLoader
+     */
+    public function __construct(/* RegistryLoaderInterface */$registryLoader = null)
     {
-            $this->registry = require $registryFile
-                ?? dirname(__DIR__, 2) . '/Resource/iban_registry_202009r88.php';
+        if (!$registryLoader instanceof RegistryLoaderInterface) {
+            @trigger_error(sprintf('Not implementing the "%s" for argument "$registryLoader" is deprecated since 1.8.1.', RegistryLoaderInterface::class), E_USER_DEPRECATED);
+        }
+
+        $this->registry = $registryLoader ? $registryLoader->load() : (new PhpRegistryLoader())->load();
     }
 
     /**

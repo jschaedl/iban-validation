@@ -57,6 +57,6 @@ final class RegistryTest extends TestCase
      */
     private function getData()
     {
-        return include dirname(__DIR__, 2) . '/Resource/iban_registry_202009r88.php';
+        return require dirname(__DIR__, 2) . '/Resource/iban_registry_202009r88.php';
     }
 }
