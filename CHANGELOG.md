@@ -7,6 +7,7 @@ Unreleased
 ### Changed
 
  * Removed symfony/yaml dependency and loaded Swift registry data as PHP array to improve performance. Thanks to [@jschaedl](https://github.com/jschaedl)!
+ * Added support for symfony/option-resolver version `^6`. Thanks to [@Philipp91](https://github.com/Philipp91)!
 
 ### Updated
 
