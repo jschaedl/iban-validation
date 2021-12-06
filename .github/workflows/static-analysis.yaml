@@ -10,7 +10,7 @@ name: "Static analysis"
 
 jobs:
     static-code-analysis-phpstan:
-        name: "Static Code Analysis by PHPStan"
+        name: "Static analysis"
 
         runs-on: ubuntu-latest
 
@@ -32,7 +32,7 @@ jobs:
             - name: Setup PHP
               uses: shivammathur/setup-php@v2
               with:
-                  php-version: 7.2
+                  php-version: 7.4
                   extensions: mbstring, xml, ctype, iconv, bcmath
                   coverage: none
                   tools: phive, composer:v2

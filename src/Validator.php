@@ -94,7 +94,7 @@ final class Validator
         return $this->violations;
     }
 
-    protected function configureOptions(OptionsResolver $resolver): void
+    private function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'violation.unsupported_country' => 'The requested country is not supported!',
@@ -107,7 +107,7 @@ final class Validator
     /**
      * @throws UnsupportedCountryCodeException
      */
-    protected function validateCountryCode(Iban $iban): void
+    private function validateCountryCode(Iban $iban): void
     {
         if (!$this->swiftRegistry->isCountryAvailable($iban->countryCode())) {
             throw new UnsupportedCountryCodeException($iban);
@@ -117,7 +117,7 @@ final class Validator
     /**
      * @throws InvalidLengthException
      */
-    protected function validateLength(Iban $iban): void
+    private function validateLength(Iban $iban): void
     {
         if ((strlen($iban->getNormalizedIban()) !== $this->swiftRegistry->getIbanLength($iban->countryCode()))) {
             throw new InvalidLengthException($iban);
@@ -127,7 +127,7 @@ final class Validator
     /**
      * @throws InvalidLengthException
      */
-    protected function validateFormat(Iban $iban): void
+    private function validateFormat(Iban $iban): void
     {
         if ((1 !== preg_match($this->swiftRegistry->getIbanRegex($iban->countryCode()), $iban->getNormalizedIban()))) {
             throw new InvalidFormatException($iban);
@@ -137,7 +137,7 @@ final class Validator
     /**
      * @throws InvalidChecksumException
      */
-    protected function validateChecksum(Iban $iban): void
+    private function validateChecksum(Iban $iban): void
     {
         $invertedIban = self::convertToBigInt($iban->bban().$iban->countryCode().$iban->checksum());
 

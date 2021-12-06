@@ -28,7 +28,7 @@ final class Registry
     public function __construct(string $registryFile = null)
     {
         $this->registry = require $registryFile
-            ?? dirname(__DIR__, 2) . '/Resource/iban_registry_202009r88.php';
+            ?? dirname(__DIR__, 2).'/Resource/iban_registry_202009r88.php';
     }
 
     public function isCountryAvailable(string $countryCode): bool

@@ -121,10 +121,10 @@ foreach ($countryCodes as $key => $countryCode) {
     ];
 }
 
-echo '<?php ' .  PHP_EOL . PHP_EOL;
-echo sprintf('# %s', basename($filename)) . PHP_EOL . PHP_EOL;
-echo 'return '. PHP_EOL;
+echo '<?php '.PHP_EOL.PHP_EOL;
+echo sprintf('# %s', basename($filename)).PHP_EOL.PHP_EOL;
+echo 'return '.PHP_EOL;
 echo var_export($registry, true);
-echo ';'. PHP_EOL;
+echo ';'.PHP_EOL;
 
 exit(0);
