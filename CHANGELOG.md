@@ -1,8 +1,8 @@
 # CHANGELOG
 
-## [Version 1.8.0](https://github.com/jschaedl/iban-validation/releases/tag/v1.8)
+## [Version 1.8.0](https://github.com/jschaedl/iban-validation/releases/tag/v1.8.0)
 
-Unreleased
+Released on December 6th 2021
 
 ### Changed
 
