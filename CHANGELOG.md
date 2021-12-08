@@ -27,6 +27,20 @@ Unreleased
 
 ---
 
+## [Version 1.8.1](https://github.com/jschaedl/iban-validation/releases/tag/v1.8.1)
+
+Released on December 9th 2021
+
+### Changed
+
+ * Deprecated the usage of class `RegistryLoader`, you should implement the `RegistryLoaderInterface` for custom Loaders. Thanks to [@jschaedl](https://github.com/jschaedl)!
+
+### Fixed
+
+ * Fixed https://github.com/jschaedl/iban-validation/issues/67. Thanks to [@jschaedl](https://github.com/jschaedl)!
+
+---
+
 ## [Version 1.8.0](https://github.com/jschaedl/iban-validation/releases/tag/v1.8.0)
 
 Released on December 6th 2021
@@ -39,7 +53,7 @@ Released on December 6th 2021
 ### Updated
 
 * Updated iban registry to version 88. Thanks to [@jschaedl](https://github.com/jschaedl)!
-   * IBANs for Libya can now be validated.
+    * IBANs for Libya can now be validated.
 
 ### Fixed
 
@@ -53,25 +67,25 @@ Released on December 3rd 2020
 
 ### Changed
 
- * `Registry::isCountryAvailable()` is supposed to be private, you should not rely on it anymore. Thanks to [@jschaedl](https://github.com/jschaedl)!
- * `Iban::getNormalizedIban()` is supposed to be private, use `Iban::format()` instead. Thanks to [@jschaedl](https://github.com/jschaedl)!
- * Marked `RegexConverter` as `@internal`, you should not rely on it anymore. Thanks to [@jschaedl](https://github.com/jschaedl)!
- * Marked `RegexConverter` as `@final`, you should not extend it anymore. Thanks to [@jschaedl](https://github.com/jschaedl)!
- * Marked `Registry` as `@final`, you should not extend it anymore. Thanks to [@jschaedl](https://github.com/jschaedl)!
- * Marked `RegistryLoader` as `@final`, you should not extend it anymore. Thanks to [@jschaedl](https://github.com/jschaedl)!
- * Marked `CountryInfo` as `@final`, you should not extend it anymore. Thanks to [@jschaedl](https://github.com/jschaedl)!
- * Marked `Validator` as `@final`, you should not extend it anymore. Thanks to [@jschaedl](https://github.com/jschaedl)!
- * Marked `Iban` as `@final`, you should not extend it anymore. Thanks to [@jschaedl](https://github.com/jschaedl)!
- * Changed the PHP version constraint to `>=7.1` to allow PHP 8. Thanks to [@chris-doehring](https://github.com/chris-doehring)!
+* `Registry::isCountryAvailable()` is supposed to be private, you should not rely on it anymore. Thanks to [@jschaedl](https://github.com/jschaedl)!
+* `Iban::getNormalizedIban()` is supposed to be private, use `Iban::format()` instead. Thanks to [@jschaedl](https://github.com/jschaedl)!
+* Marked `RegexConverter` as `@internal`, you should not rely on it anymore. Thanks to [@jschaedl](https://github.com/jschaedl)!
+* Marked `RegexConverter` as `@final`, you should not extend it anymore. Thanks to [@jschaedl](https://github.com/jschaedl)!
+* Marked `Registry` as `@final`, you should not extend it anymore. Thanks to [@jschaedl](https://github.com/jschaedl)!
+* Marked `RegistryLoader` as `@final`, you should not extend it anymore. Thanks to [@jschaedl](https://github.com/jschaedl)!
+* Marked `CountryInfo` as `@final`, you should not extend it anymore. Thanks to [@jschaedl](https://github.com/jschaedl)!
+* Marked `Validator` as `@final`, you should not extend it anymore. Thanks to [@jschaedl](https://github.com/jschaedl)!
+* Marked `Iban` as `@final`, you should not extend it anymore. Thanks to [@jschaedl](https://github.com/jschaedl)!
+* Changed the PHP version constraint to `>=7.1` to allow PHP 8. Thanks to [@chris-doehring](https://github.com/chris-doehring)!
 
 ### Deprecated
 
- * Deprecated method `Iban::getCountryCode()`, use `Iban::countryCode()` instead. Thanks to [@jschaedl](https://github.com/jschaedl)!
- * Deprecated method `Iban::getChecksum()`, use `Iban::checksum()` instead. Thanks to [@jschaedl](https://github.com/jschaedl)!
- * Deprecated method `Iban::getBban()`, use `Iban::bban()` instead. Thanks to [@jschaedl](https://github.com/jschaedl)!
- * Deprecated method `Iban::getBbanBankIdentifier()`, use `Iban::bbanBankIdentifier()` instead. Thanks to [@jschaedl](https://github.com/jschaedl)!
- * Deprecated method `CountryInfo::getBbanBankIdentifierStartPos()`, you should not rely on it anymore. Thanks to [@jschaedl](https://github.com/jschaedl)!
- * Deprecated method `CountryInfo::getBbanBankIdentifierEndPos()`, you should not rely on it anymore. Thanks to [@jschaedl](https://github.com/jschaedl)!
+* Deprecated method `Iban::getCountryCode()`, use `Iban::countryCode()` instead. Thanks to [@jschaedl](https://github.com/jschaedl)!
+* Deprecated method `Iban::getChecksum()`, use `Iban::checksum()` instead. Thanks to [@jschaedl](https://github.com/jschaedl)!
+* Deprecated method `Iban::getBban()`, use `Iban::bban()` instead. Thanks to [@jschaedl](https://github.com/jschaedl)!
+* Deprecated method `Iban::getBbanBankIdentifier()`, use `Iban::bbanBankIdentifier()` instead. Thanks to [@jschaedl](https://github.com/jschaedl)!
+* Deprecated method `CountryInfo::getBbanBankIdentifierStartPos()`, you should not rely on it anymore. Thanks to [@jschaedl](https://github.com/jschaedl)!
+* Deprecated method `CountryInfo::getBbanBankIdentifierEndPos()`, you should not rely on it anymore. Thanks to [@jschaedl](https://github.com/jschaedl)!
 
 ---
 

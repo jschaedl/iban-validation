@@ -25,10 +25,9 @@ final class Registry
      */
     private $registry;
 
-    public function __construct(string $registryFile = null)
+    public function __construct(RegistryLoaderInterface $registryLoader = null)
     {
-        $this->registry = require $registryFile
-            ?? dirname(__DIR__, 2).'/Resource/iban_registry_202009r88.php';
+        $this->registry = $registryLoader ? $registryLoader->load() : (new PhpRegistryLoader())->load();
     }
 
     public function isCountryAvailable(string $countryCode): bool
