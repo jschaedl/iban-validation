@@ -10,25 +10,36 @@ name: "Tests"
 
 jobs:
     tests:
-        name: "PHP ${{ matrix.php-version }} Test"
+        name: "Tests on PHP ${{ matrix.php-version }}"
 
         runs-on: ubuntu-latest
 
         strategy:
             matrix:
-                php-version: [7.1, 7.2, 7.3, 7.4, 8.0]
+                php-version: [7.4, 8.0, 8.1]
 
         steps:
             - name: "Checkout"
               uses: actions/checkout@v2
 
+            - name: "Cache tools installed with phive"
+              uses: actions/cache@v2
+              with:
+                  path: |
+                      ~/.phive
+                  key: phive-${{ runner.os }}-${{ matrix.php-version }}-${{ hashFiles('.phive/phars.xml') }}
+                  restore-keys: |
+                      phive-${{ runner.os }}-${{ matrix.php-version }}-
+                      phive-${{ runner.os }}-
+                      phive-
+
             - name: Setup PHP
               uses: shivammathur/setup-php@v2
               with:
                   php-version: ${{ matrix.php-version }}
-                  extensions: bcmath
+                  extensions: mbstring, xml, ctype, iconv, bcmath
                   coverage: none
-                  tools: composer:v2
+                  tools: phive, composer:v2
 
             - name: Get composer cache directory
               id: composercache
@@ -44,8 +55,12 @@ jobs:
                       composer-${{ runner.os }}-
                       composer-
 
-            - name: "Install dependencies"
-              run: composer install --prefer-dist --no-progress --no-suggest
+            - name: "Install tools with phive"
+              run: make tools-install
+
+            - name: "Update PHPUnit for PHP 8"
+              if: ${{ matrix.php-version < 7.4 }}
+              run: phive --no-progress update phpunit
 
             - name: "Run tests"
-              run: vendor/bin/phpunit
+              run: make tests

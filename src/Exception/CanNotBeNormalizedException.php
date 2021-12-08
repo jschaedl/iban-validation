@@ -9,17 +9,15 @@
  * file that was distributed with this source code.
  */
 
-namespace Iban\Validation\Swift;
+namespace Iban\Validation\Exception;
 
 /**
- * Loads the iban_registry php file.
- *
  * @author Jan Schädlich <mail@janschaedlich.de>
  */
-final class PhpRegistryLoader implements RegistryLoaderInterface
+class CanNotBeNormalizedException extends \RuntimeException
 {
-    public function load(): array
+    public function __construct(string $iban)
     {
-        return require dirname(__DIR__, 2).'/Resource/iban_registry_202009r88.php';
+        parent::__construct(sprintf('Given IBAN "%s" can not be normalized.', $iban));
     }
 }

@@ -3,10 +3,9 @@
 A small library for validating International Bankaccount Numbers (IBANs) based on the IBAN Registry provided by SWIFT.
 See https://www.swift.com/standards/data-standards/iban for more information.
 
-[![Build Status](https://github.com/jschaedl/iban-validation/workflows/Tests/badge.svg)](https://github.com/jschaedl/iban-validation)
-![PHP Version](https://img.shields.io/badge/version-PHP%207.1%2B-lightgrey.svg)
+![PHP Version](https://img.shields.io/badge/version-PHP%207.2%2B-lightgrey.svg)
 [![Latest Stable Version](https://poser.pugx.org/jschaedl/iban-validation/v/stable)](https://packagist.org/packages/jschaedl/iban-validation) 
-[![Latest Unstable Version](https://poser.pugx.org/jschaedl/iban-validation/v/unstable)](https://packagist.org/packages/jschaedl/iban-validation)
+[![Latest Unstable Version](https://poser.pugx.org/jschaedl/iban-validation/v/unstable)](https://packagist.org/packages/jschaedl/iban-validation) 
 [![Total Downloads](https://poser.pugx.org/jschaedl/iban-validation/downloads)](https://packagist.org/packages/jschaedl/iban-validation) 
 [![License](https://poser.pugx.org/jschaedl/iban-validation/license)](https://packagist.org/packages/jschaedl/iban-validation) 
 
@@ -108,8 +107,8 @@ $countryInfo->getIbanElectronicExample(); // 'DE89370400440532013000'
  
 ## How to contribute
 
-If you want to fix some bugs or want to enhance some functionality, please fork one of the release branches and create your own development branch.
-Then fix the bug you found or add your enhancements and make a pull request. Please commit your changes in tiny steps and add a detailed description on every commit.
+If you want to fix some bugs or want to enhance some functionality, please fork the master branch and create your own development branch. 
+Then fix the bug you found or add your enhancements and make a pull request. Please commit your changes in tiny steps and add a detailed description on every commit. 
 
 ### Unit Testing
 
