@@ -1,0 +1,1232 @@
+AD:
+    country_name: Andorra
+    iban_structure: AD2!n4!n4!n12!c
+    bban_structure: 4!n4!n12!c
+    iban_regex: '/^AD\d{2}\d{4}\d{4}[A-Z0-9]{12}$/'
+    bban_regex: '/^\d{4}\d{4}[A-Z0-9]{12}$/'
+    iban_length: 24
+    bban_length: 20
+    iban_electronic_format_example: AD1200012030200359100100
+    iban_print_format_example: 'AD12 0001 2030 2003 5910 0100'
+    bank_identifier_position: 1-4
+    bank_identifier_structure: 4!n
+    bank_identifier_regex: '/^\d{4}$/'
+    branch_identifier_position: 5-8
+    branch_identifier_structure: 4!n
+    branch_identifier_regex: '/^\d{4}$/'
+AE:
+    country_name: 'United Arab Emirates (The)'
+    iban_structure: AE2!n3!n16!n
+    bban_structure: 3!n16!n
+    iban_regex: '/^AE\d{2}\d{3}\d{16}$/'
+    bban_regex: '/^\d{3}\d{16}$/'
+    iban_length: 23
+    bban_length: 19
+    iban_electronic_format_example: AE070331234567890123456
+    iban_print_format_example: 'AE07 0331 2345 6789 0123 456'
+    bank_identifier_position: 1-3
+    bank_identifier_structure: 3!n
+    bank_identifier_regex: '/^\d{3}$/'
+    branch_identifier_position: ''
+    branch_identifier_structure: ''
+    branch_identifier_regex: ''
+AL:
+    country_name: Albania
+    iban_structure: AL2!n8!n16!c
+    bban_structure: 8!n16!c
+    iban_regex: '/^AL\d{2}\d{8}[A-Z0-9]{16}$/'
+    bban_regex: '/^\d{8}[A-Z0-9]{16}$/'
+    iban_length: 28
+    bban_length: 24
+    iban_electronic_format_example: AL47212110090000000235698741
+    iban_print_format_example: 'AL47 2121 1009 0000 0002 3569 8741'
+    bank_identifier_position: 1-3
+    bank_identifier_structure: 8!n
+    bank_identifier_regex: '/^\d{8}$/'
+    branch_identifier_position: 4-8
+    branch_identifier_structure: 5!n
+    branch_identifier_regex: '/^\d{5}$/'
+AT:
+    country_name: Austria
+    iban_structure: AT2!n5!n11!n
+    bban_structure: 5!n11!n
+    iban_regex: '/^AT\d{2}\d{5}\d{11}$/'
+    bban_regex: '/^\d{5}\d{11}$/'
+    iban_length: 20
+    bban_length: 16
+    iban_electronic_format_example: AT611904300234573201
+    iban_print_format_example: 'AT61 1904 3002 3457 3201'
+    bank_identifier_position: 1-5
+    bank_identifier_structure: 5!n
+    bank_identifier_regex: '/^\d{5}$/'
+    branch_identifier_position: ''
+    branch_identifier_structure: ''
+    branch_identifier_regex: ''
+AZ:
+    country_name: Azerbaijan
+    iban_structure: AZ2!n4!a20!c
+    bban_structure: 4!a20!c
+    iban_regex: '/^AZ\d{2}[A-Z]{4}[A-Z0-9]{20}$/'
+    bban_regex: '/^[A-Z]{4}[A-Z0-9]{20}$/'
+    iban_length: 28
+    bban_length: 24
+    iban_electronic_format_example: AZ21NABZ00000000137010001944
+    iban_print_format_example: 'AZ21 NABZ 0000 0000 1370 1000 1944'
+    bank_identifier_position: 1-4
+    bank_identifier_structure: 4!a
+    bank_identifier_regex: '/^[A-Z]{4}$/'
+    branch_identifier_position: ''
+    branch_identifier_structure: ''
+    branch_identifier_regex: ''
+BA:
+    country_name: 'Bosnia and Herzegovina'
+    iban_structure: BA2!n3!n3!n8!n2!n
+    bban_structure: 3!n3!n8!n2!n
+    iban_regex: '/^BA\d{2}\d{3}\d{3}\d{8}\d{2}$/'
+    bban_regex: '/^\d{3}\d{3}\d{8}\d{2}$/'
+    iban_length: 20
+    bban_length: 16
+    iban_electronic_format_example: BA391290079401028494
+    iban_print_format_example: 'BA39 1290 0794 0102 8494'
+    bank_identifier_position: 1-3
+    bank_identifier_structure: 3!n
+    bank_identifier_regex: '/^\d{3}$/'
+    branch_identifier_position: 4-6
+    branch_identifier_structure: 3!n
+    branch_identifier_regex: '/^\d{3}$/'
+BE:
+    country_name: Belgium
+    iban_structure: BE2!n3!n7!n2!n
+    bban_structure: 3!n7!n2!n
+    iban_regex: '/^BE\d{2}\d{3}\d{7}\d{2}$/'
+    bban_regex: '/^\d{3}\d{7}\d{2}$/'
+    iban_length: 16
+    bban_length: 12
+    iban_electronic_format_example: BE68539007547034
+    iban_print_format_example: 'BE68 5390 0754 7034'
+    bank_identifier_position: 1-3
+    bank_identifier_structure: 3!n
+    bank_identifier_regex: '/^\d{3}$/'
+    branch_identifier_position: ''
+    branch_identifier_structure: ''
+    branch_identifier_regex: ''
+BG:
+    country_name: Bulgaria
+    iban_structure: BG2!n4!a4!n2!n8!c
+    bban_structure: 4!a4!n2!n8!c
+    iban_regex: '/^BG\d{2}[A-Z]{4}\d{4}\d{2}[A-Z0-9]{8}$/'
+    bban_regex: '/^[A-Z]{4}\d{4}\d{2}[A-Z0-9]{8}$/'
+    iban_length: 22
+    bban_length: 18
+    iban_electronic_format_example: BG80BNBG96611020345678
+    iban_print_format_example: 'BG80 BNBG 9661 1020 3456 78'
+    bank_identifier_position: 1-4
+    bank_identifier_structure: 4!a
+    bank_identifier_regex: '/^[A-Z]{4}$/'
+    branch_identifier_position: 5-8
+    branch_identifier_structure: 4!n
+    branch_identifier_regex: '/^\d{4}$/'
+BH:
+    country_name: Bahrain
+    iban_structure: BH2!n4!a14!c
+    bban_structure: 4!a14!c
+    iban_regex: '/^BH\d{2}[A-Z]{4}[A-Z0-9]{14}$/'
+    bban_regex: '/^[A-Z]{4}[A-Z0-9]{14}$/'
+    iban_length: 22
+    bban_length: 18
+    iban_electronic_format_example: BH67BMAG00001299123456
+    iban_print_format_example: 'BH67 BMAG 0000 1299 1234 56'
+    bank_identifier_position: 1-4
+    bank_identifier_structure: 4!n
+    bank_identifier_regex: '/^\d{4}$/'
+    branch_identifier_position: ''
+    branch_identifier_structure: ''
+    branch_identifier_regex: ''
+BR:
+    country_name: Brazil
+    iban_structure: BR2!n8!n5!n10!n1!a1!c
+    bban_structure: 8!n5!n10!n1!a1!c
+    iban_regex: '/^BR\d{2}\d{8}\d{5}\d{10}[A-Z]{1}[A-Z0-9]{1}$/'
+    bban_regex: '/^\d{8}\d{5}\d{10}[A-Z]{1}[A-Z0-9]{1}$/'
+    iban_length: 29
+    bban_length: 25
+    iban_electronic_format_example: BR1800360305000010009795493C1
+    iban_print_format_example: 'BR18 0036 0305 0000 1000 9795 493C 1'
+    bank_identifier_position: 1-8
+    bank_identifier_structure: 8!n
+    bank_identifier_regex: '/^\d{8}$/'
+    branch_identifier_position: 9-13
+    branch_identifier_structure: 5!n
+    branch_identifier_regex: '/^\d{5}$/'
+BY:
+    country_name: 'Republic of Belarus'
+    iban_structure: BY2!n4!c4!n16!c
+    bban_structure: 4!c4!n16!c
+    iban_regex: '/^BY\d{2}[A-Z0-9]{4}\d{4}[A-Z0-9]{16}$/'
+    bban_regex: '/^[A-Z0-9]{4}\d{4}[A-Z0-9]{16}$/'
+    iban_length: 28
+    bban_length: 24
+    iban_electronic_format_example: BY13NBRB3600900000002Z00AB00
+    iban_print_format_example: 'BY13 NBRB 3600 9000 0000 2Z00 AB00'
+    bank_identifier_position: 1-4
+    bank_identifier_structure: 4!c
+    bank_identifier_regex: '/^[A-Z0-9]{4}$/'
+    branch_identifier_position: ''
+    branch_identifier_structure: ''
+    branch_identifier_regex: ''
+CH:
+    country_name: Switzerland
+    iban_structure: CH2!n5!n12!c
+    bban_structure: 5!n12!c
+    iban_regex: '/^CH\d{2}\d{5}[A-Z0-9]{12}$/'
+    bban_regex: '/^\d{5}[A-Z0-9]{12}$/'
+    iban_length: 21
+    bban_length: 17
+    iban_electronic_format_example: CH9300762011623852957
+    iban_print_format_example: 'CH93 0076 2011 6238 5295 7'
+    bank_identifier_position: 1-5
+    bank_identifier_structure: 5!n
+    bank_identifier_regex: '/^\d{5}$/'
+    branch_identifier_position: ''
+    branch_identifier_structure: ''
+    branch_identifier_regex: ''
+CR:
+    country_name: 'Costa Rica'
+    iban_structure: CR2!n4!n14!n
+    bban_structure: 4!n14!n
+    iban_regex: '/^CR\d{2}\d{4}\d{14}$/'
+    bban_regex: '/^\d{4}\d{14}$/'
+    iban_length: 22
+    bban_length: 18
+    iban_electronic_format_example: CR05015202001026284066
+    iban_print_format_example: 'CR05 0152 0200 1026 2840 66'
+    bank_identifier_position: 1-4
+    bank_identifier_structure: 4!n
+    bank_identifier_regex: '/^\d{4}$/'
+    branch_identifier_position: ''
+    branch_identifier_structure: ''
+    branch_identifier_regex: ''
+CY:
+    country_name: Cyprus
+    iban_structure: CY2!n3!n5!n16!c
+    bban_structure: 3!n5!n16!c
+    iban_regex: '/^CY\d{2}\d{3}\d{5}[A-Z0-9]{16}$/'
+    bban_regex: '/^\d{3}\d{5}[A-Z0-9]{16}$/'
+    iban_length: 28
+    bban_length: 24
+    iban_electronic_format_example: CY17002001280000001200527600
+    iban_print_format_example: 'CY17 0020 0128 0000 0012 0052 7600'
+    bank_identifier_position: 1-3
+    bank_identifier_structure: 3!n
+    bank_identifier_regex: '/^\d{3}$/'
+    branch_identifier_position: 4-8
+    branch_identifier_structure: 5!n
+    branch_identifier_regex: '/^\d{5}$/'
+CZ:
+    country_name: Czechia
+    iban_structure: CZ2!n4!n6!n10!n
+    bban_structure: 4!n6!n10!n
+    iban_regex: '/^CZ\d{2}\d{4}\d{6}\d{10}$/'
+    bban_regex: '/^\d{4}\d{6}\d{10}$/'
+    iban_length: 24
+    bban_length: 20
+    iban_electronic_format_example: CZ6508000000192000145399
+    iban_print_format_example: 'CZ65 0800 0000 1920 0014 5399'
+    bank_identifier_position: 1-4
+    bank_identifier_structure: 4!n
+    bank_identifier_regex: '/^\d{4}$/'
+    branch_identifier_position: ''
+    branch_identifier_structure: ''
+    branch_identifier_regex: ''
+DE:
+    country_name: Germany
+    iban_structure: DE2!n8!n10!n
+    bban_structure: 8!n10!n
+    iban_regex: '/^DE\d{2}\d{8}\d{10}$/'
+    bban_regex: '/^\d{8}\d{10}$/'
+    iban_length: 22
+    bban_length: 18
+    iban_electronic_format_example: DE89370400440532013000
+    iban_print_format_example: 'DE89 3704 0044 0532 0130 00'
+    bank_identifier_position: 1-8
+    bank_identifier_structure: 8!n
+    bank_identifier_regex: '/^\d{8}$/'
+    branch_identifier_position: ''
+    branch_identifier_structure: ''
+    branch_identifier_regex: ''
+DK:
+    country_name: Denmark
+    iban_structure: DK2!n4!n9!n1!n
+    bban_structure: 4!n9!n1!n
+    iban_regex: '/^DK\d{2}\d{4}\d{9}\d{1}$/'
+    bban_regex: '/^\d{4}\d{9}\d{1}$/'
+    iban_length: 18
+    bban_length: 14
+    iban_electronic_format_example: DK5000400440116243
+    iban_print_format_example: 'DK50 0040 0440 1162 43'
+    bank_identifier_position: 1-4
+    bank_identifier_structure: 4!n
+    bank_identifier_regex: '/^\d{4}$/'
+    branch_identifier_position: ''
+    branch_identifier_structure: ''
+    branch_identifier_regex: ''
+DO:
+    country_name: 'Dominican Republic'
+    iban_structure: DO2!n4!c20!n
+    bban_structure: 4!c20!n
+    iban_regex: '/^DO\d{2}[A-Z0-9]{4}\d{20}$/'
+    bban_regex: '/^[A-Z0-9]{4}\d{20}$/'
+    iban_length: 28
+    bban_length: 24
+    iban_electronic_format_example: DO28BAGR00000001212453611324
+    iban_print_format_example: 'DO28 BAGR 0000 0001 2124 5361 1324'
+    bank_identifier_position: 1-4
+    bank_identifier_structure: 4!c
+    bank_identifier_regex: '/^[A-Z0-9]{4}$/'
+    branch_identifier_position: ''
+    branch_identifier_structure: ''
+    branch_identifier_regex: ''
+EE:
+    country_name: Estonia
+    iban_structure: EE2!n2!n2!n11!n1!n
+    bban_structure: 2!n2!n11!n1!n
+    iban_regex: '/^EE\d{2}\d{2}\d{2}\d{11}\d{1}$/'
+    bban_regex: '/^\d{2}\d{2}\d{11}\d{1}$/'
+    iban_length: 20
+    bban_length: 16
+    iban_electronic_format_example: EE382200221020145685
+    iban_print_format_example: 'EE38 2200 2210 2014 5685'
+    bank_identifier_position: 1-2
+    bank_identifier_structure: 2!n
+    bank_identifier_regex: '/^\d{2}$/'
+    branch_identifier_position: ''
+    branch_identifier_structure: ''
+    branch_identifier_regex: ''
+EG:
+    country_name: Egypt
+    iban_structure: EG2!n4!n4!n17!n
+    bban_structure: 4!n4!n17!n
+    iban_regex: '/^EG\d{2}\d{4}\d{4}\d{17}$/'
+    bban_regex: '/^\d{4}\d{4}\d{17}$/'
+    iban_length: 29
+    bban_length: 25
+    iban_electronic_format_example: EG380019000500000000263180002
+    iban_print_format_example: EG380019000500000000263180002
+    bank_identifier_position: 1-4
+    bank_identifier_structure: 4!
+    bank_identifier_regex: /^4!$/
+    branch_identifier_position: 5-8
+    branch_identifier_structure: 4!
+    branch_identifier_regex: /^4!$/
+ES:
+    country_name: Spain
+    iban_structure: ES2!n4!n4!n1!n1!n10!n
+    bban_structure: 4!n4!n1!n1!n10!n
+    iban_regex: '/^ES\d{2}\d{4}\d{4}\d{1}\d{1}\d{10}$/'
+    bban_regex: '/^\d{4}\d{4}\d{1}\d{1}\d{10}$/'
+    iban_length: 24
+    bban_length: 20
+    iban_electronic_format_example: ES9121000418450200051332
+    iban_print_format_example: 'ES91 2100 0418 4502 0005 1332'
+    bank_identifier_position: 1-4
+    bank_identifier_structure: 4!n
+    bank_identifier_regex: '/^\d{4}$/'
+    branch_identifier_position: 5-8
+    branch_identifier_structure: 4!n
+    branch_identifier_regex: '/^\d{4}$/'
+FI:
+    country_name: Finland
+    iban_structure: FI2!n3!n11!n
+    bban_structure: 3!n11!n
+    iban_regex: '/^FI\d{2}\d{3}\d{11}$/'
+    bban_regex: '/^\d{3}\d{11}$/'
+    iban_length: 18
+    bban_length: 14
+    iban_electronic_format_example: FI2112345600000785
+    iban_print_format_example: 'FI21 1234 5600 0007 85'
+    bank_identifier_position: 1-3
+    bank_identifier_structure: ''
+    bank_identifier_regex: ''
+    branch_identifier_position: ''
+    branch_identifier_structure: ''
+    branch_identifier_regex: ''
+FO:
+    country_name: 'Faroe Islands'
+    iban_structure: FO2!n4!n9!n1!n
+    bban_structure: 4!n9!n1!n
+    iban_regex: '/^FO\d{2}\d{4}\d{9}\d{1}$/'
+    bban_regex: '/^\d{4}\d{9}\d{1}$/'
+    iban_length: 18
+    bban_length: 14
+    iban_electronic_format_example: FO6264600001631634
+    iban_print_format_example: 'FO62 6460 0001 6316 34'
+    bank_identifier_position: 1-4
+    bank_identifier_structure: 4!n
+    bank_identifier_regex: '/^\d{4}$/'
+    branch_identifier_position: ''
+    branch_identifier_structure: ''
+    branch_identifier_regex: ''
+FR:
+    country_name: France
+    iban_structure: FR2!n5!n5!n11!c2!n
+    bban_structure: 5!n5!n11!c2!n
+    iban_regex: '/^FR\d{2}\d{5}\d{5}[A-Z0-9]{11}\d{2}$/'
+    bban_regex: '/^\d{5}\d{5}[A-Z0-9]{11}\d{2}$/'
+    iban_length: 27
+    bban_length: 23
+    iban_electronic_format_example: FR1420041010050500013M02606
+    iban_print_format_example: 'FR14 2004 1010 0505 0001 3M02 606'
+    bank_identifier_position: 1-5
+    bank_identifier_structure: 5!n
+    bank_identifier_regex: '/^\d{5}$/'
+    branch_identifier_position: ''
+    branch_identifier_structure: ''
+    branch_identifier_regex: ''
+GB:
+    country_name: 'United Kingdom'
+    iban_structure: GB2!n4!a6!n8!n
+    bban_structure: 4!a6!n8!n
+    iban_regex: '/^GB\d{2}[A-Z]{4}\d{6}\d{8}$/'
+    bban_regex: '/^[A-Z]{4}\d{6}\d{8}$/'
+    iban_length: 22
+    bban_length: 18
+    iban_electronic_format_example: GB29NWBK60161331926819
+    iban_print_format_example: 'GB29 NWBK 6016 1331 9268 19'
+    bank_identifier_position: 1-4
+    bank_identifier_structure: 4!a
+    bank_identifier_regex: '/^[A-Z]{4}$/'
+    branch_identifier_position: 5-10
+    branch_identifier_structure: 6!n
+    branch_identifier_regex: '/^\d{6}$/'
+GE:
+    country_name: Georgia
+    iban_structure: GE2!n2!a16!n
+    bban_structure: 2!a16!n
+    iban_regex: '/^GE\d{2}[A-Z]{2}\d{16}$/'
+    bban_regex: '/^[A-Z]{2}\d{16}$/'
+    iban_length: 22
+    bban_length: 18
+    iban_electronic_format_example: GE29NB0000000101904917
+    iban_print_format_example: 'GE29 NB00 0000 0101 9049 17'
+    bank_identifier_position: 1-2
+    bank_identifier_structure: 2!a
+    bank_identifier_regex: '/^[A-Z]{2}$/'
+    branch_identifier_position: ''
+    branch_identifier_structure: ''
+    branch_identifier_regex: ''
+GI:
+    country_name: Gibraltar
+    iban_structure: GI2!n4!a15!c
+    bban_structure: 4!a15!c
+    iban_regex: '/^GI\d{2}[A-Z]{4}[A-Z0-9]{15}$/'
+    bban_regex: '/^[A-Z]{4}[A-Z0-9]{15}$/'
+    iban_length: 23
+    bban_length: 19
+    iban_electronic_format_example: GI75NWBK000000007099453
+    iban_print_format_example: 'GI75 NWBK 0000 0000 7099 453'
+    bank_identifier_position: 1-4
+    bank_identifier_structure: 4!a
+    bank_identifier_regex: '/^[A-Z]{4}$/'
+    branch_identifier_position: ''
+    branch_identifier_structure: ''
+    branch_identifier_regex: ''
+GL:
+    country_name: Greenland
+    iban_structure: GL2!n4!n9!n1!n
+    bban_structure: 4!n9!n1!n
+    iban_regex: '/^GL\d{2}\d{4}\d{9}\d{1}$/'
+    bban_regex: '/^\d{4}\d{9}\d{1}$/'
+    iban_length: 18
+    bban_length: 14
+    iban_electronic_format_example: GL8964710001000206
+    iban_print_format_example: 'GL89 6471 0001 0002 06'
+    bank_identifier_position: 1-4
+    bank_identifier_structure: 4!n
+    bank_identifier_regex: '/^\d{4}$/'
+    branch_identifier_position: ''
+    branch_identifier_structure: ''
+    branch_identifier_regex: ''
+GR:
+    country_name: Greece
+    iban_structure: GR2!n3!n4!n16!c
+    bban_structure: 3!n4!n16!c
+    iban_regex: '/^GR\d{2}\d{3}\d{4}[A-Z0-9]{16}$/'
+    bban_regex: '/^\d{3}\d{4}[A-Z0-9]{16}$/'
+    iban_length: 27
+    bban_length: 23
+    iban_electronic_format_example: GR1601101250000000012300695
+    iban_print_format_example: 'GR16 0110 1250 0000 0001 2300 695'
+    bank_identifier_position: 1-3
+    bank_identifier_structure: 3!n
+    bank_identifier_regex: '/^\d{3}$/'
+    branch_identifier_position: 4-7
+    branch_identifier_structure: 4!n
+    branch_identifier_regex: '/^\d{4}$/'
+GT:
+    country_name: Guatemala
+    iban_structure: GT2!n4!c20!c
+    bban_structure: 4!c20!c
+    iban_regex: '/^GT\d{2}[A-Z0-9]{4}[A-Z0-9]{20}$/'
+    bban_regex: '/^[A-Z0-9]{4}[A-Z0-9]{20}$/'
+    iban_length: 28
+    bban_length: 24
+    iban_electronic_format_example: GT82TRAJ01020000001210029690
+    iban_print_format_example: 'GT82 TRAJ 0102 0000 0012 1002 9690'
+    bank_identifier_position: 1-4
+    bank_identifier_structure: 4!c
+    bank_identifier_regex: '/^[A-Z0-9]{4}$/'
+    branch_identifier_position: ''
+    branch_identifier_structure: ''
+    branch_identifier_regex: ''
+HR:
+    country_name: Croatia
+    iban_structure: HR2!n7!n10!n
+    bban_structure: 7!n10!n
+    iban_regex: '/^HR\d{2}\d{7}\d{10}$/'
+    bban_regex: '/^\d{7}\d{10}$/'
+    iban_length: 21
+    bban_length: 17
+    iban_electronic_format_example: HR1210010051863000160
+    iban_print_format_example: 'HR12 1001 0051 8630 0016 0'
+    bank_identifier_position: 1-7
+    bank_identifier_structure: 7!n
+    bank_identifier_regex: '/^\d{7}$/'
+    branch_identifier_position: ''
+    branch_identifier_structure: ''
+    branch_identifier_regex: ''
+HU:
+    country_name: Hungary
+    iban_structure: HU2!n3!n4!n1!n15!n1!n
+    bban_structure: 3!n4!n1!n15!n1!n
+    iban_regex: '/^HU\d{2}\d{3}\d{4}\d{1}\d{15}\d{1}$/'
+    bban_regex: '/^\d{3}\d{4}\d{1}\d{15}\d{1}$/'
+    iban_length: 28
+    bban_length: 24
+    iban_electronic_format_example: HU42117730161111101800000000
+    iban_print_format_example: 'HU42 1177 3016 1111 1018 0000 0000'
+    bank_identifier_position: 1-3
+    bank_identifier_structure: 3!n
+    bank_identifier_regex: '/^\d{3}$/'
+    branch_identifier_position: 4-7
+    branch_identifier_structure: 4!n
+    branch_identifier_regex: '/^\d{4}$/'
+IE:
+    country_name: Ireland
+    iban_structure: IE2!n4!a6!n8!n
+    bban_structure: 4!a6!n8!n
+    iban_regex: '/^IE\d{2}[A-Z]{4}\d{6}\d{8}$/'
+    bban_regex: '/^[A-Z]{4}\d{6}\d{8}$/'
+    iban_length: 22
+    bban_length: 18
+    iban_electronic_format_example: IE29AIBK93115212345678
+    iban_print_format_example: 'IE29 AIBK 9311 5212 3456 78'
+    bank_identifier_position: 1-4
+    bank_identifier_structure: 4!a
+    bank_identifier_regex: '/^[A-Z]{4}$/'
+    branch_identifier_position: 5-10
+    branch_identifier_structure: 6!n
+    branch_identifier_regex: '/^\d{6}$/'
+IL:
+    country_name: Israel
+    iban_structure: IL2!n3!n3!n13!n
+    bban_structure: 3!n3!n13!n
+    iban_regex: '/^IL\d{2}\d{3}\d{3}\d{13}$/'
+    bban_regex: '/^\d{3}\d{3}\d{13}$/'
+    iban_length: 23
+    bban_length: 19
+    iban_electronic_format_example: IL620108000000099999999
+    iban_print_format_example: 'IL62 0108 0000 0009 9999 999'
+    bank_identifier_position: 1-3
+    bank_identifier_structure: 3!n
+    bank_identifier_regex: '/^\d{3}$/'
+    branch_identifier_position: 4-6
+    branch_identifier_structure: 3!n
+    branch_identifier_regex: '/^\d{3}$/'
+IQ:
+    country_name: Iraq
+    iban_structure: IQ2!n4!a3!n12!n
+    bban_structure: 4!a3!n12!n
+    iban_regex: '/^IQ\d{2}[A-Z]{4}\d{3}\d{12}$/'
+    bban_regex: '/^[A-Z]{4}\d{3}\d{12}$/'
+    iban_length: 23
+    bban_length: 19
+    iban_electronic_format_example: IQ98NBIQ850123456789012
+    iban_print_format_example: 'IQ98 NBIQ 8501 2345 6789 012'
+    bank_identifier_position: 1-4
+    bank_identifier_structure: '4'
+    bank_identifier_regex: /^4$/
+    branch_identifier_position: 5-7
+    branch_identifier_structure: '3'
+    branch_identifier_regex: /^3$/
+IS:
+    country_name: Iceland
+    iban_structure: IS2!n4!n2!n6!n10!n
+    bban_structure: 4!n2!n6!n10!n
+    iban_regex: '/^IS\d{2}\d{4}\d{2}\d{6}\d{10}$/'
+    bban_regex: '/^\d{4}\d{2}\d{6}\d{10}$/'
+    iban_length: 26
+    bban_length: 22
+    iban_electronic_format_example: IS140159260076545510730339
+    iban_print_format_example: 'IS14 0159 2600 7654 5510 7303 39'
+    bank_identifier_position: 1-2
+    bank_identifier_structure: 2!n
+    bank_identifier_regex: '/^\d{2}$/'
+    branch_identifier_position: 3-4
+    branch_identifier_structure: 2!n
+    branch_identifier_regex: '/^\d{2}$/'
+IT:
+    country_name: Italy
+    iban_structure: IT2!n1!a5!n5!n12!c
+    bban_structure: 1!a5!n5!n12!c
+    iban_regex: '/^IT\d{2}[A-Z]{1}\d{5}\d{5}[A-Z0-9]{12}$/'
+    bban_regex: '/^[A-Z]{1}\d{5}\d{5}[A-Z0-9]{12}$/'
+    iban_length: 27
+    bban_length: 23
+    iban_electronic_format_example: IT60X0542811101000000123456
+    iban_print_format_example: 'IT60 X054 2811 1010 0000 0123 456'
+    bank_identifier_position: 2-6
+    bank_identifier_structure: 5!n
+    bank_identifier_regex: '/^\d{5}$/'
+    branch_identifier_position: 7-11
+    branch_identifier_structure: 5!n
+    branch_identifier_regex: '/^\d{5}$/'
+JO:
+    country_name: Jordan
+    iban_structure: JO2!n4!a4!n18!c
+    bban_structure: 4!a4!n18!c
+    iban_regex: '/^JO\d{2}[A-Z]{4}\d{4}[A-Z0-9]{18}$/'
+    bban_regex: '/^[A-Z]{4}\d{4}[A-Z0-9]{18}$/'
+    iban_length: 30
+    bban_length: 26
+    iban_electronic_format_example: JO94CBJO0010000000000131000302
+    iban_print_format_example: 'JO94 CBJO 0010 0000 0000 0131 0003 02'
+    bank_identifier_position: 5-8
+    bank_identifier_structure: 4!n
+    bank_identifier_regex: '/^\d{4}$/'
+    branch_identifier_position: 5-8
+    branch_identifier_structure: 4!n
+    branch_identifier_regex: '/^\d{4}$/'
+KW:
+    country_name: Kuwait
+    iban_structure: KW2!n4!a22!c
+    bban_structure: 4!a22!c
+    iban_regex: '/^KW\d{2}[A-Z]{4}[A-Z0-9]{22}$/'
+    bban_regex: '/^[A-Z]{4}[A-Z0-9]{22}$/'
+    iban_length: 30
+    bban_length: 26
+    iban_electronic_format_example: KW81CBKU0000000000001234560101
+    iban_print_format_example: 'KW81 CBKU 0000 0000 0000 1234 5601 01'
+    bank_identifier_position: 1-4
+    bank_identifier_structure: 4!a
+    bank_identifier_regex: '/^[A-Z]{4}$/'
+    branch_identifier_position: ''
+    branch_identifier_structure: ''
+    branch_identifier_regex: ''
+KZ:
+    country_name: Kazakhstan
+    iban_structure: KZ2!n3!n13!c
+    bban_structure: 3!n13!c
+    iban_regex: '/^KZ\d{2}\d{3}[A-Z0-9]{13}$/'
+    bban_regex: '/^\d{3}[A-Z0-9]{13}$/'
+    iban_length: 20
+    bban_length: 16
+    iban_electronic_format_example: KZ86125KZT5004100100
+    iban_print_format_example: 'KZ86 125K ZT50 0410 0100'
+    bank_identifier_position: 1-3
+    bank_identifier_structure: 3!n
+    bank_identifier_regex: '/^\d{3}$/'
+    branch_identifier_position: ''
+    branch_identifier_structure: ''
+    branch_identifier_regex: ''
+LB:
+    country_name: Lebanon
+    iban_structure: LB2!n4!n20!c
+    bban_structure: 4!n20!c
+    iban_regex: '/^LB\d{2}\d{4}[A-Z0-9]{20}$/'
+    bban_regex: '/^\d{4}[A-Z0-9]{20}$/'
+    iban_length: 28
+    bban_length: 24
+    iban_electronic_format_example: LB62099900000001001901229114
+    iban_print_format_example: 'LB62 0999 0000 0001 0019 0122 9114'
+    bank_identifier_position: 1-4
+    bank_identifier_structure: 4!a
+    bank_identifier_regex: '/^[A-Z]{4}$/'
+    branch_identifier_position: ''
+    branch_identifier_structure: ''
+    branch_identifier_regex: ''
+LC:
+    country_name: 'Saint Lucia'
+    iban_structure: LC2!n4!a24!c
+    bban_structure: 4!a24!c
+    iban_regex: '/^LC\d{2}[A-Z]{4}[A-Z0-9]{24}$/'
+    bban_regex: '/^[A-Z]{4}[A-Z0-9]{24}$/'
+    iban_length: 32
+    bban_length: 28
+    iban_electronic_format_example: LC55HEMM000100010012001200023015
+    iban_print_format_example: 'LC55 HEMM 0001 0001 0012 0012 0002 3015'
+    bank_identifier_position: 1-4
+    bank_identifier_structure: 4!a
+    bank_identifier_regex: '/^[A-Z]{4}$/'
+    branch_identifier_position: ''
+    branch_identifier_structure: ''
+    branch_identifier_regex: ''
+LI:
+    country_name: Liechtenstein
+    iban_structure: LI2!n5!n12!c
+    bban_structure: 5!n12!c
+    iban_regex: '/^LI\d{2}\d{5}[A-Z0-9]{12}$/'
+    bban_regex: '/^\d{5}[A-Z0-9]{12}$/'
+    iban_length: 21
+    bban_length: 17
+    iban_electronic_format_example: LI21088100002324013AA
+    iban_print_format_example: 'LI21 0881 0000 2324 013A A'
+    bank_identifier_position: 1-5
+    bank_identifier_structure: 5!n
+    bank_identifier_regex: '/^\d{5}$/'
+    branch_identifier_position: ''
+    branch_identifier_structure: ''
+    branch_identifier_regex: ''
+LT:
+    country_name: Lithuania
+    iban_structure: LT2!n5!n11!n
+    bban_structure: 5!n11!n
+    iban_regex: '/^LT\d{2}\d{5}\d{11}$/'
+    bban_regex: '/^\d{5}\d{11}$/'
+    iban_length: 20
+    bban_length: 16
+    iban_electronic_format_example: LT121000011101001000
+    iban_print_format_example: 'LT12 1000 0111 0100 1000'
+    bank_identifier_position: 1-5
+    bank_identifier_structure: 5!n
+    bank_identifier_regex: '/^\d{5}$/'
+    branch_identifier_position: ''
+    branch_identifier_structure: ''
+    branch_identifier_regex: ''
+LU:
+    country_name: Luxembourg
+    iban_structure: LU2!n3!n13!c
+    bban_structure: 3!n13!c
+    iban_regex: '/^LU\d{2}\d{3}[A-Z0-9]{13}$/'
+    bban_regex: '/^\d{3}[A-Z0-9]{13}$/'
+    iban_length: 20
+    bban_length: 16
+    iban_electronic_format_example: LU280019400644750000
+    iban_print_format_example: 'LU28 0019 4006 4475 0000'
+    bank_identifier_position: 1-3
+    bank_identifier_structure: 3!n
+    bank_identifier_regex: '/^\d{3}$/'
+    branch_identifier_position: ''
+    branch_identifier_structure: ''
+    branch_identifier_regex: ''
+LV:
+    country_name: Latvia
+    iban_structure: LV2!n4!a13!c
+    bban_structure: 4!a13!c
+    iban_regex: '/^LV\d{2}[A-Z]{4}[A-Z0-9]{13}$/'
+    bban_regex: '/^[A-Z]{4}[A-Z0-9]{13}$/'
+    iban_length: 21
+    bban_length: 17
+    iban_electronic_format_example: LV80BANK0000435195001
+    iban_print_format_example: 'LV80 BANK 0000 4351 9500 1'
+    bank_identifier_position: 1-4
+    bank_identifier_structure: 4!a
+    bank_identifier_regex: '/^[A-Z]{4}$/'
+    branch_identifier_position: ''
+    branch_identifier_structure: ''
+    branch_identifier_regex: ''
+MC:
+    country_name: Monaco
+    iban_structure: MC2!n5!n5!n11!c2!n
+    bban_structure: 5!n5!n11!c2!n
+    iban_regex: '/^MC\d{2}\d{5}\d{5}[A-Z0-9]{11}\d{2}$/'
+    bban_regex: '/^\d{5}\d{5}[A-Z0-9]{11}\d{2}$/'
+    iban_length: 27
+    bban_length: 23
+    iban_electronic_format_example: MC5811222000010123456789030
+    iban_print_format_example: 'MC58 1122 2000 0101 2345 6789 030'
+    bank_identifier_position: 1-5
+    bank_identifier_structure: 5!n
+    bank_identifier_regex: '/^\d{5}$/'
+    branch_identifier_position: 6-10
+    branch_identifier_structure: 5!n
+    branch_identifier_regex: '/^\d{5}$/'
+MD:
+    country_name: Moldova
+    iban_structure: MD2!n2!c18!c
+    bban_structure: 2!c18!c
+    iban_regex: '/^MD\d{2}[A-Z0-9]{2}[A-Z0-9]{18}$/'
+    bban_regex: '/^[A-Z0-9]{2}[A-Z0-9]{18}$/'
+    iban_length: 24
+    bban_length: 20
+    iban_electronic_format_example: MD24AG000225100013104168
+    iban_print_format_example: 'MD24 AG00 0225 1000 1310 4168'
+    bank_identifier_position: 1-2
+    bank_identifier_structure: 2!c
+    bank_identifier_regex: '/^[A-Z0-9]{2}$/'
+    branch_identifier_position: ''
+    branch_identifier_structure: ''
+    branch_identifier_regex: ''
+ME:
+    country_name: Montenegro
+    iban_structure: ME2!n3!n13!n2!n
+    bban_structure: 3!n13!n2!n
+    iban_regex: '/^ME\d{2}\d{3}\d{13}\d{2}$/'
+    bban_regex: '/^\d{3}\d{13}\d{2}$/'
+    iban_length: 22
+    bban_length: 18
+    iban_electronic_format_example: ME25505000012345678951
+    iban_print_format_example: 'ME25 5050 0001 2345 6789 51'
+    bank_identifier_position: 1-3
+    bank_identifier_structure: 3!n
+    bank_identifier_regex: '/^\d{3}$/'
+    branch_identifier_position: ''
+    branch_identifier_structure: ''
+    branch_identifier_regex: ''
+MK:
+    country_name: Macedonia
+    iban_structure: MK2!n3!n10!c2!n
+    bban_structure: 3!n10!c2!n
+    iban_regex: '/^MK\d{2}\d{3}[A-Z0-9]{10}\d{2}$/'
+    bban_regex: '/^\d{3}[A-Z0-9]{10}\d{2}$/'
+    iban_length: 19
+    bban_length: 15
+    iban_electronic_format_example: MK07250120000058984
+    iban_print_format_example: 'MK07 2501 2000 0058 984'
+    bank_identifier_position: 1-3
+    bank_identifier_structure: 3!n
+    bank_identifier_regex: '/^\d{3}$/'
+    branch_identifier_position: ''
+    branch_identifier_structure: ''
+    branch_identifier_regex: ''
+MR:
+    country_name: Mauritania
+    iban_structure: MR2!n5!n5!n11!n2!n
+    bban_structure: 5!n5!n11!n2!n
+    iban_regex: '/^MR\d{2}\d{5}\d{5}\d{11}\d{2}$/'
+    bban_regex: '/^\d{5}\d{5}\d{11}\d{2}$/'
+    iban_length: 27
+    bban_length: 23
+    iban_electronic_format_example: MR1300020001010000123456753
+    iban_print_format_example: 'MR13 0002 0001 0100 0012 3456 753'
+    bank_identifier_position: 1-5
+    bank_identifier_structure: 5!n
+    bank_identifier_regex: '/^\d{5}$/'
+    branch_identifier_position: 6-10
+    branch_identifier_structure: 5!n
+    branch_identifier_regex: '/^\d{5}$/'
+MT:
+    country_name: Malta
+    iban_structure: MT2!n4!a5!n18!c
+    bban_structure: 4!a5!n18!c
+    iban_regex: '/^MT\d{2}[A-Z]{4}\d{5}[A-Z0-9]{18}$/'
+    bban_regex: '/^[A-Z]{4}\d{5}[A-Z0-9]{18}$/'
+    iban_length: 31
+    bban_length: 27
+    iban_electronic_format_example: MT84MALT011000012345MTLCAST001S
+    iban_print_format_example: 'MT84 MALT 0110 0001 2345 MTLC AST0 01S'
+    bank_identifier_position: 1-4
+    bank_identifier_structure: 4!a
+    bank_identifier_regex: '/^[A-Z]{4}$/'
+    branch_identifier_position: 5-9
+    branch_identifier_structure: 5!n
+    branch_identifier_regex: '/^\d{5}$/'
+MU:
+    country_name: Mauritius
+    iban_structure: MU2!n4!a2!n2!n12!n3!n3!a
+    bban_structure: 4!a2!n2!n12!n3!n3!a
+    iban_regex: '/^MU\d{2}[A-Z]{4}\d{2}\d{2}\d{12}\d{3}[A-Z]{3}$/'
+    bban_regex: '/^[A-Z]{4}\d{2}\d{2}\d{12}\d{3}[A-Z]{3}$/'
+    iban_length: 30
+    bban_length: 26
+    iban_electronic_format_example: MU17BOMM0101101030300200000MUR
+    iban_print_format_example: 'MU17 BOMM 0101 1010 3030 0200 000M UR'
+    bank_identifier_position: 1-6
+    bank_identifier_structure: 6!c
+    bank_identifier_regex: '/^[A-Z0-9]{6}$/'
+    branch_identifier_position: 7-8
+    branch_identifier_structure: 2!n
+    branch_identifier_regex: '/^\d{2}$/'
+NL:
+    country_name: 'Netherlands (The)'
+    iban_structure: NL2!n4!a10!n
+    bban_structure: 4!a10!n
+    iban_regex: '/^NL\d{2}[A-Z]{4}\d{10}$/'
+    bban_regex: '/^[A-Z]{4}\d{10}$/'
+    iban_length: 18
+    bban_length: 14
+    iban_electronic_format_example: NL91ABNA0417164300
+    iban_print_format_example: 'NL91 ABNA 0417 1643 00'
+    bank_identifier_position: 1-4
+    bank_identifier_structure: 4!a
+    bank_identifier_regex: '/^[A-Z]{4}$/'
+    branch_identifier_position: ''
+    branch_identifier_structure: ''
+    branch_identifier_regex: ''
+'NO':
+    country_name: Norway
+    iban_structure: NO2!n4!n6!n1!n
+    bban_structure: 4!n6!n1!n
+    iban_regex: '/^NO\d{2}\d{4}\d{6}\d{1}$/'
+    bban_regex: '/^\d{4}\d{6}\d{1}$/'
+    iban_length: 15
+    bban_length: 11
+    iban_electronic_format_example: NO9386011117947
+    iban_print_format_example: 'NO93 8601 1117 947'
+    bank_identifier_position: 1-4
+    bank_identifier_structure: 4!n
+    bank_identifier_regex: '/^\d{4}$/'
+    branch_identifier_position: ''
+    branch_identifier_structure: ''
+    branch_identifier_regex: ''
+PK:
+    country_name: Pakistan
+    iban_structure: PK2!n4!a16!c
+    bban_structure: 4!a16!c
+    iban_regex: '/^PK\d{2}[A-Z]{4}[A-Z0-9]{16}$/'
+    bban_regex: '/^[A-Z]{4}[A-Z0-9]{16}$/'
+    iban_length: 24
+    bban_length: 20
+    iban_electronic_format_example: PK36SCBL0000001123456702
+    iban_print_format_example: 'PK36 SCBL 0000 0011 2345 6702'
+    bank_identifier_position: 1-4
+    bank_identifier_structure: 4!a
+    bank_identifier_regex: '/^[A-Z]{4}$/'
+    branch_identifier_position: ''
+    branch_identifier_structure: ''
+    branch_identifier_regex: ''
+PL:
+    country_name: Poland
+    iban_structure: PL2!n8!n16!n
+    bban_structure: 8!n16!n
+    iban_regex: '/^PL\d{2}\d{8}\d{16}$/'
+    bban_regex: '/^\d{8}\d{16}$/'
+    iban_length: 28
+    bban_length: 24
+    iban_electronic_format_example: PL61109010140000071219812874
+    iban_print_format_example: 'PL61 1090 1014 0000 0712 1981 2874'
+    bank_identifier_position: ''
+    bank_identifier_structure: ''
+    bank_identifier_regex: ''
+    branch_identifier_position: 1-8
+    branch_identifier_structure: 8!n
+    branch_identifier_regex: '/^\d{8}$/'
+PS:
+    country_name: '"Palestine, State of"'
+    iban_structure: PS2!n4!a21!c
+    bban_structure: 4!a21!c
+    iban_regex: '/^PS\d{2}[A-Z]{4}[A-Z0-9]{21}$/'
+    bban_regex: '/^[A-Z]{4}[A-Z0-9]{21}$/'
+    iban_length: 29
+    bban_length: 25
+    iban_electronic_format_example: PS92PALS000000000400123456702
+    iban_print_format_example: 'PS92 PALS 0000 0000 0400 1234 5670 2'
+    bank_identifier_position: 1-4
+    bank_identifier_structure: 4!a
+    bank_identifier_regex: '/^[A-Z]{4}$/'
+    branch_identifier_position: ''
+    branch_identifier_structure: ''
+    branch_identifier_regex: ''
+PT:
+    country_name: Portugal
+    iban_structure: PT2!n4!n4!n11!n2!n
+    bban_structure: 4!n4!n11!n2!n
+    iban_regex: '/^PT\d{2}\d{4}\d{4}\d{11}\d{2}$/'
+    bban_regex: '/^\d{4}\d{4}\d{11}\d{2}$/'
+    iban_length: 25
+    bban_length: 21
+    iban_electronic_format_example: PT50000201231234567890154
+    iban_print_format_example: 'PT50 0002 0123 1234 5678 9015 4'
+    bank_identifier_position: 1-4
+    bank_identifier_structure: 4!n
+    bank_identifier_regex: '/^\d{4}$/'
+    branch_identifier_position: ''
+    branch_identifier_structure: ''
+    branch_identifier_regex: ''
+QA:
+    country_name: Qatar
+    iban_structure: QA2!n4!a21!c
+    bban_structure: 4!a21!c
+    iban_regex: '/^QA\d{2}[A-Z]{4}[A-Z0-9]{21}$/'
+    bban_regex: '/^[A-Z]{4}[A-Z0-9]{21}$/'
+    iban_length: 29
+    bban_length: 25
+    iban_electronic_format_example: QA58DOHB00001234567890ABCDEFG
+    iban_print_format_example: 'QA58 DOHB 0000 1234 5678 90AB CDEF G'
+    bank_identifier_position: 1-4
+    bank_identifier_structure: 4!a
+    bank_identifier_regex: '/^[A-Z]{4}$/'
+    branch_identifier_position: ''
+    branch_identifier_structure: ''
+    branch_identifier_regex: ''
+RO:
+    country_name: Romania
+    iban_structure: RO2!n4!a16!c
+    bban_structure: 4!a16!c
+    iban_regex: '/^RO\d{2}[A-Z]{4}[A-Z0-9]{16}$/'
+    bban_regex: '/^[A-Z]{4}[A-Z0-9]{16}$/'
+    iban_length: 24
+    bban_length: 20
+    iban_electronic_format_example: RO49AAAA1B31007593840000
+    iban_print_format_example: 'RO49 AAAA 1B31 0075 9384 0000'
+    bank_identifier_position: 1-4
+    bank_identifier_structure: 4!a
+    bank_identifier_regex: '/^[A-Z]{4}$/'
+    branch_identifier_position: ''
+    branch_identifier_structure: ''
+    branch_identifier_regex: ''
+RS:
+    country_name: Serbia
+    iban_structure: RS2!n3!n13!n2!n
+    bban_structure: 3!n13!n2!n
+    iban_regex: '/^RS\d{2}\d{3}\d{13}\d{2}$/'
+    bban_regex: '/^\d{3}\d{13}\d{2}$/'
+    iban_length: 22
+    bban_length: 18
+    iban_electronic_format_example: RS35260005601001611379
+    iban_print_format_example: 'RS35 2600 0560 1001 6113 79'
+    bank_identifier_position: 1-3
+    bank_identifier_structure: 3!n
+    bank_identifier_regex: '/^\d{3}$/'
+    branch_identifier_position: ''
+    branch_identifier_structure: ''
+    branch_identifier_regex: ''
+SA:
+    country_name: 'Saudi Arabia'
+    iban_structure: SA2!n2!n18!c
+    bban_structure: 2!n18!c
+    iban_regex: '/^SA\d{2}\d{2}[A-Z0-9]{18}$/'
+    bban_regex: '/^\d{2}[A-Z0-9]{18}$/'
+    iban_length: 24
+    bban_length: 20
+    iban_electronic_format_example: SA0380000000608010167519
+    iban_print_format_example: 'SA03 8000 0000 6080 1016 7519'
+    bank_identifier_position: 1-2
+    bank_identifier_structure: 2!n
+    bank_identifier_regex: '/^\d{2}$/'
+    branch_identifier_position: ''
+    branch_identifier_structure: ''
+    branch_identifier_regex: ''
+SC:
+    country_name: Seychelles
+    iban_structure: SC2!n4!a2!n2!n16!n3!a
+    bban_structure: 4!a2!n2!n16!n3!a
+    iban_regex: '/^SC\d{2}[A-Z]{4}\d{2}\d{2}\d{16}[A-Z]{3}$/'
+    bban_regex: '/^[A-Z]{4}\d{2}\d{2}\d{16}[A-Z]{3}$/'
+    iban_length: 31
+    bban_length: 27
+    iban_electronic_format_example: SC18SSCB11010000000000001497USD
+    iban_print_format_example: 'SC18 SSCB 1101 0000 0000 0000 1497 USD'
+    bank_identifier_position: 1-6
+    bank_identifier_structure: 4!a2!n
+    bank_identifier_regex: '/^[A-Z]{4}\d{2}$/'
+    branch_identifier_position: 7-8
+    branch_identifier_structure: 2!n
+    branch_identifier_regex: '/^\d{2}$/'
+SE:
+    country_name: Sweden
+    iban_structure: SE2!n3!n16!n1!n
+    bban_structure: 3!n16!n1!n
+    iban_regex: '/^SE\d{2}\d{3}\d{16}\d{1}$/'
+    bban_regex: '/^\d{3}\d{16}\d{1}$/'
+    iban_length: 24
+    bban_length: 20
+    iban_electronic_format_example: SE4550000000058398257466
+    iban_print_format_example: 'SE45 5000 0000 0583 9825 7466'
+    bank_identifier_position: 1-3
+    bank_identifier_structure: 3!n
+    bank_identifier_regex: '/^\d{3}$/'
+    branch_identifier_position: ''
+    branch_identifier_structure: ''
+    branch_identifier_regex: ''
+SI:
+    country_name: Slovenia
+    iban_structure: SI2!n5!n8!n2!n
+    bban_structure: 5!n8!n2!n
+    iban_regex: '/^SI\d{2}\d{5}\d{8}\d{2}$/'
+    bban_regex: '/^\d{5}\d{8}\d{2}$/'
+    iban_length: 19
+    bban_length: 15
+    iban_electronic_format_example: SI56263300012039086
+    iban_print_format_example: 'SI56 2633 0001 2039 086'
+    bank_identifier_position: 1-5
+    bank_identifier_structure: 5!n
+    bank_identifier_regex: '/^\d{5}$/'
+    branch_identifier_position: ''
+    branch_identifier_structure: ''
+    branch_identifier_regex: ''
+SK:
+    country_name: Slovakia
+    iban_structure: SK2!n4!n6!n10!n
+    bban_structure: 4!n6!n10!n
+    iban_regex: '/^SK\d{2}\d{4}\d{6}\d{10}$/'
+    bban_regex: '/^\d{4}\d{6}\d{10}$/'
+    iban_length: 24
+    bban_length: 20
+    iban_electronic_format_example: SK3112000000198742637541
+    iban_print_format_example: 'SK31 1200 0000 1987 4263 7541'
+    bank_identifier_position: 1-4
+    bank_identifier_structure: 4!n
+    bank_identifier_regex: '/^\d{4}$/'
+    branch_identifier_position: ''
+    branch_identifier_structure: ''
+    branch_identifier_regex: ''
+SM:
+    country_name: 'San Marino'
+    iban_structure: SM2!n1!a5!n5!n12!c
+    bban_structure: 1!a5!n5!n12!c
+    iban_regex: '/^SM\d{2}[A-Z]{1}\d{5}\d{5}[A-Z0-9]{12}$/'
+    bban_regex: '/^[A-Z]{1}\d{5}\d{5}[A-Z0-9]{12}$/'
+    iban_length: 27
+    bban_length: 23
+    iban_electronic_format_example: SM86U0322509800000000270100
+    iban_print_format_example: 'SM86 U032 2509 8000 0000 0270 100'
+    bank_identifier_position: 2-6
+    bank_identifier_structure: 5!n
+    bank_identifier_regex: '/^\d{5}$/'
+    branch_identifier_position: 7-11
+    branch_identifier_structure: 5!n
+    branch_identifier_regex: '/^\d{5}$/'
+ST:
+    country_name: 'Sao Tome and Principe'
+    iban_structure: ST2!n4!n4!n11!n2!n
+    bban_structure: 4!n4!n11!n2!n
+    iban_regex: '/^ST\d{2}\d{4}\d{4}\d{11}\d{2}$/'
+    bban_regex: '/^\d{4}\d{4}\d{11}\d{2}$/'
+    iban_length: 25
+    bban_length: 21
+    iban_electronic_format_example: ST68000200010192194210112
+    iban_print_format_example: 'ST68 0002 0001 0192 1942 1011 2'
+    bank_identifier_position: 1-4
+    bank_identifier_structure: 4!n
+    bank_identifier_regex: '/^\d{4}$/'
+    branch_identifier_position: 5-8
+    branch_identifier_structure: 4!n
+    branch_identifier_regex: '/^\d{4}$/'
+SV:
+    country_name: 'El Salvador'
+    iban_structure: SV2!n4!a20!n
+    bban_structure: 4!a20!n
+    iban_regex: '/^SV\d{2}[A-Z]{4}\d{20}$/'
+    bban_regex: '/^[A-Z]{4}\d{20}$/'
+    iban_length: 28
+    bban_length: 24
+    iban_electronic_format_example: SV62CENR00000000000000700025
+    iban_print_format_example: 'SV 62 CENR 00000000000000700025'
+    bank_identifier_position: 1-4
+    bank_identifier_structure: 4!a
+    bank_identifier_regex: '/^[A-Z]{4}$/'
+    branch_identifier_position: ''
+    branch_identifier_structure: ''
+    branch_identifier_regex: ''
+TL:
+    country_name: Timor-Leste
+    iban_structure: TL2!n3!n14!n2!n
+    bban_structure: 3!n14!n2!n
+    iban_regex: '/^TL\d{2}\d{3}\d{14}\d{2}$/'
+    bban_regex: '/^\d{3}\d{14}\d{2}$/'
+    iban_length: 23
+    bban_length: 19
+    iban_electronic_format_example: TL380080012345678910157
+    iban_print_format_example: 'TL38 0080 0123 4567 8910 157'
+    bank_identifier_position: 1-3
+    bank_identifier_structure: 3!n
+    bank_identifier_regex: '/^\d{3}$/'
+    branch_identifier_position: ''
+    branch_identifier_structure: ''
+    branch_identifier_regex: ''
+TN:
+    country_name: Tunisia
+    iban_structure: TN2!n2!n3!n13!n2!n
+    bban_structure: 2!n3!n13!n2!n
+    iban_regex: '/^TN\d{2}\d{2}\d{3}\d{13}\d{2}$/'
+    bban_regex: '/^\d{2}\d{3}\d{13}\d{2}$/'
+    iban_length: 24
+    bban_length: 20
+    iban_electronic_format_example: TN5910006035183598478831
+    iban_print_format_example: 'TN59 1000 6035 1835 9847 8831'
+    bank_identifier_position: 1-2
+    bank_identifier_structure: 2!n
+    bank_identifier_regex: '/^\d{2}$/'
+    branch_identifier_position: 3-5
+    branch_identifier_structure: 3!n
+    branch_identifier_regex: '/^\d{3}$/'
+TR:
+    country_name: Turkey
+    iban_structure: TR2!n5!n1!n16!c
+    bban_structure: 5!n1!n16!c
+    iban_regex: '/^TR\d{2}\d{5}\d{1}[A-Z0-9]{16}$/'
+    bban_regex: '/^\d{5}\d{1}[A-Z0-9]{16}$/'
+    iban_length: 26
+    bban_length: 22
+    iban_electronic_format_example: TR330006100519786457841326
+    iban_print_format_example: 'TR33 0006 1005 1978 6457 8413 26'
+    bank_identifier_position: 1-5
+    bank_identifier_structure: 5!n
+    bank_identifier_regex: '/^\d{5}$/'
+    branch_identifier_position: ''
+    branch_identifier_structure: ''
+    branch_identifier_regex: ''
+UA:
+    country_name: Ukraine
+    iban_structure: UA2!n6!n19!c
+    bban_structure: 6!n19!c
+    iban_regex: '/^UA\d{2}\d{6}[A-Z0-9]{19}$/'
+    bban_regex: '/^\d{6}[A-Z0-9]{19}$/'
+    iban_length: 29
+    bban_length: 25
+    iban_electronic_format_example: UA213223130000026007233566001
+    iban_print_format_example: 'UA21 3223 1300 0002 6007 2335 6600 1'
+    bank_identifier_position: 1-6
+    bank_identifier_structure: 6!n
+    bank_identifier_regex: '/^\d{6}$/'
+    branch_identifier_position: ''
+    branch_identifier_structure: ''
+    branch_identifier_regex: ''
+VA:
+    country_name: 'Vatican City State'
+    iban_structure: VA2!n3!n15!n
+    bban_structure: 3!n15!n
+    iban_regex: '/^VA\d{2}\d{3}\d{15}$/'
+    bban_regex: '/^\d{3}\d{15}$/'
+    iban_length: 22
+    bban_length: 18
+    iban_electronic_format_example: VA59001123000012345678
+    iban_print_format_example: 'VA59 001 1230 0001 2345 678'
+    bank_identifier_position: 1-3
+    bank_identifier_structure: 3!n
+    bank_identifier_regex: '/^\d{3}$/'
+    branch_identifier_position: ''
+    branch_identifier_structure: ''
+    branch_identifier_regex: ''
+VG:
+    country_name: 'Virgin Islands'
+    iban_structure: VG2!n4!a16!n
+    bban_structure: 4!a16!n
+    iban_regex: '/^VG\d{2}[A-Z]{4}\d{16}$/'
+    bban_regex: '/^[A-Z]{4}\d{16}$/'
+    iban_length: 24
+    bban_length: 20
+    iban_electronic_format_example: VG96VPVG0000012345678901
+    iban_print_format_example: 'VG96 VPVG 0000 0123 4567 8901'
+    bank_identifier_position: 1-4
+    bank_identifier_structure: 4!a
+    bank_identifier_regex: '/^[A-Z]{4}$/'
+    branch_identifier_position: ''
+    branch_identifier_structure: ''
+    branch_identifier_regex: ''
+XK:
+    country_name: Kosovo
+    iban_structure: XK2!n4!n10!n2!n
+    bban_structure: 4!n10!n2!n
+    iban_regex: '/^XK\d{2}\d{4}\d{10}\d{2}$/'
+    bban_regex: '/^\d{4}\d{10}\d{2}$/'
+    iban_length: 20
+    bban_length: 16
+    iban_electronic_format_example: XK051212012345678906
+    iban_print_format_example: 'XK05 1212 0123 4567 8906'
+    bank_identifier_position: 1-2
+    bank_identifier_structure: 2!n
+    bank_identifier_regex: '/^\d{2}$/'
+    branch_identifier_position: 3-4
+    branch_identifier_structure: 2!n
+    branch_identifier_regex: '/^\d{2}$/'

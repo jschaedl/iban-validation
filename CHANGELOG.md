@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## [Version 1.8.1](https://github.com/jschaedl/iban-validation/releases/tag/v1.8.1)
+
+Released on December 9th 2021
+
+### Changed
+
+ * Deprecated the usage of class `RegistryLoader`, you should implement the `RegistryLoaderInterface` for custom Loaders. Thanks to [@jschaedl](https://github.com/jschaedl)!
+
+### Fixed
+
+ * Fixed https://github.com/jschaedl/iban-validation/issues/67. Thanks to [@jschaedl](https://github.com/jschaedl)!
+
+---
+
 ## [Version 1.8.0](https://github.com/jschaedl/iban-validation/releases/tag/v1.8.0)
 
 Released on December 6th 2021
@@ -7,7 +21,7 @@ Released on December 6th 2021
 ### Changed
 
  * Removed symfony/yaml dependency and loaded Swift registry data as PHP array to improve performance. Thanks to [@jschaedl](https://github.com/jschaedl)!
- * Added support for symfony/option-resolver version `^6`. Thanks to [@Philipp91](https://github.com/Philipp91)!
+ * Added support for symfony/yaml and symfony/option-resolver version `^6`. Thanks to [@Philipp91](https://github.com/Philipp91)!
 
 ### Updated
 
