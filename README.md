@@ -1,5 +1,15 @@
 # iban-validation
 
+[![StandWithUkraine](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/badges/StandWithUkraine.svg)](https://github.com/vshymanskyy/StandWithUkraine/blob/main/docs/README.md)
+
+[![SWUbanner](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/banner2-direct.svg)](https://github.com/vshymanskyy/StandWithUkraine/blob/main/docs/README.md)
+
+## A message to Russian 🇷🇺 people
+
+If you currently live in Russia, please read [this message](./ToRussianPeople.md).
+
+## Purpose
+
 A small library for validating International Bankaccount Numbers (IBANs) based on the IBAN Registry provided by SWIFT.
 See https://www.swift.com/standards/data-standards/iban for more information.
 
@@ -107,8 +117,8 @@ $countryInfo->getIbanElectronicExample(); // 'DE89370400440532013000'
  
 ## How to contribute
 
-If you want to fix some bugs or want to enhance some functionality, please fork the master branch and create your own development branch. 
-Then fix the bug you found or add your enhancements and make a pull request. Please commit your changes in tiny steps and add a detailed description on every commit. 
+If you want to fix some bugs or want to enhance some functionality, please fork one of the release branches and create your own development branch.
+Then fix the bug you found or add your enhancements and make a pull request. Please commit your changes in tiny steps and add a detailed description on every commit.
 
 ### Unit Testing
 
