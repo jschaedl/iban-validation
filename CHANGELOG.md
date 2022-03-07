@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## [Version 1.8.2](https://github.com/jschaedl/iban-validation/releases/tag/v1.8.2)
+
+Released on March 7th 2022
+
+[![StandWithUkraine](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/badges/StandWithUkraine.svg)](https://github.com/vshymanskyy/StandWithUkraine/blob/main/docs/README.md)
+
+[![SWUbanner](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/banner2-direct.svg)](https://github.com/vshymanskyy/StandWithUkraine/blob/main/docs/README.md)
+
+---
+
 ## [Version 1.8.1](https://github.com/jschaedl/iban-validation/releases/tag/v1.8.1)
 
 Released on December 9th 2021
