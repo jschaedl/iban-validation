@@ -32,7 +32,7 @@ class Registry
      */
     public function __construct(/* RegistryLoaderInterface */$registryLoader = null)
     {
-        if (!$registryLoader instanceof RegistryLoaderInterface) {
+        if (!is_null($registryLoader) && !$registryLoader instanceof RegistryLoaderInterface) {
             @trigger_error(sprintf('Not implementing the "%s" for argument "$registryLoader" is deprecated since 1.8.1.', RegistryLoaderInterface::class), E_USER_DEPRECATED);
         }
 
