@@ -11,6 +11,7 @@
 namespace Iban\Validation;
 
 use Iban\Validation\Swift\Exception\UnsupportedCountryCodeException;
+use Iban\Validation\Swift\PhpRegistryLoader;
 use Iban\Validation\Swift\Registry;
 
 /**
@@ -42,7 +43,7 @@ class CountryInfo
         $this->swiftRegistry = $swiftRegistry;
 
         if (null === $swiftRegistry) {
-            $this->swiftRegistry = new Registry();
+            $this->swiftRegistry = new Registry(new PhpRegistryLoader());
         }
 
         if (!$this->swiftRegistry->isCountryAvailable($this->countryCode)) {

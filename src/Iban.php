@@ -11,6 +11,7 @@
 
 namespace Iban\Validation;
 
+use Iban\Validation\Swift\PhpRegistryLoader;
 use Iban\Validation\Swift\Registry;
 
 /**
@@ -142,7 +143,7 @@ class Iban
     {
         @trigger_error(sprintf('The "%s" method is deprecated since 1.7, use "%s::bbanBankIdentifier()" instead.', __METHOD__, Iban::class), E_USER_DEPRECATED);
 
-        $registry = new Registry();
+        $registry = new Registry(new PhpRegistryLoader());
 
         return substr(
             $this->bban(),
@@ -153,7 +154,7 @@ class Iban
 
     public function bbanBankIdentifier(): string
     {
-        $registry = new Registry();
+        $registry = new Registry(new PhpRegistryLoader());
 
         return substr(
             $this->bban(),
