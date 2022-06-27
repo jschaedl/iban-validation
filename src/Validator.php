@@ -15,6 +15,7 @@ use Iban\Validation\Exception\InvalidChecksumException;
 use Iban\Validation\Exception\InvalidFormatException;
 use Iban\Validation\Exception\InvalidLengthException;
 use Iban\Validation\Swift\Exception\UnsupportedCountryCodeException;
+use Iban\Validation\Swift\PhpRegistryLoader;
 use Iban\Validation\Swift\Registry;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -83,7 +84,7 @@ class Validator
         $this->swiftRegistry = $swiftRegistry;
 
         if (null === $swiftRegistry) {
-            $this->swiftRegistry = new Registry();
+            $this->swiftRegistry = new Registry(new PhpRegistryLoader());
         }
 
         $resolver = new OptionsResolver();
