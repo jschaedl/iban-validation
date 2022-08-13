@@ -58,6 +58,28 @@ final class Validator
             $iban = new Iban($iban);
         }
 
+        return $this->options['throw_exceptions'] ?
+            $this->expectValidationException($iban) : $this->expectValidationViolations($iban);
+    }
+
+    /**
+     * @param Iban $iban
+     */
+    private function expectValidationException($iban): bool
+    {
+        $this->validateCountryCode($iban);
+        $this->validateLength($iban);
+        $this->validateFormat($iban);
+        $this->validateChecksum($iban);
+
+        return true;
+    }
+
+    /**
+     * @param Iban $iban
+     */
+    private function expectValidationViolations($iban): bool
+    {
         $this->violations = [];
 
         try {
@@ -101,6 +123,7 @@ final class Validator
             'violation.invalid_length' => 'The length of the given Iban is not valid!',
             'violation.invalid_format' => 'The format of the given Iban is not valid!',
             'violation.invalid_checksum' => 'The checksum of the given Iban is not valid!',
+            'throw_exceptions' => false,
         ]);
     }
 
