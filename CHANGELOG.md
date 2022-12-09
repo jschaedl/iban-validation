@@ -21,7 +21,7 @@ Unreleased
 * Removed method `Iban::getBbanBankIdentifier()`, use `Iban::bbanBankIdentifier()` instead. Thanks to [@jschaedl](https://github.com/jschaedl)!
 * Removed method `CountryInfo::getBbanBankIdentifierStartPos()`. Thanks to [@jschaedl](https://github.com/jschaedl)!
 * Removed method `CountryInfo::getBbanBankIdentifierEndPos()`. Thanks to [@jschaedl](https://github.com/jschaedl)!
-* Dropped support for PHP `<7.4`. Thanks to [@jschaedl](https://github.com/jschaedl)!
+* Dropped support for PHP `<8`. Thanks to [@jschaedl](https://github.com/jschaedl)!
 * Removed all composer dev dependencies. Thanks to [@jschaedl](https://github.com/jschaedl)!
 * Removed symfony/yaml dependency. Thanks to [@jschaedl](https://github.com/jschaedl)!
 * Dropped support for symfony/options-resolver `3.4`. Thanks to [@jschaedl](https://github.com/jschaedl)!
