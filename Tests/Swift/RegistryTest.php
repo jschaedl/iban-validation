@@ -14,9 +14,7 @@ namespace Iban\Validation\Tests\Swift;
 use Iban\Validation\Swift\Exception\UnsupportedCountryCodeException;
 use Iban\Validation\Swift\PhpRegistryLoader;
 use Iban\Validation\Swift\Registry;
-use Iban\Validation\Swift\RegistryLoader;
 use PHPUnit\Framework\TestCase;
-use Symfony\Component\Yaml\Yaml;
 
 final class RegistryTest extends TestCase
 {
