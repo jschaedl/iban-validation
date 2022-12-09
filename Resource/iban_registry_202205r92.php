@@ -1,11 +1,10 @@
-<?php 
+<?php
 
-# iban_registry_202205r92.txt
+// iban_registry_202205r92.txt
 
-return 
-array (
-  'AD' => 
-  array (
+return
+[
+  'AD' => [
     'country_name' => 'Andorra',
     'iban_structure' => 'AD2!n4!n4!n12!c',
     'bban_structure' => '4!n4!n12!c',
@@ -21,9 +20,8 @@ array (
     'branch_identifier_position' => '5-8',
     'branch_identifier_structure' => '4!n',
     'branch_identifier_regex' => '/^\\d{4}$/',
-  ),
-  'AE' => 
-  array (
+  ],
+  'AE' => [
     'country_name' => 'United Arab Emirates (The)',
     'iban_structure' => 'AE2!n3!n16!n',
     'bban_structure' => '3!n16!n',
@@ -39,9 +37,8 @@ array (
     'branch_identifier_position' => '',
     'branch_identifier_structure' => '',
     'branch_identifier_regex' => '',
-  ),
-  'AL' => 
-  array (
+  ],
+  'AL' => [
     'country_name' => 'Albania',
     'iban_structure' => 'AL2!n8!n16!c',
     'bban_structure' => '8!n16!c',
@@ -57,9 +54,8 @@ array (
     'branch_identifier_position' => '4-8',
     'branch_identifier_structure' => '5!n',
     'branch_identifier_regex' => '/^\\d{5}$/',
-  ),
-  'AT' => 
-  array (
+  ],
+  'AT' => [
     'country_name' => 'Austria',
     'iban_structure' => 'AT2!n5!n11!n',
     'bban_structure' => '5!n11!n',
@@ -75,9 +71,8 @@ array (
     'branch_identifier_position' => '',
     'branch_identifier_structure' => '',
     'branch_identifier_regex' => '',
-  ),
-  'AZ' => 
-  array (
+  ],
+  'AZ' => [
     'country_name' => 'Azerbaijan',
     'iban_structure' => 'AZ2!n4!a20!c',
     'bban_structure' => '4!a20!c',
@@ -93,9 +88,8 @@ array (
     'branch_identifier_position' => '',
     'branch_identifier_structure' => '',
     'branch_identifier_regex' => '',
-  ),
-  'BA' => 
-  array (
+  ],
+  'BA' => [
     'country_name' => 'Bosnia and Herzegovina',
     'iban_structure' => 'BA2!n3!n3!n8!n2!n',
     'bban_structure' => '3!n3!n8!n2!n',
@@ -111,9 +105,8 @@ array (
     'branch_identifier_position' => '4-6',
     'branch_identifier_structure' => '3!n',
     'branch_identifier_regex' => '/^\\d{3}$/',
-  ),
-  'BE' => 
-  array (
+  ],
+  'BE' => [
     'country_name' => 'Belgium',
     'iban_structure' => 'BE2!n3!n7!n2!n',
     'bban_structure' => '3!n7!n2!n',
@@ -129,9 +122,8 @@ array (
     'branch_identifier_position' => '',
     'branch_identifier_structure' => '',
     'branch_identifier_regex' => '',
-  ),
-  'BG' => 
-  array (
+  ],
+  'BG' => [
     'country_name' => 'Bulgaria',
     'iban_structure' => 'BG2!n4!a4!n2!n8!c',
     'bban_structure' => '4!a4!n2!n8!c',
@@ -147,9 +139,8 @@ array (
     'branch_identifier_position' => '5-8',
     'branch_identifier_structure' => '4!n',
     'branch_identifier_regex' => '/^\\d{4}$/',
-  ),
-  'BH' => 
-  array (
+  ],
+  'BH' => [
     'country_name' => 'Bahrain',
     'iban_structure' => 'BH2!n4!a14!c',
     'bban_structure' => '4!a14!c',
@@ -165,9 +156,8 @@ array (
     'branch_identifier_position' => '',
     'branch_identifier_structure' => '',
     'branch_identifier_regex' => '',
-  ),
-  'BI' => 
-  array (
+  ],
+  'BI' => [
     'country_name' => 'Burundi',
     'iban_structure' => 'BI2!n5!n5!n11!n2!n',
     'bban_structure' => '5!n5!n11!n2!n',
@@ -183,9 +173,8 @@ array (
     'branch_identifier_position' => '6-10',
     'branch_identifier_structure' => '5!n',
     'branch_identifier_regex' => '/^\\d{5}$/',
-  ),
-  'BR' => 
-  array (
+  ],
+  'BR' => [
     'country_name' => 'Brazil',
     'iban_structure' => 'BR2!n8!n5!n10!n1!a1!c',
     'bban_structure' => '8!n5!n10!n1!a1!c',
@@ -201,9 +190,8 @@ array (
     'branch_identifier_position' => '9-13',
     'branch_identifier_structure' => '5!n',
     'branch_identifier_regex' => '/^\\d{5}$/',
-  ),
-  'BY' => 
-  array (
+  ],
+  'BY' => [
     'country_name' => 'Republic of Belarus',
     'iban_structure' => 'BY2!n4!c4!n16!c',
     'bban_structure' => '4!c4!n16!c',
@@ -219,9 +207,8 @@ array (
     'branch_identifier_position' => '',
     'branch_identifier_structure' => '',
     'branch_identifier_regex' => '',
-  ),
-  'CH' => 
-  array (
+  ],
+  'CH' => [
     'country_name' => 'Switzerland',
     'iban_structure' => 'CH2!n5!n12!c',
     'bban_structure' => '5!n12!c',
@@ -237,9 +224,8 @@ array (
     'branch_identifier_position' => '',
     'branch_identifier_structure' => '',
     'branch_identifier_regex' => '',
-  ),
-  'CR' => 
-  array (
+  ],
+  'CR' => [
     'country_name' => 'Costa Rica',
     'iban_structure' => 'CR2!n4!n14!n',
     'bban_structure' => '4!n14!n',
@@ -255,9 +241,8 @@ array (
     'branch_identifier_position' => '',
     'branch_identifier_structure' => '',
     'branch_identifier_regex' => '',
-  ),
-  'CY' => 
-  array (
+  ],
+  'CY' => [
     'country_name' => 'Cyprus',
     'iban_structure' => 'CY2!n3!n5!n16!c',
     'bban_structure' => '3!n5!n16!c',
@@ -273,9 +258,8 @@ array (
     'branch_identifier_position' => '4-8',
     'branch_identifier_structure' => '5!n',
     'branch_identifier_regex' => '/^\\d{5}$/',
-  ),
-  'CZ' => 
-  array (
+  ],
+  'CZ' => [
     'country_name' => 'Czechia',
     'iban_structure' => 'CZ2!n4!n6!n10!n',
     'bban_structure' => '4!n6!n10!n',
@@ -291,9 +275,8 @@ array (
     'branch_identifier_position' => '',
     'branch_identifier_structure' => '',
     'branch_identifier_regex' => '',
-  ),
-  'DE' => 
-  array (
+  ],
+  'DE' => [
     'country_name' => 'Germany',
     'iban_structure' => 'DE2!n8!n10!n',
     'bban_structure' => '8!n10!n',
@@ -309,9 +292,8 @@ array (
     'branch_identifier_position' => '',
     'branch_identifier_structure' => '',
     'branch_identifier_regex' => '',
-  ),
-  'DJ' => 
-  array (
+  ],
+  'DJ' => [
     'country_name' => 'Djibouti',
     'iban_structure' => 'DJ2!n5!n5!n11!n2!n',
     'bban_structure' => '5!n5!n11!n2!n',
@@ -327,9 +309,8 @@ array (
     'branch_identifier_position' => '6-10',
     'branch_identifier_structure' => '5!n',
     'branch_identifier_regex' => '/^\\d{5}$/',
-  ),
-  'DK' => 
-  array (
+  ],
+  'DK' => [
     'country_name' => 'Denmark',
     'iban_structure' => 'DK2!n4!n9!n1!n',
     'bban_structure' => '4!n9!n1!n',
@@ -345,9 +326,8 @@ array (
     'branch_identifier_position' => '',
     'branch_identifier_structure' => '',
     'branch_identifier_regex' => '',
-  ),
-  'DO' => 
-  array (
+  ],
+  'DO' => [
     'country_name' => 'Dominican Republic',
     'iban_structure' => 'DO2!n4!c20!n',
     'bban_structure' => '4!c20!n',
@@ -363,9 +343,8 @@ array (
     'branch_identifier_position' => '',
     'branch_identifier_structure' => '',
     'branch_identifier_regex' => '',
-  ),
-  'EE' => 
-  array (
+  ],
+  'EE' => [
     'country_name' => 'Estonia',
     'iban_structure' => 'EE2!n2!n2!n11!n1!n',
     'bban_structure' => '2!n2!n11!n1!n',
@@ -381,9 +360,8 @@ array (
     'branch_identifier_position' => '',
     'branch_identifier_structure' => '',
     'branch_identifier_regex' => '',
-  ),
-  'EG' => 
-  array (
+  ],
+  'EG' => [
     'country_name' => 'Egypt',
     'iban_structure' => 'EG2!n4!n4!n17!n',
     'bban_structure' => '4!n4!n17!n',
@@ -399,9 +377,8 @@ array (
     'branch_identifier_position' => '5-8',
     'branch_identifier_structure' => '4!',
     'branch_identifier_regex' => '/^4!$/',
-  ),
-  'ES' => 
-  array (
+  ],
+  'ES' => [
     'country_name' => 'Spain',
     'iban_structure' => 'ES2!n4!n4!n1!n1!n10!n',
     'bban_structure' => '4!n4!n1!n1!n10!n',
@@ -417,9 +394,8 @@ array (
     'branch_identifier_position' => '5-8',
     'branch_identifier_structure' => '4!n',
     'branch_identifier_regex' => '/^\\d{4}$/',
-  ),
-  'FI' => 
-  array (
+  ],
+  'FI' => [
     'country_name' => 'Finland',
     'iban_structure' => 'FI2!n3!n11!n',
     'bban_structure' => '3!n11!n',
@@ -435,9 +411,8 @@ array (
     'branch_identifier_position' => '',
     'branch_identifier_structure' => '',
     'branch_identifier_regex' => '',
-  ),
-  'FO' => 
-  array (
+  ],
+  'FO' => [
     'country_name' => 'Faroe Islands',
     'iban_structure' => 'FO2!n4!n9!n1!n',
     'bban_structure' => '4!n9!n1!n',
@@ -453,9 +428,8 @@ array (
     'branch_identifier_position' => '',
     'branch_identifier_structure' => '',
     'branch_identifier_regex' => '',
-  ),
-  'FR' => 
-  array (
+  ],
+  'FR' => [
     'country_name' => 'France',
     'iban_structure' => 'FR2!n5!n5!n11!c2!n',
     'bban_structure' => '5!n5!n11!c2!n',
@@ -471,9 +445,8 @@ array (
     'branch_identifier_position' => '',
     'branch_identifier_structure' => '',
     'branch_identifier_regex' => '',
-  ),
-  'GB' => 
-  array (
+  ],
+  'GB' => [
     'country_name' => 'United Kingdom',
     'iban_structure' => 'GB2!n4!a6!n8!n',
     'bban_structure' => '4!a6!n8!n',
@@ -489,9 +462,8 @@ array (
     'branch_identifier_position' => '5-10',
     'branch_identifier_structure' => '6!n',
     'branch_identifier_regex' => '/^\\d{6}$/',
-  ),
-  'GE' => 
-  array (
+  ],
+  'GE' => [
     'country_name' => 'Georgia',
     'iban_structure' => 'GE2!n2!a16!n',
     'bban_structure' => '2!a16!n',
@@ -507,9 +479,8 @@ array (
     'branch_identifier_position' => '',
     'branch_identifier_structure' => '',
     'branch_identifier_regex' => '',
-  ),
-  'GI' => 
-  array (
+  ],
+  'GI' => [
     'country_name' => 'Gibraltar',
     'iban_structure' => 'GI2!n4!a15!c',
     'bban_structure' => '4!a15!c',
@@ -525,9 +496,8 @@ array (
     'branch_identifier_position' => '',
     'branch_identifier_structure' => '',
     'branch_identifier_regex' => '',
-  ),
-  'GL' => 
-  array (
+  ],
+  'GL' => [
     'country_name' => 'Greenland',
     'iban_structure' => 'GL2!n4!n9!n1!n',
     'bban_structure' => '4!n9!n1!n',
@@ -543,9 +513,8 @@ array (
     'branch_identifier_position' => '',
     'branch_identifier_structure' => '',
     'branch_identifier_regex' => '',
-  ),
-  'GR' => 
-  array (
+  ],
+  'GR' => [
     'country_name' => 'Greece',
     'iban_structure' => 'GR2!n3!n4!n16!c',
     'bban_structure' => '3!n4!n16!c',
@@ -561,9 +530,8 @@ array (
     'branch_identifier_position' => '4-7',
     'branch_identifier_structure' => '4!n',
     'branch_identifier_regex' => '/^\\d{4}$/',
-  ),
-  'GT' => 
-  array (
+  ],
+  'GT' => [
     'country_name' => 'Guatemala',
     'iban_structure' => 'GT2!n4!c20!c',
     'bban_structure' => '4!c20!c',
@@ -579,9 +547,8 @@ array (
     'branch_identifier_position' => '',
     'branch_identifier_structure' => '',
     'branch_identifier_regex' => '',
-  ),
-  'HR' => 
-  array (
+  ],
+  'HR' => [
     'country_name' => 'Croatia',
     'iban_structure' => 'HR2!n7!n10!n',
     'bban_structure' => '7!n10!n',
@@ -597,9 +564,8 @@ array (
     'branch_identifier_position' => '',
     'branch_identifier_structure' => '',
     'branch_identifier_regex' => '',
-  ),
-  'HU' => 
-  array (
+  ],
+  'HU' => [
     'country_name' => 'Hungary',
     'iban_structure' => 'HU2!n3!n4!n1!n15!n1!n',
     'bban_structure' => '3!n4!n1!n15!n1!n',
@@ -615,9 +581,8 @@ array (
     'branch_identifier_position' => '4-7',
     'branch_identifier_structure' => '4!n',
     'branch_identifier_regex' => '/^\\d{4}$/',
-  ),
-  'IE' => 
-  array (
+  ],
+  'IE' => [
     'country_name' => 'Ireland',
     'iban_structure' => 'IE2!n4!a6!n8!n',
     'bban_structure' => '4!a6!n8!n',
@@ -633,9 +598,8 @@ array (
     'branch_identifier_position' => '5-10',
     'branch_identifier_structure' => '6!n',
     'branch_identifier_regex' => '/^\\d{6}$/',
-  ),
-  'IL' => 
-  array (
+  ],
+  'IL' => [
     'country_name' => 'Israel',
     'iban_structure' => 'IL2!n3!n3!n13!n',
     'bban_structure' => '3!n3!n13!n',
@@ -651,9 +615,8 @@ array (
     'branch_identifier_position' => '4-6',
     'branch_identifier_structure' => '3!n',
     'branch_identifier_regex' => '/^\\d{3}$/',
-  ),
-  'IQ' => 
-  array (
+  ],
+  'IQ' => [
     'country_name' => 'Iraq',
     'iban_structure' => 'IQ2!n4!a3!n12!n',
     'bban_structure' => '4!a3!n12!n',
@@ -669,9 +632,8 @@ array (
     'branch_identifier_position' => '5-7',
     'branch_identifier_structure' => '3',
     'branch_identifier_regex' => '/^3$/',
-  ),
-  'IS' => 
-  array (
+  ],
+  'IS' => [
     'country_name' => 'Iceland',
     'iban_structure' => 'IS2!n4!n2!n6!n10!n',
     'bban_structure' => '4!n2!n6!n10!n',
@@ -687,9 +649,8 @@ array (
     'branch_identifier_position' => '3-4',
     'branch_identifier_structure' => '2!n',
     'branch_identifier_regex' => '/^\\d{2}$/',
-  ),
-  'IT' => 
-  array (
+  ],
+  'IT' => [
     'country_name' => 'Italy',
     'iban_structure' => 'IT2!n1!a5!n5!n12!c',
     'bban_structure' => '1!a5!n5!n12!c',
@@ -705,9 +666,8 @@ array (
     'branch_identifier_position' => '7-11',
     'branch_identifier_structure' => '5!n',
     'branch_identifier_regex' => '/^\\d{5}$/',
-  ),
-  'JO' => 
-  array (
+  ],
+  'JO' => [
     'country_name' => 'Jordan',
     'iban_structure' => 'JO2!n4!a4!n18!c',
     'bban_structure' => '4!a4!n18!c',
@@ -723,9 +683,8 @@ array (
     'branch_identifier_position' => '5-8',
     'branch_identifier_structure' => '4!n',
     'branch_identifier_regex' => '/^\\d{4}$/',
-  ),
-  'KW' => 
-  array (
+  ],
+  'KW' => [
     'country_name' => 'Kuwait',
     'iban_structure' => 'KW2!n4!a22!c',
     'bban_structure' => '4!a22!c',
@@ -741,9 +700,8 @@ array (
     'branch_identifier_position' => '',
     'branch_identifier_structure' => '',
     'branch_identifier_regex' => '',
-  ),
-  'KZ' => 
-  array (
+  ],
+  'KZ' => [
     'country_name' => 'Kazakhstan',
     'iban_structure' => 'KZ2!n3!n13!c',
     'bban_structure' => '3!n13!c',
@@ -759,9 +717,8 @@ array (
     'branch_identifier_position' => '',
     'branch_identifier_structure' => '',
     'branch_identifier_regex' => '',
-  ),
-  'LB' => 
-  array (
+  ],
+  'LB' => [
     'country_name' => 'Lebanon',
     'iban_structure' => 'LB2!n4!n20!c',
     'bban_structure' => '4!n20!c',
@@ -777,9 +734,8 @@ array (
     'branch_identifier_position' => '',
     'branch_identifier_structure' => '',
     'branch_identifier_regex' => '',
-  ),
-  'LC' => 
-  array (
+  ],
+  'LC' => [
     'country_name' => 'Saint Lucia',
     'iban_structure' => 'LC2!n4!a24!c',
     'bban_structure' => '4!a24!c',
@@ -795,9 +751,8 @@ array (
     'branch_identifier_position' => '',
     'branch_identifier_structure' => '',
     'branch_identifier_regex' => '',
-  ),
-  'LI' => 
-  array (
+  ],
+  'LI' => [
     'country_name' => 'Liechtenstein',
     'iban_structure' => 'LI2!n5!n12!c',
     'bban_structure' => '5!n12!c',
@@ -813,9 +768,8 @@ array (
     'branch_identifier_position' => '',
     'branch_identifier_structure' => '',
     'branch_identifier_regex' => '',
-  ),
-  'LT' => 
-  array (
+  ],
+  'LT' => [
     'country_name' => 'Lithuania',
     'iban_structure' => 'LT2!n5!n11!n',
     'bban_structure' => '5!n11!n',
@@ -831,9 +785,8 @@ array (
     'branch_identifier_position' => '',
     'branch_identifier_structure' => '',
     'branch_identifier_regex' => '',
-  ),
-  'LU' => 
-  array (
+  ],
+  'LU' => [
     'country_name' => 'Luxembourg',
     'iban_structure' => 'LU2!n3!n13!c',
     'bban_structure' => '3!n13!c',
@@ -849,9 +802,8 @@ array (
     'branch_identifier_position' => '',
     'branch_identifier_structure' => '',
     'branch_identifier_regex' => '',
-  ),
-  'LV' => 
-  array (
+  ],
+  'LV' => [
     'country_name' => 'Latvia',
     'iban_structure' => 'LV2!n4!a13!c',
     'bban_structure' => '4!a13!c',
@@ -867,9 +819,8 @@ array (
     'branch_identifier_position' => '',
     'branch_identifier_structure' => '',
     'branch_identifier_regex' => '',
-  ),
-  'LY' => 
-  array (
+  ],
+  'LY' => [
     'country_name' => 'Libya',
     'iban_structure' => 'LY2!n3!n3!n15!n',
     'bban_structure' => '3!n3!n15!n',
@@ -885,9 +836,8 @@ array (
     'branch_identifier_position' => '4-6',
     'branch_identifier_structure' => '3!n',
     'branch_identifier_regex' => '/^\\d{3}$/',
-  ),
-  'MC' => 
-  array (
+  ],
+  'MC' => [
     'country_name' => 'Monaco',
     'iban_structure' => 'MC2!n5!n5!n11!c2!n',
     'bban_structure' => '5!n5!n11!c2!n',
@@ -903,9 +853,8 @@ array (
     'branch_identifier_position' => '6-10',
     'branch_identifier_structure' => '5!n',
     'branch_identifier_regex' => '/^\\d{5}$/',
-  ),
-  'MD' => 
-  array (
+  ],
+  'MD' => [
     'country_name' => 'Moldova',
     'iban_structure' => 'MD2!n2!c18!c',
     'bban_structure' => '2!c18!c',
@@ -921,9 +870,8 @@ array (
     'branch_identifier_position' => '',
     'branch_identifier_structure' => '',
     'branch_identifier_regex' => '',
-  ),
-  'ME' => 
-  array (
+  ],
+  'ME' => [
     'country_name' => 'Montenegro',
     'iban_structure' => 'ME2!n3!n13!n2!n',
     'bban_structure' => '3!n13!n2!n',
@@ -939,9 +887,8 @@ array (
     'branch_identifier_position' => '',
     'branch_identifier_structure' => '',
     'branch_identifier_regex' => '',
-  ),
-  'MK' => 
-  array (
+  ],
+  'MK' => [
     'country_name' => 'Macedonia',
     'iban_structure' => 'MK2!n3!n10!c2!n',
     'bban_structure' => '3!n10!c2!n',
@@ -957,9 +904,8 @@ array (
     'branch_identifier_position' => '',
     'branch_identifier_structure' => '',
     'branch_identifier_regex' => '',
-  ),
-  'MR' => 
-  array (
+  ],
+  'MR' => [
     'country_name' => 'Mauritania',
     'iban_structure' => 'MR2!n5!n5!n11!n2!n',
     'bban_structure' => '5!n5!n11!n2!n',
@@ -975,9 +921,8 @@ array (
     'branch_identifier_position' => '6-10',
     'branch_identifier_structure' => '5!n',
     'branch_identifier_regex' => '/^\\d{5}$/',
-  ),
-  'MT' => 
-  array (
+  ],
+  'MT' => [
     'country_name' => 'Malta',
     'iban_structure' => 'MT2!n4!a5!n18!c',
     'bban_structure' => '4!a5!n18!c',
@@ -993,9 +938,8 @@ array (
     'branch_identifier_position' => '5-9',
     'branch_identifier_structure' => '5!n',
     'branch_identifier_regex' => '/^\\d{5}$/',
-  ),
-  'MU' => 
-  array (
+  ],
+  'MU' => [
     'country_name' => 'Mauritius',
     'iban_structure' => 'MU2!n4!a2!n2!n12!n3!n3!a',
     'bban_structure' => '4!a2!n2!n12!n3!n3!a',
@@ -1011,9 +955,8 @@ array (
     'branch_identifier_position' => '7-8',
     'branch_identifier_structure' => '2!n',
     'branch_identifier_regex' => '/^\\d{2}$/',
-  ),
-  'NL' => 
-  array (
+  ],
+  'NL' => [
     'country_name' => 'Netherlands (The)',
     'iban_structure' => 'NL2!n4!a10!n',
     'bban_structure' => '4!a10!n',
@@ -1029,9 +972,8 @@ array (
     'branch_identifier_position' => '',
     'branch_identifier_structure' => '',
     'branch_identifier_regex' => '',
-  ),
-  'NO' => 
-  array (
+  ],
+  'NO' => [
     'country_name' => 'Norway',
     'iban_structure' => 'NO2!n4!n6!n1!n',
     'bban_structure' => '4!n6!n1!n',
@@ -1047,9 +989,8 @@ array (
     'branch_identifier_position' => '',
     'branch_identifier_structure' => '',
     'branch_identifier_regex' => '',
-  ),
-  'PK' => 
-  array (
+  ],
+  'PK' => [
     'country_name' => 'Pakistan',
     'iban_structure' => 'PK2!n4!a16!c',
     'bban_structure' => '4!a16!c',
@@ -1065,9 +1006,8 @@ array (
     'branch_identifier_position' => '',
     'branch_identifier_structure' => '',
     'branch_identifier_regex' => '',
-  ),
-  'PL' => 
-  array (
+  ],
+  'PL' => [
     'country_name' => 'Poland',
     'iban_structure' => 'PL2!n8!n16!n',
     'bban_structure' => '8!n16!n',
@@ -1083,9 +1023,8 @@ array (
     'branch_identifier_position' => '1-8',
     'branch_identifier_structure' => '8!n',
     'branch_identifier_regex' => '/^\\d{8}$/',
-  ),
-  'PS' => 
-  array (
+  ],
+  'PS' => [
     'country_name' => '"Palestine, State of"',
     'iban_structure' => 'PS2!n4!a21!c',
     'bban_structure' => '4!a21!c',
@@ -1101,9 +1040,8 @@ array (
     'branch_identifier_position' => '',
     'branch_identifier_structure' => '',
     'branch_identifier_regex' => '',
-  ),
-  'PT' => 
-  array (
+  ],
+  'PT' => [
     'country_name' => 'Portugal',
     'iban_structure' => 'PT2!n4!n4!n11!n2!n',
     'bban_structure' => '4!n4!n11!n2!n',
@@ -1119,9 +1057,8 @@ array (
     'branch_identifier_position' => '',
     'branch_identifier_structure' => '',
     'branch_identifier_regex' => '',
-  ),
-  'QA' => 
-  array (
+  ],
+  'QA' => [
     'country_name' => 'Qatar',
     'iban_structure' => 'QA2!n4!a21!c',
     'bban_structure' => '4!a21!c',
@@ -1137,9 +1074,8 @@ array (
     'branch_identifier_position' => '',
     'branch_identifier_structure' => '',
     'branch_identifier_regex' => '',
-  ),
-  'RO' => 
-  array (
+  ],
+  'RO' => [
     'country_name' => 'Romania',
     'iban_structure' => 'RO2!n4!a16!c',
     'bban_structure' => '4!a16!c',
@@ -1155,9 +1091,8 @@ array (
     'branch_identifier_position' => '',
     'branch_identifier_structure' => '',
     'branch_identifier_regex' => '',
-  ),
-  'RS' => 
-  array (
+  ],
+  'RS' => [
     'country_name' => 'Serbia',
     'iban_structure' => 'RS2!n3!n13!n2!n',
     'bban_structure' => '3!n13!n2!n',
@@ -1173,9 +1108,8 @@ array (
     'branch_identifier_position' => '',
     'branch_identifier_structure' => '',
     'branch_identifier_regex' => '',
-  ),
-  'RU' => 
-  array (
+  ],
+  'RU' => [
     'country_name' => 'Russia',
     'iban_structure' => 'RU2!n9!n5!n15!c',
     'bban_structure' => '9!n5!n15!c',
@@ -1191,9 +1125,8 @@ array (
     'branch_identifier_position' => '10-14',
     'branch_identifier_structure' => '5!n',
     'branch_identifier_regex' => '/^\\d{5}$/',
-  ),
-  'SA' => 
-  array (
+  ],
+  'SA' => [
     'country_name' => 'Saudi Arabia',
     'iban_structure' => 'SA2!n2!n18!c',
     'bban_structure' => '2!n18!c',
@@ -1209,9 +1142,8 @@ array (
     'branch_identifier_position' => '',
     'branch_identifier_structure' => '',
     'branch_identifier_regex' => '',
-  ),
-  'SC' => 
-  array (
+  ],
+  'SC' => [
     'country_name' => 'Seychelles',
     'iban_structure' => 'SC2!n4!a2!n2!n16!n3!a',
     'bban_structure' => '4!a2!n2!n16!n3!a',
@@ -1227,9 +1159,8 @@ array (
     'branch_identifier_position' => '7-8',
     'branch_identifier_structure' => '2!n',
     'branch_identifier_regex' => '/^\\d{2}$/',
-  ),
-  'SD' => 
-  array (
+  ],
+  'SD' => [
     'country_name' => 'Sudan',
     'iban_structure' => 'SD2!n2!n12!n',
     'bban_structure' => '2!n12!n',
@@ -1245,9 +1176,8 @@ array (
     'branch_identifier_position' => '',
     'branch_identifier_structure' => '',
     'branch_identifier_regex' => '',
-  ),
-  'SE' => 
-  array (
+  ],
+  'SE' => [
     'country_name' => 'Sweden',
     'iban_structure' => 'SE2!n3!n16!n1!n',
     'bban_structure' => '3!n16!n1!n',
@@ -1263,9 +1193,8 @@ array (
     'branch_identifier_position' => '',
     'branch_identifier_structure' => '',
     'branch_identifier_regex' => '',
-  ),
-  'SI' => 
-  array (
+  ],
+  'SI' => [
     'country_name' => 'Slovenia',
     'iban_structure' => 'SI2!n5!n8!n2!n',
     'bban_structure' => '5!n8!n2!n',
@@ -1281,9 +1210,8 @@ array (
     'branch_identifier_position' => '',
     'branch_identifier_structure' => '',
     'branch_identifier_regex' => '',
-  ),
-  'SK' => 
-  array (
+  ],
+  'SK' => [
     'country_name' => 'Slovakia',
     'iban_structure' => 'SK2!n4!n6!n10!n',
     'bban_structure' => '4!n6!n10!n',
@@ -1299,9 +1227,8 @@ array (
     'branch_identifier_position' => '',
     'branch_identifier_structure' => '',
     'branch_identifier_regex' => '',
-  ),
-  'SM' => 
-  array (
+  ],
+  'SM' => [
     'country_name' => 'San Marino',
     'iban_structure' => 'SM2!n1!a5!n5!n12!c',
     'bban_structure' => '1!a5!n5!n12!c',
@@ -1317,9 +1244,8 @@ array (
     'branch_identifier_position' => '7-11',
     'branch_identifier_structure' => '5!n',
     'branch_identifier_regex' => '/^\\d{5}$/',
-  ),
-  'ST' => 
-  array (
+  ],
+  'ST' => [
     'country_name' => 'Sao Tome and Principe',
     'iban_structure' => 'ST2!n4!n4!n11!n2!n',
     'bban_structure' => '4!n4!n11!n2!n',
@@ -1335,9 +1261,8 @@ array (
     'branch_identifier_position' => '5-8',
     'branch_identifier_structure' => '4!n',
     'branch_identifier_regex' => '/^\\d{4}$/',
-  ),
-  'SV' => 
-  array (
+  ],
+  'SV' => [
     'country_name' => 'El Salvador',
     'iban_structure' => 'SV2!n4!a20!n',
     'bban_structure' => '4!a20!n',
@@ -1353,9 +1278,8 @@ array (
     'branch_identifier_position' => '',
     'branch_identifier_structure' => '',
     'branch_identifier_regex' => '',
-  ),
-  'TL' => 
-  array (
+  ],
+  'TL' => [
     'country_name' => 'Timor-Leste',
     'iban_structure' => 'TL2!n3!n14!n2!n',
     'bban_structure' => '3!n14!n2!n',
@@ -1371,9 +1295,8 @@ array (
     'branch_identifier_position' => '',
     'branch_identifier_structure' => '',
     'branch_identifier_regex' => '',
-  ),
-  'TN' => 
-  array (
+  ],
+  'TN' => [
     'country_name' => 'Tunisia',
     'iban_structure' => 'TN2!n2!n3!n13!n2!n',
     'bban_structure' => '2!n3!n13!n2!n',
@@ -1389,9 +1312,8 @@ array (
     'branch_identifier_position' => '3-5',
     'branch_identifier_structure' => '3!n',
     'branch_identifier_regex' => '/^\\d{3}$/',
-  ),
-  'TR' => 
-  array (
+  ],
+  'TR' => [
     'country_name' => 'Turkey',
     'iban_structure' => 'TR2!n5!n1!n16!c',
     'bban_structure' => '5!n1!n16!c',
@@ -1407,9 +1329,8 @@ array (
     'branch_identifier_position' => '',
     'branch_identifier_structure' => '',
     'branch_identifier_regex' => '',
-  ),
-  'UA' => 
-  array (
+  ],
+  'UA' => [
     'country_name' => 'Ukraine',
     'iban_structure' => 'UA2!n6!n19!c',
     'bban_structure' => '6!n19!c',
@@ -1425,9 +1346,8 @@ array (
     'branch_identifier_position' => '',
     'branch_identifier_structure' => '',
     'branch_identifier_regex' => '',
-  ),
-  'VA' => 
-  array (
+  ],
+  'VA' => [
     'country_name' => 'Vatican City State',
     'iban_structure' => 'VA2!n3!n15!n',
     'bban_structure' => '3!n15!n',
@@ -1443,9 +1363,8 @@ array (
     'branch_identifier_position' => '',
     'branch_identifier_structure' => '',
     'branch_identifier_regex' => '',
-  ),
-  'VG' => 
-  array (
+  ],
+  'VG' => [
     'country_name' => 'Virgin Islands',
     'iban_structure' => 'VG2!n4!a16!n',
     'bban_structure' => '4!a16!n',
@@ -1461,9 +1380,8 @@ array (
     'branch_identifier_position' => '',
     'branch_identifier_structure' => '',
     'branch_identifier_regex' => '',
-  ),
-  'XK' => 
-  array (
+  ],
+  'XK' => [
     'country_name' => 'Kosovo',
     'iban_structure' => 'XK2!n4!n10!n2!n',
     'bban_structure' => '4!n10!n2!n',
@@ -1479,5 +1397,5 @@ array (
     'branch_identifier_position' => '3-4',
     'branch_identifier_structure' => '2!n',
     'branch_identifier_regex' => '/^\\d{2}$/',
-  ),
-);
+  ],
+];
