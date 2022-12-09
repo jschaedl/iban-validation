@@ -6,7 +6,7 @@ Unreleased
 
 ### Updated
 
-* Updated iban registry to version 92 in https://github.com/jschaedl/iban-validation/issues/77. Thanks to [@jschaedl](https://github.com/jschaedl)!
+* Updated iban registry to version 92 in https://github.com/jschaedl/iban-validation/issues/79. Thanks to [@jschaedl](https://github.com/jschaedl)!
 
 ### Changed
 
