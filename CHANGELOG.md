@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## [Version 1.8.3](https://github.com/jschaedl/iban-validation/releases/tag/v1.8.3)
+
+Released on December 9th 2023
+
+### Fixed
+
+* Fixed https://github.com/jschaedl/iban-validation/issues/77. Thanks to [@jschaedl](https://github.com/jschaedl)!
+
+---
+
 ## [Version 1.8.2](https://github.com/jschaedl/iban-validation/releases/tag/v1.8.2)
 
 Released on March 7th 2022
