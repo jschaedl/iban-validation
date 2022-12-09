@@ -15,7 +15,7 @@
  *
  * @author Jan Schädlich <mail@janschaedlich.de>
  */
-$usage = 'php swift.php iban_registry.txt > Swift/iban_registry.yaml';
+$usage = 'php swift.php iban_registry.txt > Resource/iban_registry.php';
 
 if (2 !== $argc) {
     echo 'Please provide path to iban_registry file provided by SWIFT!'.PHP_EOL;

@@ -13,7 +13,8 @@ If you currently live in Russia, please read [this message](./ToRussianPeople.md
 A small library for validating International Bankaccount Numbers (IBANs) based on the IBAN Registry provided by SWIFT.
 See https://www.swift.com/standards/data-standards/iban for more information.
 
-![PHP Version](https://img.shields.io/badge/version-PHP%207.4%2B-lightgrey.svg)
+[![.github/workflows/ci.yaml](https://github.com/jschaedl/iban-validation/actions/workflows/ci.yaml/badge.svg?branch=master)](https://github.com/jschaedl/iban-validation/actions/workflows/ci.yaml)
+[![PHP Version](https://img.shields.io/badge/version-PHP%207.4%2B-lightblue.svg)](https://img.shields.io/badge/version-PHP%207.4%2B-lightgrey.svg)
 [![Latest Stable Version](https://poser.pugx.org/jschaedl/iban-validation/v/stable)](https://packagist.org/packages/jschaedl/iban-validation) 
 [![Latest Unstable Version](https://poser.pugx.org/jschaedl/iban-validation/v/unstable)](https://packagist.org/packages/jschaedl/iban-validation) 
 [![Total Downloads](https://poser.pugx.org/jschaedl/iban-validation/downloads)](https://packagist.org/packages/jschaedl/iban-validation) 

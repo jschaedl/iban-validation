@@ -1,0 +1,85 @@
+on:
+  pull_request:
+  push:
+
+name: "CI"
+
+jobs:
+  coding-standards:
+    name: "Coding standards"
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v2
+
+      - name: "Setup PHP"
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.1
+          coverage: none
+          tools: phive
+
+      - name: "Install dependencies"
+        run: make tools-install
+
+      - name: "Check coding style"
+        run: make php-cs-check
+
+  static-code-analysis:
+    name: "Static code analysis"
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v2
+
+      - name: "Setup PHP"
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.1
+          coverage: none
+          tools: phive
+
+      - name: "Install tools with phive"
+        run: make tools-install
+
+      - name: "Install dependencies with composer"
+        run: composer install --no-interaction --no-progress --no-suggest --optimize-autoloader
+
+      - name: PHPStan
+        run: make phpstan
+
+  tests:
+    name: "Tests on PHP ${{ matrix.php-version }} ${{ matrix.prefer-lowest }}"
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        php-version: [ '8.0', '8.1', '8.2' ]
+        prefer-lowest: ['', '--prefer-lowest --prefer-stable']
+        coverage-driver: [ 'xdebug' ]
+
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v2
+
+      - name: "Setup PHP"
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.2
+          coverage: none
+          tools: phive
+
+      - name: "Install tools with phive"
+        run: make tools-install
+
+      - name: "Install dependencies"
+        run: composer update ${{ matrix.prefer-lowest }} --no-interaction --no-progress --optimize-autoloader
+
+      - name: "Run tests"
+        run: make tests

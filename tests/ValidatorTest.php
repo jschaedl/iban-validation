@@ -32,7 +32,7 @@ final class ValidatorTest extends TestCase
         ]);
     }
 
-    public function validIbanDataProvider()
+    public function validIbanDataProvider(): iterable
     {
         yield ['AD1200012030200359100100'];
         yield ['AE070331234567890123456'];
@@ -103,7 +103,7 @@ final class ValidatorTest extends TestCase
         yield ['SI56263300012039086'];
         yield ['SK3112000000198742637541'];
         yield ['SM86U0322509800000000270100'];
-        //yield ['ST68000200010192194210112']; // iban with invalid checksum given by swift
+        // yield ['ST68000200010192194210112']; // iban with invalid checksum given by swift
         yield ['SV62CENR00000000000000700025'];
         yield ['TL380080012345678910157'];
         yield ['TN5910006035183598478831'];
@@ -116,10 +116,8 @@ final class ValidatorTest extends TestCase
 
     /**
      * @dataProvider validIbanDataProvider
-     *
-     * @param $iban
      */
-    public function testValidIbans($iban)
+    public function testValidIbans(string $iban)
     {
         $this->assertTrue(
             $this->validator->validate(new Iban($iban)),

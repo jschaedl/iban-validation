@@ -119,7 +119,7 @@ final class Validator
      */
     private function validateLength(Iban $iban): void
     {
-        if ((strlen($iban->getNormalizedIban()) !== $this->swiftRegistry->getIbanLength($iban->countryCode()))) {
+        if (strlen($iban->getNormalizedIban()) !== $this->swiftRegistry->getIbanLength($iban->countryCode())) {
             throw new InvalidLengthException($iban);
         }
     }
@@ -129,7 +129,7 @@ final class Validator
      */
     private function validateFormat(Iban $iban): void
     {
-        if ((1 !== preg_match($this->swiftRegistry->getIbanRegex($iban->countryCode()), $iban->getNormalizedIban()))) {
+        if (1 !== preg_match($this->swiftRegistry->getIbanRegex($iban->countryCode()), $iban->getNormalizedIban())) {
             throw new InvalidFormatException($iban);
         }
     }
