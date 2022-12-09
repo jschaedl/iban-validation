@@ -29,4 +29,4 @@ php-cs-fix:
 	PHP_CS_FIXER_FUTURE_MODE=1 $(PHP_CS_FIXER_BIN) fix --allow-risky=yes
 
 phpstan:
-	$(PHPSTAN_BIN) analyse
+	$(PHPSTAN_BIN) analyse --memory-limit=-1
