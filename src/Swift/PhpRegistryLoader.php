@@ -20,6 +20,6 @@ final class PhpRegistryLoader implements RegistryLoaderInterface
 {
     public function load(): array
     {
-        return require dirname(__DIR__, 2).'/Resource/iban_registry_202009r88.php';
+        return require dirname(__DIR__, 2).'/Resource/iban_registry_202205r92.php';
     }
 }

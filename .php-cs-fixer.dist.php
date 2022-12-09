@@ -8,6 +8,8 @@ $finder = (new PhpCsFixer\Finder())
     ->append([
         __FILE__,
         'swift.php',
+        'Resource/iban_registry_202009r88.php',
+        'Resource/iban_registry_202205r92.php',
     ])
 ;
 

@@ -1326,5 +1326,5 @@ return [
         'branch_identifier_position' => '3-4',
         'branch_identifier_structure' => '2!n',
         'branch_identifier_regex' => '/^\\d{2}$/',
-    ]
+    ],
 ];

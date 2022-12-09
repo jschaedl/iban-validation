@@ -53,6 +53,6 @@ final class CountryInfoTest extends TestCase
      */
     private function getData()
     {
-        return include dirname(__DIR__, 1).'/Resource/iban_registry_202009r88.php';
+        return include dirname(__DIR__, 1).'/Resource/iban_registry_202205r92.php';
     }
 }
