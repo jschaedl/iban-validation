@@ -1,62 +1,85 @@
 on:
-    pull_request:
-    push:
-        branches:
-            - master
-        tags:
-            - "**"
+  pull_request:
+  push:
 
-name: "Tests"
+name: "CI"
 
 jobs:
-    tests:
-        name: "Tests on PHP ${{ matrix.php-version }}"
+  coding-standards:
+    name: "Coding standards"
 
-        runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
 
-        strategy:
-            matrix:
-                php-version: [8.0, 8.1, 8.2]
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v2
 
-        steps:
-            - name: "Checkout"
-              uses: actions/checkout@v2
+      - name: "Setup PHP"
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.1
+          coverage: none
+          tools: phive
 
-            - name: "Cache tools installed with phive"
-              uses: actions/cache@v2
-              with:
-                  path: |
-                      ~/.phive
-                  key: phive-${{ runner.os }}-${{ matrix.php-version }}-${{ hashFiles('.phive/phars.xml') }}
-                  restore-keys: |
-                      phive-${{ runner.os }}-${{ matrix.php-version }}-
-                      phive-${{ runner.os }}-
-                      phive-
+      - name: "Install dependencies"
+        run: make tools-install
 
-            - name: Setup PHP
-              uses: shivammathur/setup-php@v2
-              with:
-                  php-version: ${{ matrix.php-version }}
-                  extensions: mbstring, xml, ctype, iconv, bcmath
-                  coverage: none
-                  tools: phive, composer:v2
+      - name: "Check coding style"
+        run: make php-cs-check
 
-            - name: Get composer cache directory
-              id: composercache
-              run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+  static-code-analysis:
+    name: "Static code analysis"
 
-            - name: Cache composer dependencies
-              uses: actions/cache@v2
-              with:
-                  path: ${{ steps.composercache.outputs.dir }}
-                  key: composer-${{ runner.os }}-${{ matrix.php-version }}-${{ hashFiles('composer.*') }}
-                  restore-keys: |
-                      composer-${{ runner.os }}-${{ matrix.php-version }}-
-                      composer-${{ runner.os }}-
-                      composer-
+    runs-on: ubuntu-latest
 
-            - name: "Install tools with phive"
-              run: make tools-install
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v2
 
-            - name: "Run tests"
-              run: make tests
+      - name: "Setup PHP"
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.1
+          coverage: none
+          tools: phive
+
+      - name: "Install tools with phive"
+        run: make tools-install
+
+      - name: "Install dependencies with composer"
+        run: composer install --no-interaction --no-progress --no-suggest --optimize-autoloader
+
+      - name: PHPStan
+        run: make phpstan
+
+  tests:
+    name: "Tests on PHP ${{ matrix.php-version }} ${{ matrix.prefer-lowest }}"
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        php-version: [ '8.0', '8.1', '8.2' ]
+        prefer-lowest: ['', '--prefer-lowest --prefer-stable']
+        coverage-driver: [ 'xdebug' ]
+
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v2
+
+      - name: "Setup PHP"
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.2
+          coverage: none
+          tools: phive
+
+      - name: "Install tools with phive"
+        run: make tools-install
+
+      - name: "Install dependencies"
+        run: composer update ${{ matrix.prefer-lowest }} --no-interaction --no-progress --optimize-autoloader
+
+      - name: "Run tests"
+        run: make tests
