@@ -15,6 +15,16 @@ Unreleased
 * Made `CountryInfo` final. Thanks to [@jschaedl](https://github.com/jschaedl)!
 * Made `Validator` final. Thanks to [@jschaedl](https://github.com/jschaedl)!
 * Made `Iban` final. Thanks to [@jschaedl](https://github.com/jschaedl)!
+* Introduced second argument to `Validator::validate(string|Iban $iban, bool $throw = false)`. Thanks to [@jschaedl](https://github.com/jschaedl)!
+```php
+$validator = new Validator();
+
+try {
+    $validator->validate(new Iban('DE89 3704 0044 0532 0130 00'), throw: true);
+} catch (Exception $exception) {
+    // ...
+}
+```
 
 ### Removed
 

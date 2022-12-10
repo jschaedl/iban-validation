@@ -17,7 +17,7 @@ use PHPUnit\Framework\TestCase;
 
 final class RegistryTest extends TestCase
 {
-    public function test_it_should_throw__unsupported_country_code_exception_for_unsupported_country_code(): void
+    public function test_it_should_throw_UnsupportedCountryCodeException_for_unsupported_country_code(): void
     {
         $this->expectException(UnsupportedCountryCodeException::class);
 
