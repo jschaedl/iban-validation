@@ -17,42 +17,26 @@ use PHPUnit\Framework\TestCase;
 
 final class CountryInfoTest extends TestCase
 {
-    /**
-     * @var CountryInfo
-     */
-    private $countryInfo;
-
-    protected function setUp(): void
-    {
-        $this->countryInfo = new CountryInfo('DE');
-    }
-
-    public function testItShouldThrowUnsupportedCountryCodeException()
+    public function test_it_should_throw__unsupported_country_code_exception_for_not_supported_country(): void
     {
         $this->expectException(UnsupportedCountryCodeException::class);
         new CountryInfo('ZZ');
     }
 
-    public function testIbanCountryCreation()
+    public function test_iban_country_creation()
     {
-        $expectedData = $this->getData();
+        $expectedData = include dirname(__DIR__, 1).'/Resource/iban_registry_202205r92.php';
 
-        $this->assertEquals($expectedData['DE']['country_name'], $this->countryInfo->getCountryName());
-        $this->assertEquals($expectedData['DE']['iban_structure'], $this->countryInfo->getIbanStructureSwift());
-        $this->assertEquals($expectedData['DE']['bban_structure'], $this->countryInfo->getBbanStructureSwift());
-        $this->assertEquals($expectedData['DE']['iban_regex'], $this->countryInfo->getIbanRegex());
-        $this->assertEquals($expectedData['DE']['bban_regex'], $this->countryInfo->getBbanRegex());
-        $this->assertEquals($expectedData['DE']['iban_length'], $this->countryInfo->getIbanLength());
-        $this->assertEquals($expectedData['DE']['bban_length'], $this->countryInfo->getBbanLength());
-        $this->assertEquals($expectedData['DE']['iban_electronic_format_example'], $this->countryInfo->getIbanElectronicExample());
-        $this->assertEquals($expectedData['DE']['iban_print_format_example'], $this->countryInfo->getIbanPrintExample());
-    }
+        $countryInfo = new CountryInfo('DE');
 
-    /**
-     * @return array
-     */
-    private function getData()
-    {
-        return include dirname(__DIR__, 1).'/Resource/iban_registry_202205r92.php';
+        self::assertEquals($expectedData['DE']['country_name'], $countryInfo->getCountryName());
+        self::assertEquals($expectedData['DE']['iban_structure'], $countryInfo->getIbanStructureSwift());
+        self::assertEquals($expectedData['DE']['bban_structure'], $countryInfo->getBbanStructureSwift());
+        self::assertEquals($expectedData['DE']['iban_regex'], $countryInfo->getIbanRegex());
+        self::assertEquals($expectedData['DE']['bban_regex'], $countryInfo->getBbanRegex());
+        self::assertEquals($expectedData['DE']['iban_length'], $countryInfo->getIbanLength());
+        self::assertEquals($expectedData['DE']['bban_length'], $countryInfo->getBbanLength());
+        self::assertEquals($expectedData['DE']['iban_electronic_format_example'], $countryInfo->getIbanElectronicExample());
+        self::assertEquals($expectedData['DE']['iban_print_format_example'], $countryInfo->getIbanPrintExample());
     }
 }

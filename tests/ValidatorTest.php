@@ -17,10 +17,7 @@ use PHPUnit\Framework\TestCase;
 
 final class ValidatorTest extends TestCase
 {
-    /**
-     * @var Validator
-     */
-    protected $validator;
+    protected Validator $validator;
 
     protected function setUp(): void
     {
@@ -117,11 +114,11 @@ final class ValidatorTest extends TestCase
     /**
      * @dataProvider validIbanDataProvider
      */
-    public function testValidIbans(string $iban)
+    public function test_valid_ibans(string $iban): void
     {
-        $this->assertTrue(
+        self::assertTrue(
             $this->validator->validate(new Iban($iban)),
-            sprintf('Iban shoud be valid, violations: %s', implode(' ', $this->validator->getViolations()))
+            sprintf('Iban should be valid, violations: %s', implode(' ', $this->validator->getViolations()))
         );
     }
 
@@ -136,66 +133,70 @@ final class ValidatorTest extends TestCase
         yield ['MCBKCWCU25727002'];
     }
 
-    public function testItShouldCreateIbanWithIbanAsObject()
-    {
-        $iban = 'DE89370400440532013000';
-        $this->assertTrue($this->validator->validate(new Iban($iban)));
-    }
-
-    public function testItShouldCreateIbanWithIbanAsString()
-    {
-        $iban = 'DE89370400440532013000';
-        $this->assertTrue($this->validator->validate($iban));
-    }
-
     /**
      * @dataProvider invalidIbanDataProvider
      */
-    public function testInvalidIbans($iban)
+    public function test_invalid_ibans($iban): void
     {
-        $this->assertFalse($this->validator->validate(new Iban($iban)));
+        self::assertFalse(
+            $this->validator->validate(new Iban($iban))
+        );
     }
 
-    public function testIbanCountryCodeValidation()
+    public function test_it_should_validate_an_iban_by_passing_object_of_instance__iban(): void
+    {
+        self::assertTrue(
+            $this->validator->validate(new Iban('DE89370400440532013000'))
+        );
+    }
+
+    public function test_it_should_validate_an_iban_by_passing_an_iban_as_string(): void
+    {
+        self::assertTrue(
+            $this->validator->validate('DE89370400440532013000')
+        );
+    }
+
+    public function test_iban_country_code_validation(): void
     {
         $isValid = $this->validator->validate(new Iban('ZZ89 3704 0044 0532 0130 00'));
         $violations = $this->validator->getViolations();
 
-        $this->assertFalse($isValid);
-        $this->assertCount(1, $violations);
-        $this->assertContains('unsupported_country', $violations);
+        self::assertFalse($isValid);
+        self::assertCount(1, $violations);
+        self::assertContains('unsupported_country', $violations);
     }
 
-    public function testIbanLengthValidation()
+    public function test_iban_length_validation(): void
     {
         $isValid = $this->validator->validate(new Iban('DE89 3704 0044 0530 7877 089'));
         $violations = $this->validator->getViolations();
 
-        $this->assertFalse($isValid);
-        $this->assertCount(3, $violations);
-        $this->assertContains('invalid_length', $violations);
-        $this->assertContains('invalid_format', $violations);
-        $this->assertContains('invalid_checksum', $violations);
+        self::assertFalse($isValid);
+        self::assertCount(3, $violations);
+        self::assertContains('invalid_length', $violations);
+        self::assertContains('invalid_format', $violations);
+        self::assertContains('invalid_checksum', $violations);
     }
 
-    public function testIbanFormatValidation()
+    public function test_iban_format_validation(): void
     {
         $isValid = $this->validator->validate(new Iban('DE89 3704 0044 053A 013B 00'));
         $violations = $this->validator->getViolations();
 
-        $this->assertFalse($isValid);
-        $this->assertCount(2, $violations);
-        $this->assertContains('invalid_format', $violations);
-        $this->assertContains('invalid_checksum', $violations);
+        self::assertFalse($isValid);
+        self::assertCount(2, $violations);
+        self::assertContains('invalid_format', $violations);
+        self::assertContains('invalid_checksum', $violations);
     }
 
-    public function testIbanChecksumValidation()
+    public function test_iban_checksum_validation(): void
     {
         $isValid = $this->validator->validate(new Iban('DE90 3704 0044 0532 0130 00'));
         $violations = $this->validator->getViolations();
 
-        $this->assertFalse($isValid);
-        $this->assertCount(1, $violations);
-        $this->assertContains('invalid_checksum', $violations);
+        self::assertFalse($isValid);
+        self::assertCount(1, $violations);
+        self::assertContains('invalid_checksum', $violations);
     }
 }
