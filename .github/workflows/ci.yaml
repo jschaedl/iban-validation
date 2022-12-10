@@ -25,7 +25,7 @@ jobs:
         run: make tools-install
 
       - name: "Check coding style"
-        run: make php-cs-check
+        run: make cs-check
 
   static-code-analysis:
     name: "Static code analysis"
@@ -50,7 +50,7 @@ jobs:
         run: composer install --no-interaction --no-progress --no-suggest --optimize-autoloader
 
       - name: PHPStan
-        run: make phpstan
+        run: make analyze
 
   tests:
     name: "Tests on PHP ${{ matrix.php-version }} ${{ matrix.prefer-lowest }}"

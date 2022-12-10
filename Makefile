@@ -20,13 +20,13 @@ tests: composer-install
 	$(PHPUNIT_BIN) -c .
 
 tests-coverage: composer-install
-	$(PHPUNIT_BIN) -c . --coverage-html coverage
+	XDEBUG_MODE=coverage $(PHPUNIT_BIN) -c . --coverage-html coverage
 
-php-cs-check:
+cs-check:
 	PHP_CS_FIXER_FUTURE_MODE=1 $(PHP_CS_FIXER_BIN) fix --allow-risky=yes --diff --using-cache=no --verbose --dry-run
 
-php-cs-fix:
+cs-fix:
 	PHP_CS_FIXER_FUTURE_MODE=1 $(PHP_CS_FIXER_BIN) fix --allow-risky=yes
 
-phpstan:
+analyze:
 	$(PHPSTAN_BIN) analyse --memory-limit=-1

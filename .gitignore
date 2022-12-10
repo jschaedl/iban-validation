@@ -2,5 +2,6 @@
 .php-cs-fixer.cache
 /composer.lock
 phpunit.xml
+/coverage
 /vendor
 /tools/*
