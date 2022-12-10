@@ -31,14 +31,15 @@ final class Iban
     private const CHECKSUM_LENGTH = 2;
     private const BBAN_OFFSET = 4;
 
-    /**
-     * @var string
-     */
-    private $iban;
+    private string $iban;
 
-    public function __construct(string $iban)
+    private Registry $swiftRegistry;
+
+    public function __construct(string $iban, Registry $swiftRegistry = null)
     {
         $this->iban = $iban;
+
+        $this->swiftRegistry = $swiftRegistry ?? new Registry();
     }
 
     public function __toString(): string
@@ -59,16 +60,12 @@ final class Iban
 
     public function format(string $type = self::FORMAT_PRINT): string
     {
-        switch ($type) {
-            case self::FORMAT_ELECTRONIC:
-                return $this->getNormalizedIban();
-            case self::FORMAT_PRINT:
-                return wordwrap($this->getNormalizedIban(), 4, ' ', true);
-            case self::FORMAT_ANONYMIZED:
-                return str_pad(substr($this->getNormalizedIban(), -4), strlen($this->getNormalizedIban()), 'X', STR_PAD_LEFT);
-            default:
-                return $this->iban;
-        }
+        return match ($type) {
+            self::FORMAT_ELECTRONIC => $this->getNormalizedIban(),
+            self::FORMAT_PRINT => wordwrap($this->getNormalizedIban(), 4, ' ', true),
+            self::FORMAT_ANONYMIZED => str_pad(substr($this->getNormalizedIban(), -4), strlen($this->getNormalizedIban()), 'X', STR_PAD_LEFT),
+            default => $this->iban,
+        };
     }
 
     public function countryCode(): string
@@ -88,12 +85,10 @@ final class Iban
 
     public function bbanBankIdentifier(): string
     {
-        $registry = new Registry();
-
         return substr(
             $this->bban(),
-            $registry->getBbanBankIdentifierStartPos($this->countryCode()),
-            $registry->getBbanBankIdentifierEndPos($this->countryCode())
+            $this->swiftRegistry->getBbanBankIdentifierStartPos($this->countryCode()),
+            $this->swiftRegistry->getBbanBankIdentifierEndPos($this->countryCode())
         );
     }
 }

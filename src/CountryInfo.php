@@ -20,15 +20,9 @@ use Iban\Validation\Swift\Registry;
  */
 final class CountryInfo
 {
-    /**
-     * @var string
-     */
-    private $countryCode;
+    private string $countryCode;
 
-    /**
-     * @var Registry
-     */
-    private $swiftRegistry;
+    private Registry $swiftRegistry;
 
     public function __construct(string $countryCode, Registry $swiftRegistry = null)
     {

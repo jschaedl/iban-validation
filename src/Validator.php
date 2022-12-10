@@ -25,44 +25,31 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  */
 final class Validator
 {
-    /**
-     * @var Registry
-     */
-    private $swiftRegistry;
+    private array $options;
 
-    /**
-     * @var array
-     */
-    private $options = [];
+    private Registry $swiftRegistry;
 
-    /**
-     * @var array
-     */
-    private $violations = [];
+    private array $violations;
 
     public function __construct(array $options = [], Registry $swiftRegistry = null)
     {
-        $this->swiftRegistry = $swiftRegistry ?? new Registry();
-
         $resolver = new OptionsResolver();
         $this->configureOptions($resolver);
         $this->options = $resolver->resolve($options);
+
+        $this->swiftRegistry = $swiftRegistry ?? new Registry();
+        $this->violations = [];
     }
 
-    /**
-     * @param string|Iban $iban
-     */
-    public function validate($iban): bool
+    public function validate(string|Iban $iban): bool
     {
         if (!$iban instanceof Iban) {
             $iban = new Iban($iban);
         }
 
-        $this->violations = [];
-
         try {
             $this->validateCountryCode($iban);
-        } catch (UnsupportedCountryCodeException $exception) {
+        } catch (UnsupportedCountryCodeException) {
             $this->violations[] = $this->options['violation.unsupported_country'];
 
             return false; // return here because with an unsupported country code all other checks make no sense at all
@@ -70,19 +57,19 @@ final class Validator
 
         try {
             $this->validateLength($iban);
-        } catch (InvalidLengthException $exception) {
+        } catch (InvalidLengthException) {
             $this->violations[] = $this->options['violation.invalid_length'];
         }
 
         try {
             $this->validateFormat($iban);
-        } catch (InvalidFormatException $exception) {
+        } catch (InvalidFormatException) {
             $this->violations[] = $this->options['violation.invalid_format'];
         }
 
         try {
             $this->validateChecksum($iban);
-        } catch (InvalidChecksumException $exception) {
+        } catch (InvalidChecksumException) {
             $this->violations[] = $this->options['violation.invalid_checksum'];
         }
 
