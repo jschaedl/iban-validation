@@ -19,7 +19,7 @@ final class IbanTest extends TestCase
     /**
      * @dataProvider ibanProvider
      */
-    public function testIbanCreation(
+    public function test_iban_creation(
         string $iban,
         string $expectedCountryCode,
         string $expectedChecksum,
@@ -28,20 +28,20 @@ final class IbanTest extends TestCase
         string $expectedFormatElectronic,
         string $expectedFormatPrint,
         string $expectedFormatAnonymized
-    ) {
+    ): void {
         $iban = new Iban($iban);
 
-        $this->assertEquals($expectedCountryCode, $iban->countryCode());
-        $this->assertEquals($expectedChecksum, $iban->checksum());
-        $this->assertEquals($expectedBban, $iban->bban());
-        $this->assertEquals($expectedBbanBankIdentifier, $iban->bbanBankIdentifier());
+        self::assertEquals($expectedCountryCode, $iban->countryCode());
+        self::assertEquals($expectedChecksum, $iban->checksum());
+        self::assertEquals($expectedBban, $iban->bban());
+        self::assertEquals($expectedBbanBankIdentifier, $iban->bbanBankIdentifier());
 
-        $this->assertEquals($expectedFormatElectronic, $iban->format(Iban::FORMAT_ELECTRONIC));
-        $this->assertEquals($expectedFormatPrint, $iban->format(Iban::FORMAT_PRINT));
-        $this->assertEquals($expectedFormatAnonymized, $iban->format(Iban::FORMAT_ANONYMIZED));
+        self::assertEquals($expectedFormatElectronic, $iban->format(Iban::FORMAT_ELECTRONIC));
+        self::assertEquals($expectedFormatPrint, $iban->format(Iban::FORMAT_PRINT));
+        self::assertEquals($expectedFormatAnonymized, $iban->format(Iban::FORMAT_ANONYMIZED));
     }
 
-    public function ibanProvider()
+    public function ibanProvider(): iterable
     {
         yield [
             'IBAN DE45 5005 0201 1241 5398 70',

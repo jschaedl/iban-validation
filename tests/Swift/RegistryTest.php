@@ -17,44 +17,29 @@ use PHPUnit\Framework\TestCase;
 
 final class RegistryTest extends TestCase
 {
-    /**
-     * @var Registry
-     */
-    private $registry;
-
-    protected function setUp(): void
-    {
-        $this->registry = new Registry();
-    }
-
-    public function testItShouldThrowExceptionForUnsupportedCountryCode()
+    public function test_it_should_throw__unsupported_country_code_exception_for_unsupported_country_code(): void
     {
         $this->expectException(UnsupportedCountryCodeException::class);
-        $this->registry->getIbanRegex('AA');
+
+        (new Registry())->getIbanRegex('AA');
     }
 
-    public function testItShouldGiveCorrectValuesForCountryCode()
+    public function test_it_should_give_correct_values_for_country_code(): void
     {
-        $expectedData = $this->getData();
+        $expectedData = require dirname(__DIR__, 2).'/Resource/iban_registry_202205r92.php';
 
-        $this->assertEquals($expectedData['DE']['country_name'], $this->registry->getCountryName('DE'));
-        $this->assertEquals($expectedData['DE']['iban_structure'], $this->registry->getIbanStructure('DE'));
-        $this->assertEquals($expectedData['DE']['bban_structure'], $this->registry->getBbanStructure('DE'));
-        $this->assertEquals($expectedData['DE']['iban_regex'], $this->registry->getIbanRegex('DE'));
-        $this->assertEquals($expectedData['DE']['bban_regex'], $this->registry->getBbanRegex('DE'));
-        $this->assertEquals($expectedData['DE']['iban_length'], $this->registry->getIbanLength('DE'));
-        $this->assertEquals($expectedData['DE']['bban_length'], $this->registry->getBbanLength('DE'));
-        $this->assertEquals($expectedData['DE']['iban_electronic_format_example'], $this->registry->getIbanElectronicFormatExample('DE'));
-        $this->assertEquals($expectedData['DE']['iban_print_format_example'], $this->registry->getIbanPrintFormatExample('DE'));
-        $this->assertEquals(0, $this->registry->getBbanBankIdentifierStartPos('DE'));
-        $this->assertEquals(8, $this->registry->getBbanBankIdentifierEndPos('DE'));
-    }
+        $registry = new Registry();
 
-    /**
-     * @return array
-     */
-    private function getData()
-    {
-        return require dirname(__DIR__, 2).'/Resource/iban_registry_202205r92.php';
+        self::assertEquals($expectedData['DE']['country_name'], $registry->getCountryName('DE'));
+        self::assertEquals($expectedData['DE']['iban_structure'], $registry->getIbanStructure('DE'));
+        self::assertEquals($expectedData['DE']['bban_structure'], $registry->getBbanStructure('DE'));
+        self::assertEquals($expectedData['DE']['iban_regex'], $registry->getIbanRegex('DE'));
+        self::assertEquals($expectedData['DE']['bban_regex'], $registry->getBbanRegex('DE'));
+        self::assertEquals($expectedData['DE']['iban_length'], $registry->getIbanLength('DE'));
+        self::assertEquals($expectedData['DE']['bban_length'], $registry->getBbanLength('DE'));
+        self::assertEquals($expectedData['DE']['iban_electronic_format_example'], $registry->getIbanElectronicFormatExample('DE'));
+        self::assertEquals($expectedData['DE']['iban_print_format_example'], $registry->getIbanPrintFormatExample('DE'));
+        self::assertEquals(0, $registry->getBbanBankIdentifierStartPos('DE'));
+        self::assertEquals(8, $registry->getBbanBankIdentifierEndPos('DE'));
     }
 }

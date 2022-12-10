@@ -27,5 +27,8 @@
 	},
 	"suggest": {
        		"ext-bcmath" : "This library makes use of bcmod function, so an installed bcmath extension is recommended."
+	},
+	"require-dev": {
+		"phpunit/phpunit": "^9.5"
 	}
 }
