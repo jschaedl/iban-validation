@@ -20,10 +20,7 @@ use Iban\Validation\Swift\Exception\UnsupportedCountryCodeException;
  */
 final class Registry
 {
-    /**
-     * @var array
-     */
-    private $registry;
+    private array $registry;
 
     public function __construct(RegistryLoaderInterface $registryLoader = null)
     {

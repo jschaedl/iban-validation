@@ -23,6 +23,7 @@
 	},
 	"require" : {
 		"php" : "^8",
+		"ext-ctype": "*",
 		"symfony/options-resolver": "^5.4|^6"
 	},
 	"suggest": {

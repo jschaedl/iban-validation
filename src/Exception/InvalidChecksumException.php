@@ -16,10 +16,7 @@ namespace Iban\Validation\Exception;
  */
 class InvalidChecksumException extends \RuntimeException
 {
-    /**
-     * @var string
-     */
-    protected $validChecksum;
+    protected string $validChecksum;
 
     public function __construct(string $iban, string $validChecksum)
     {
