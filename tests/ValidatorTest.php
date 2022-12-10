@@ -11,13 +11,17 @@
 
 namespace Iban\Validation\Tests;
 
+use Iban\Validation\Exception\InvalidChecksumException;
+use Iban\Validation\Exception\InvalidFormatException;
+use Iban\Validation\Exception\InvalidLengthException;
 use Iban\Validation\Iban;
+use Iban\Validation\Swift\Exception\UnsupportedCountryCodeException;
 use Iban\Validation\Validator;
 use PHPUnit\Framework\TestCase;
 
 final class ValidatorTest extends TestCase
 {
-    protected Validator $validator;
+    private Validator $validator;
 
     protected function setUp(): void
     {
@@ -143,7 +147,17 @@ final class ValidatorTest extends TestCase
         );
     }
 
-    public function test_it_should_validate_an_iban_by_passing_object_of_instance__iban(): void
+    /**
+     * @dataProvider invalidIbanDataProvider
+     */
+    public function test_validate_throws_RuntimeException_on_invalid_ibans($iban): void
+    {
+        $this->expectException(\RuntimeException::class);
+
+        $this->validator->validate(new Iban($iban), throw: true);
+    }
+
+    public function test_it_should_validate_an_iban_by_passing_object_of_instance_Iban(): void
     {
         self::assertTrue(
             $this->validator->validate(new Iban('DE89370400440532013000'))
@@ -157,7 +171,7 @@ final class ValidatorTest extends TestCase
         );
     }
 
-    public function test_iban_country_code_validation(): void
+    public function test_iban_validation_results_in_unsupported_country_code(): void
     {
         $isValid = $this->validator->validate(new Iban('ZZ89 3704 0044 0532 0130 00'));
         $violations = $this->validator->getViolations();
@@ -167,7 +181,18 @@ final class ValidatorTest extends TestCase
         self::assertContains('unsupported_country', $violations);
     }
 
-    public function test_iban_length_validation(): void
+    public function test_iban_validation_results_in_UnsupportedCountryCodeException(): void
+    {
+        $this->expectException(UnsupportedCountryCodeException::class);
+
+        $this->validator->validate(new Iban('ZZ89 3704 0044 0532 0130 00'), throw: true);
+        $violations = $this->validator->getViolations();
+
+        self::assertCount(1, $violations);
+        self::assertContains('unsupported_country', $violations);
+    }
+
+    public function test_iban_validation_results_in_invalid_length(): void
     {
         $isValid = $this->validator->validate(new Iban('DE89 3704 0044 0530 7877 089'));
         $violations = $this->validator->getViolations();
@@ -179,7 +204,14 @@ final class ValidatorTest extends TestCase
         self::assertContains('invalid_checksum', $violations);
     }
 
-    public function test_iban_format_validation(): void
+    public function test_iban_validation_results_in_InvalidLengthException(): void
+    {
+        $this->expectException(InvalidLengthException::class);
+
+        $this->validator->validate(new Iban('DE89 3704 0044 0530 7877 089'), throw: true);
+    }
+
+    public function test_iban_validation_results_in_invalid_format(): void
     {
         $isValid = $this->validator->validate(new Iban('DE89 3704 0044 053A 013B 00'));
         $violations = $this->validator->getViolations();
@@ -190,7 +222,14 @@ final class ValidatorTest extends TestCase
         self::assertContains('invalid_checksum', $violations);
     }
 
-    public function test_iban_checksum_validation(): void
+    public function test_iban_validation_results_in_InvalidFormatException(): void
+    {
+        $this->expectException(InvalidFormatException::class);
+
+        $this->validator->validate(new Iban('DE89 3704 0044 053A 013B 00'), throw: true);
+    }
+
+    public function test_iban_validation_results_in_invalid_checksum(): void
     {
         $isValid = $this->validator->validate(new Iban('DE90 3704 0044 0532 0130 00'));
         $violations = $this->validator->getViolations();
@@ -198,5 +237,12 @@ final class ValidatorTest extends TestCase
         self::assertFalse($isValid);
         self::assertCount(1, $violations);
         self::assertContains('invalid_checksum', $violations);
+    }
+
+    public function test_iban_validation_results_in_InvalidChecksumException(): void
+    {
+        $this->expectException(InvalidChecksumException::class);
+
+        $this->validator->validate(new Iban('DE90 3704 0044 0532 0130 00'), throw: true);
     }
 }

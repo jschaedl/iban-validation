@@ -17,7 +17,7 @@ use PHPUnit\Framework\TestCase;
 
 final class CountryInfoTest extends TestCase
 {
-    public function test_it_should_throw__unsupported_country_code_exception_for_not_supported_country(): void
+    public function test_it_should_throw_UnsupportedCountryCodeException_for_not_supported_country(): void
     {
         $this->expectException(UnsupportedCountryCodeException::class);
         new CountryInfo('ZZ');

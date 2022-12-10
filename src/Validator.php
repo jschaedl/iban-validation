@@ -25,23 +25,27 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  */
 final class Validator
 {
-    private array $options;
-
     private Registry $swiftRegistry;
+
+    private array $options;
 
     private array $violations;
 
     public function __construct(array $options = [], Registry $swiftRegistry = null)
     {
+        $this->swiftRegistry = $swiftRegistry ?? new Registry();
+
         $resolver = new OptionsResolver();
         $this->configureOptions($resolver);
         $this->options = $resolver->resolve($options);
 
-        $this->swiftRegistry = $swiftRegistry ?? new Registry();
         $this->violations = [];
     }
 
-    public function validate(string|Iban $iban): bool
+    /**
+     * @param bool $throw whether an exception should be thrown on validation
+     */
+    public function validate(string|Iban $iban, bool $throw = false): bool
     {
         if (!$iban instanceof Iban) {
             $iban = new Iban($iban);
@@ -49,28 +53,44 @@ final class Validator
 
         try {
             $this->validateCountryCode($iban);
-        } catch (UnsupportedCountryCodeException) {
+        } catch (UnsupportedCountryCodeException $unsupportedCountryCodeException) {
             $this->violations[] = $this->options['violation.unsupported_country'];
+
+            if ($throw) {
+                throw $unsupportedCountryCodeException;
+            }
 
             return false; // return here because with an unsupported country code all other checks make no sense at all
         }
 
         try {
             $this->validateLength($iban);
-        } catch (InvalidLengthException) {
+        } catch (InvalidLengthException $invalidLengthException) {
             $this->violations[] = $this->options['violation.invalid_length'];
+
+            if ($throw) {
+                throw $invalidLengthException;
+            }
         }
 
         try {
             $this->validateFormat($iban);
-        } catch (InvalidFormatException) {
+        } catch (InvalidFormatException $invalidFormatException) {
             $this->violations[] = $this->options['violation.invalid_format'];
+
+            if ($throw) {
+                throw $invalidFormatException;
+            }
         }
 
         try {
             $this->validateChecksum($iban);
-        } catch (InvalidChecksumException) {
+        } catch (InvalidChecksumException $invalidChecksumException) {
             $this->violations[] = $this->options['violation.invalid_checksum'];
+
+            if ($throw) {
+                throw $invalidChecksumException;
+            }
         }
 
         return 0 === count($this->violations);
@@ -89,6 +109,11 @@ final class Validator
             'violation.invalid_format' => 'The format of the given Iban is not valid!',
             'violation.invalid_checksum' => 'The checksum of the given Iban is not valid!',
         ]);
+
+        $resolver->setAllowedTypes('violation.unsupported_country', 'string');
+        $resolver->setAllowedTypes('violation.invalid_length', 'string');
+        $resolver->setAllowedTypes('violation.invalid_format', 'string');
+        $resolver->setAllowedTypes('violation.invalid_checksum', 'string');
     }
 
     /**
@@ -97,7 +122,7 @@ final class Validator
     private function validateCountryCode(Iban $iban): void
     {
         if (!$this->swiftRegistry->isCountryAvailable($iban->countryCode())) {
-            throw new UnsupportedCountryCodeException($iban);
+            throw new UnsupportedCountryCodeException($iban->countryCode());
         }
     }
 
@@ -107,7 +132,7 @@ final class Validator
     private function validateLength(Iban $iban): void
     {
         if (strlen($iban->getNormalizedIban()) !== $this->swiftRegistry->getIbanLength($iban->countryCode())) {
-            throw new InvalidLengthException($iban);
+            throw new InvalidLengthException($iban->format());
         }
     }
 
@@ -117,7 +142,7 @@ final class Validator
     private function validateFormat(Iban $iban): void
     {
         if (1 !== preg_match($this->swiftRegistry->getIbanRegex($iban->countryCode()), $iban->getNormalizedIban())) {
-            throw new InvalidFormatException($iban);
+            throw new InvalidFormatException($iban->format());
         }
     }
 

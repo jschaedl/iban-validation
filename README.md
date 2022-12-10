@@ -65,7 +65,6 @@ if (!$validator->validate($iban)) {
         echo $violation;
     }
 }
-
 ```
 
 You can also customize the violation messages by providing them via configuration. Just create a `Validator` passing a config array as constructor argument.
@@ -81,7 +80,19 @@ $validator = new Validator([
     'violation.invalid_format' => 'The format of the given Iban is not valid!',
     'violation.invalid_checksum' => 'The checksum of the given Iban is not valid!',
 ]);
+```
 
+You can pass `true` to the second argument of the `Validator::validate(string|Iban $iban, bool $throw = false)` in order
+to retrieve exceptions thrown on validation errors.
+
+```php
+$validator = new Validator();
+
+try {
+    $validator->validate(new Iban('DE89 3704 0044 0532 0130 00'), throw: true);
+} catch (Exception $exception) {
+    // ...
+}
 ```
 
 ## Iban Information
@@ -127,7 +138,7 @@ All pull requests must be accompanied by passing unit tests. This repository use
 You must run `composer --dev install` to install this package's dependencies. You can run the tests via:
 
 ```sh
-$ vendor/bin/phpunit
+$ make it && make tests
 ```
 
 ---
