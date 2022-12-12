@@ -22,7 +22,7 @@
 		}
 	},
 	"require" : {
-		"php" : "^8",
+		"php" : "~8.0.0 || ~8.1.0 || ~8.2.0",
 		"ext-ctype": "*",
 		"symfony/options-resolver": "^5.4|^6"
 	},
