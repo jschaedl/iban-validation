@@ -2,7 +2,7 @@
 
 ## [Version 2.0.0](https://github.com/jschaedl/iban-validation/releases/tag/v2.0.0)
 
-Unreleased
+Released on December 12th 2022
 
 ### Updated
 
@@ -39,6 +39,13 @@ try {
 * Removed all composer dev dependencies. Thanks to [@jschaedl](https://github.com/jschaedl)!
 * Removed symfony/yaml dependency. Thanks to [@jschaedl](https://github.com/jschaedl)!
 * Dropped support for symfony/options-resolver `3.4`. Thanks to [@jschaedl](https://github.com/jschaedl)!
+
+---
+## [Version 1.8.4](https://github.com/jschaedl/iban-validation/releases/tag/v1.8.4)
+
+Released on December 12th 2022
+
+This is the last bugfix version of major version `1`. Please upgrade to version `2.0.0`.
 
 ---
 
