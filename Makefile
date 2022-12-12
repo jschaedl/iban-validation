@@ -23,10 +23,10 @@ tests-coverage: composer-install
 	XDEBUG_MODE=coverage $(PHPUNIT_BIN) -c . --coverage-html coverage
 
 cs-check:
-	PHP_CS_FIXER_FUTURE_MODE=1 $(PHP_CS_FIXER_BIN) fix --allow-risky=yes --diff --using-cache=no --verbose --dry-run
+	PHP_CS_FIXER_FUTURE_MODE=1 PHP_CS_FIXER_IGNORE_ENV=1 $(PHP_CS_FIXER_BIN) fix --allow-risky=yes --diff --using-cache=no --verbose --dry-run
 
 cs-fix:
-	PHP_CS_FIXER_FUTURE_MODE=1 $(PHP_CS_FIXER_BIN) fix --allow-risky=yes
+	PHP_CS_FIXER_FUTURE_MODE=1 PHP_CS_FIXER_IGNORE_ENV=1 $(PHP_CS_FIXER_BIN) fix --allow-risky=yes
 
 analyze:
 	$(PHPSTAN_BIN) analyse --memory-limit=-1
