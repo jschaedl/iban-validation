@@ -50,6 +50,7 @@ final class Validator
         if (!$iban instanceof Iban) {
             $iban = new Iban($iban);
         }
+        $this->violations = [];
 
         try {
             $this->validateCountryCode($iban);
