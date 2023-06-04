@@ -248,7 +248,9 @@ final class ValidatorTest extends TestCase
     
     public function test_validations_are_cleared_before_validation(): void
     {
-        $this->validator->validate(new Iban('DE89 3704 0044 053A 013B 00'));
+        $isValid = $this->validator->validate(new Iban('DE89 3704 0044 053A 013B 00'));
+
+        $this->assertFalse($isValid);
 
         $isValid = $this->validator->validate(new Iban('AD1200012030200359100100'));
 
