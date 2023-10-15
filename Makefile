@@ -3,30 +3,43 @@ PHP_BIN := php
 PHIVE_BIN := phive
 PHP_CS_FIXER_BIN := ./tools/php-cs-fixer
 PHPSTAN_BIN	:= ./tools/phpstan
-PHPUNIT_BIN	:= ./tools/phpunit.phar
+PHPUNIT_BIN	:= ./tools/phpunit
 
-.PHONY: it tools-install composer-install tests tests-coverage php-cs-check php-cs-fix phpstan
 
-it: tools-install tests
+.PHONY: it
+it: tools-install qa
 
+.PHONY: tools-install
 tools-install:
-	gpg --keyserver hkps://keyserver.ubuntu.com --receive-keys E82B2FB314E9906E 4AA394086372C20A 8E730BA25823D8B5 CF1A108D0E7AE720 8A03EA3B385DBAA1
-	$(PHIVE_BIN) --no-progress install --copy --trust-gpg-keys E82B2FB314E9906E,4AA394086372C20A,8E730BA25823D8B5,CF1A108D0E7AE720,8A03EA3B385DBAA1 --force-accept-unsigned
+	gpg --keyserver hkps://keyserver.ubuntu.com --receive-keys E82B2FB314E9906E 4AA394086372C20A 51C67305FFC2E5C0
+	$(PHIVE_BIN) --no-progress install --copy --trust-gpg-keys E82B2FB314E9906E,4AA394086372C20A,51C67305FFC2E5C0 --force-accept-unsigned
 
-composer-install:
+.PHONY: tools-update
+tools-update: tools-install
+	$(PHIVE_BIN) --no-progress update
+
+vendor: composer.json $(wildcard composer.lock)
 	$(COMPOSER_BIN) install --optimize-autoloader
 
-tests: composer-install
+.PHONY: tests tests-coverage php-cs-check php-cs-fix phpstan
+tests: vendor
 	$(PHPUNIT_BIN) -c .
 
-tests-coverage: composer-install
+.PHONY: coverage
+coverage: vendor
 	XDEBUG_MODE=coverage $(PHPUNIT_BIN) -c . --coverage-html coverage
 
-cs-check:
+.PHONY: cs-check
+cs-check: vendor
 	PHP_CS_FIXER_FUTURE_MODE=1 PHP_CS_FIXER_IGNORE_ENV=1 $(PHP_CS_FIXER_BIN) fix --allow-risky=yes --diff --using-cache=no --verbose --dry-run
 
-cs-fix:
+.PHONY: cs-fix
+cs-fix: vendor
 	PHP_CS_FIXER_FUTURE_MODE=1 PHP_CS_FIXER_IGNORE_ENV=1 $(PHP_CS_FIXER_BIN) fix --allow-risky=yes
 
-analyze:
+.PHONY: analyze
+analyze: vendor
 	$(PHPSTAN_BIN) analyse --memory-limit=-1
+
+.PHONY: qa
+qa: cs-check analyze tests
