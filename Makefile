@@ -7,22 +7,22 @@ PHPUNIT_BIN	:= ./tools/phpunit
 
 
 .PHONY: it
-it: tools-install qa
+it: tools qa
 
-.PHONY: tools-install
-tools-install:
+.PHONY: tools
+tools:
 	gpg --keyserver hkps://keyserver.ubuntu.com --receive-keys E82B2FB314E9906E 4AA394086372C20A 51C67305FFC2E5C0
 	$(PHIVE_BIN) --no-progress install --copy --trust-gpg-keys E82B2FB314E9906E,4AA394086372C20A,51C67305FFC2E5C0 --force-accept-unsigned
 
 .PHONY: tools-update
-tools-update: tools-install
+tools-update: tools
 	$(PHIVE_BIN) --no-progress update
 
 vendor: composer.json $(wildcard composer.lock)
 	$(COMPOSER_BIN) install --optimize-autoloader
 
-.PHONY: tests tests-coverage php-cs-check php-cs-fix phpstan
-tests: vendor
+.PHONY: tests
+tests: tools vendor
 	$(PHPUNIT_BIN) -c .
 
 .PHONY: coverage
@@ -43,3 +43,10 @@ analyze: vendor
 
 .PHONY: qa
 qa: cs-check analyze tests
+
+.PHONY: iban-registry-update
+iban-registry-update:
+	${PHP_BIN} swift.php Resource/iban_registry_$(VERSION).txt > Resource/iban_registry_$(VERSION).php
+	make cs-fix
+	cp -r Resource/iban_registry_$(VERSION).php Resource/iban_registry.php
+

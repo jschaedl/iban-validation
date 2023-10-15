@@ -4,12 +4,11 @@ $finder = (new PhpCsFixer\Finder())
     ->in([
         __DIR__.'/src',
         __DIR__.'/tests',
+        __DIR__.'/Resource',
     ])
     ->append([
         __FILE__,
         'swift.php',
-        'Resource/iban_registry_202009r88.php',
-        'Resource/iban_registry_202205r92.php',
     ])
 ;
 

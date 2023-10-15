@@ -22,7 +22,7 @@ jobs:
           tools: phive
 
       - name: "Install dependencies"
-        run: make tools-install
+        run: make tools
 
       - name: "Check coding style"
         run: make cs-check
@@ -44,7 +44,7 @@ jobs:
           tools: phive
 
       - name: "Install tools with phive"
-        run: make tools-install
+        run: make tools
 
       - name: "Install dependencies with composer"
         run: composer install --no-interaction --no-progress --no-suggest --optimize-autoloader
@@ -76,7 +76,7 @@ jobs:
           tools: phive
 
       - name: "Install tools with phive"
-        run: make tools-install
+        run: make tools
 
       - name: "Install dependencies"
         run: composer update ${{ matrix.prefer-lowest }} --no-interaction --no-progress --optimize-autoloader

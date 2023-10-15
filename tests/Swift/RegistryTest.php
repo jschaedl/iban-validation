@@ -26,7 +26,7 @@ final class RegistryTest extends TestCase
 
     public function test_it_should_give_correct_values_for_country_code(): void
     {
-        $expectedData = require dirname(__DIR__, 2).'/Resource/iban_registry_202205r92.php';
+        $expectedData = require dirname(__DIR__, 2).'/Resource/iban_registry.php';
 
         $registry = new Registry();
 

@@ -132,13 +132,11 @@ $countryInfo->getIbanElectronicExample(); // 'DE89370400440532013000'
 If you want to fix some bugs or want to enhance some functionality, please fork one of the release branches and create your own development branch.
 Then fix the bug you found or add your enhancements and make a pull request. Please commit your changes in tiny steps and add a detailed description on every commit.
 
-### Unit Testing
-
-All pull requests must be accompanied by passing unit tests. This repository uses PHPUnit and Composer.
-You must run `composer --dev install` to install this package's dependencies. You can run the tests via:
+All pull requests must be accompanied by following coding style and static code analysis rules and passing unit tests.
+You can run all checks and tests by executing:
 
 ```sh
-$ make it && make tests
+$ make it
 ```
 
 ---

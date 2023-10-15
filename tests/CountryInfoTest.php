@@ -25,7 +25,7 @@ final class CountryInfoTest extends TestCase
 
     public function test_iban_country_creation()
     {
-        $expectedData = include dirname(__DIR__, 1).'/Resource/iban_registry_202205r92.php';
+        $expectedData = include dirname(__DIR__, 1).'/Resource/iban_registry.php';
 
         $countryInfo = new CountryInfo('DE');
 
