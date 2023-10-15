@@ -50,3 +50,7 @@ iban-registry-update:
 	make cs-fix
 	cp -r Resource/iban_registry_$(VERSION).php Resource/iban_registry.php
 
+release:
+	git tag -a ${VERSION} -m '${VERSION}'
+	git push --tags
+
