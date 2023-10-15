@@ -43,3 +43,10 @@ analyze: vendor
 
 .PHONY: qa
 qa: cs-check analyze tests
+
+.PHONY: iban-registry-update
+iban-registry-update:
+	${PHP_BIN} swift.php Resource/iban_registry_$(VERSION).txt > Resource/iban_registry_$(VERSION).php
+	make cs-fix
+	cp -r Resource/iban_registry_$(VERSION).php Resource/iban_registry.php
+
