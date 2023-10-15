@@ -2,11 +2,13 @@
 
 ## [Version 2.1.0](https://github.com/jschaedl/iban-validation/releases/tag/v2.1.0)
 
-Released on ... ... 2023
+Released on October 15th 2023
 
 ### Updated
 
 * Updated iban registry to version 95. Thanks to [@jschaedl](https://github.com/jschaedl)!
+
+---
 
 ## [Version 2.0.1](https://github.com/jschaedl/iban-validation/releases/tag/v2.0.1)
 
