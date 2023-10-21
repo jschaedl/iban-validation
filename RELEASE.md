@@ -5,7 +5,10 @@ In order to trigger the release you need to create a local `tag` and push it to 
 
 ```shell
 # create the tag
-git tag -a <new version> -m '<new version>'
+git tag -as <new version> -m '<new version>'
+
+# verify its signature
+git tag -v <new version>
 
 # and push it
 git push --tags
