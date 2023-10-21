@@ -2,7 +2,7 @@
 
 ## [Version 2.1.0](https://github.com/jschaedl/iban-validation/releases/tag/v2.1.0)
 
-Released on October 15th 2023
+Released on October 21th 2023
 
 ### Updated
 
