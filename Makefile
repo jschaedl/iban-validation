@@ -51,6 +51,7 @@ iban-registry-update:
 	cp -r Resource/iban_registry_$(VERSION).php Resource/iban_registry.php
 
 release:
-	git tag -a ${VERSION} -m '${VERSION}'
-	git push --tags
+	git tag -as ${VERSION} -m '${VERSION}'
+	git tag -v ${VERSION}
+	git push origin ${VERSION}
 
