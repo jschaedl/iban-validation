@@ -1,8 +1,18 @@
 # CHANGELOG
 
+## [Version 2.2.0](https://github.com/jschaedl/iban-validation/releases/tag/v2.2.0)
+
+Released on November 23rd 2023
+
+### Added
+
+* Added support for PHP 8.3. Thanks to [@jschaedl](https://github.com/jschaedl)!
+
+---
+
 ## [Version 2.1.0](https://github.com/jschaedl/iban-validation/releases/tag/v2.1.0)
 
-Released on October 21th 2023
+Released on October 21st 2023
 
 ### Updated
 
