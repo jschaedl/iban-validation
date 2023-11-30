@@ -24,7 +24,7 @@
 	"require" : {
 		"php" : "~8.0.0 || ~8.1.0 || ~8.2.0 || ~8.3.0",
 		"ext-ctype": "*",
-		"symfony/options-resolver": "^5.4|^6"
+		"symfony/options-resolver": "^5.4|^6|^7"
 	},
 	"suggest": {
        		"ext-bcmath" : "This library makes use of bcmod function, so an installed bcmath extension is recommended."
