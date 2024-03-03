@@ -91,6 +91,7 @@ final class ValidatorTest extends TestCase
         yield ['MU17BOMM0101101030300200000MUR'];
         yield ['NL91ABNA0417164300'];
         yield ['NO9386011117947'];
+        yield ['OM810180000001299123456'];
         yield ['PK36SCBL0000001123456702'];
         yield ['PL61109010140000071219812874'];
         yield ['PS92PALS000000000400123456702'];
