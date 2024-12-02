@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## [Version 2.5.1](https://github.com/jschaedl/iban-validation/releases/tag/v2.5.1)
+
+Released on December 2nd 2024
+
+### Updated
+
+* Upgraded dependencies and fixed code style. Thanks to [@jschaedl](https://github.com/jschaedl)!
+
+---
+
 ## [Version 2.5.0](https://github.com/jschaedl/iban-validation/releases/tag/v2.5.0)
 
 Released on November 24th 2024
