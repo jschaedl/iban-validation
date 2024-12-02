@@ -31,7 +31,7 @@ final class Validator
 
     private array $violations;
 
-    public function __construct(array $options = [], Registry $swiftRegistry = null)
+    public function __construct(array $options = [], ?Registry $swiftRegistry = null)
     {
         $this->swiftRegistry = $swiftRegistry ?? new Registry();
 

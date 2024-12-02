@@ -22,7 +22,7 @@ final class Registry
 {
     private array $registry;
 
-    public function __construct(RegistryLoaderInterface $registryLoader = null)
+    public function __construct(?RegistryLoaderInterface $registryLoader = null)
     {
         $this->registry = $registryLoader ? $registryLoader->load() : (new PhpRegistryLoader())->load();
     }
