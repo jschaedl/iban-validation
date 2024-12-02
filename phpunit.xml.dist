@@ -8,7 +8,6 @@
         beStrictAboutTodoAnnotatedTests="true"
         failOnWarning="true"
         failOnRisky="true"
-        stopOnRisky="true"
         colors="true"
         verbose="true">
   <coverage processUncoveredFiles="true">
