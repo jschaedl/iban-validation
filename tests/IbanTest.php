@@ -27,7 +27,7 @@ final class IbanTest extends TestCase
         string $expectedBbanBankIdentifier,
         string $expectedFormatElectronic,
         string $expectedFormatPrint,
-        string $expectedFormatAnonymized
+        string $expectedFormatAnonymized,
     ): void {
         $iban = new Iban($iban);
 
