@@ -24,7 +24,7 @@ final class CountryInfo
 
     private Registry $swiftRegistry;
 
-    public function __construct(string $countryCode, Registry $swiftRegistry = null)
+    public function __construct(string $countryCode, ?Registry $swiftRegistry = null)
     {
         $this->countryCode = $countryCode;
         $this->swiftRegistry = $swiftRegistry ?? new Registry();

@@ -35,7 +35,7 @@ final class Iban
 
     private Registry $swiftRegistry;
 
-    public function __construct(string $iban, Registry $swiftRegistry = null)
+    public function __construct(string $iban, ?Registry $swiftRegistry = null)
     {
         $this->iban = $iban;
 
