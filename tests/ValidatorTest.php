@@ -65,6 +65,7 @@ final class ValidatorTest extends TestCase
         yield ['GL8964710001000206'];
         yield ['GR1601101250000000012300695'];
         yield ['GT82TRAJ01020000001210029690'];
+        yield ['HN88CABF00000000000250005469'];
         yield ['HR1210010051863000160'];
         yield ['HU42117730161111101800000000'];
         yield ['IE29AIBK93115212345678'];
@@ -89,6 +90,7 @@ final class ValidatorTest extends TestCase
         yield ['MR1300020001010000123456753'];
         yield ['MT84MALT011000012345MTLCAST001S'];
         yield ['MU17BOMM0101101030300200000MUR'];
+        yield ['NI45BAPR00000013000003558124'];
         yield ['NL91ABNA0417164300'];
         yield ['NO9386011117947'];
         yield ['OM810180000001299123456'];
@@ -99,13 +101,14 @@ final class ValidatorTest extends TestCase
         yield ['QA58DOHB00001234567890ABCDEFG'];
         yield ['RO49AAAA1B31007593840000'];
         yield ['RS35260005601001611379'];
+        yield ['RU0304452522540817810538091310419'];
         yield ['SA0380000000608010167519'];
         yield ['SC18SSCB11010000000000001497USD'];
         yield ['SE4550000000058398257466'];
         yield ['SI56263300012039086'];
         yield ['SK3112000000198742637541'];
         yield ['SM86U0322509800000000270100'];
-        // yield ['ST68000200010192194210112']; // iban with invalid checksum given by swift
+        yield ['ST23000100010051845310146'];
         yield ['SV62CENR00000000000000700025'];
         yield ['TL380080012345678910157'];
         yield ['TN5910006035183598478831'];
@@ -114,6 +117,7 @@ final class ValidatorTest extends TestCase
         yield ['VA59001123000012345678'];
         yield ['VG96VPVG0000012345678901'];
         yield ['XK051212012345678906'];
+        yield ['YE15CBYE0001018861234567891234'];
     }
 
     /**
