@@ -1,5 +1,25 @@
 # CHANGELOG
 
+## [Version 2.7.0](https://github.com/jschaedl/iban-validation/releases/tag/v2.7.0)
+
+Released on December 2nd 2025
+
+### Added
+
+* Added support for Symfony 8. Thanks to [@Vincentv92](https://github.com/Vincentv92)!
+
+---
+
+## [Version 2.6.0](https://github.com/jschaedl/iban-validation/releases/tag/v2.6.0)
+
+Released on July 29th 2025
+
+### Added
+
+* Added support for PHP 8.5 in pipeline. Thanks to [@jschaedl](https://github.com/jschaedl)!
+
+---
+
 ## [Version 2.5.1](https://github.com/jschaedl/iban-validation/releases/tag/v2.5.1)
 
 Released on December 2nd 2024
