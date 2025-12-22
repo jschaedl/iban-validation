@@ -81,10 +81,21 @@ final class IbanTest extends TestCase
             'PL',
             '61',
             '109010140000071219812874',
-            '109010140000071219812874',
+            '10901014',
             'PL61109010140000071219812874',
             'PL61 1090 1014 0000 0712 1981 2874',
             'XXXXXXXXXXXXXXXXXXXXXXXX2874',
+        ];
+
+        yield [
+            'SC18SSCB11010000000000001497USD',
+            'SC',
+            '18',
+            'SSCB11010000000000001497USD',
+            'SSCB11',
+            'SC18SSCB11010000000000001497USD',
+            'SC18 SSCB 1101 0000 0000 0000 1497 USD',
+            'XXXXXXXXXXXXXXXXXXXXXXXXXXX7USD',
         ];
     }
 }
