@@ -44,6 +44,7 @@ final class ValidatorTest extends TestCase
         yield ['BE68539007547034'];
         yield ['BG80BNBG96611020345678'];
         yield ['BH67BMAG00001299123456'];
+        yield ['BI4210000100010000332045181'];
         yield ['BR1800360305000010009795493C1'];
         yield ['BY13NBRB3600900000002Z00AB00'];
         yield ['CH9300762011623852957'];
@@ -51,12 +52,14 @@ final class ValidatorTest extends TestCase
         yield ['CY17002001280000001200527600'];
         yield ['CZ6508000000192000145399'];
         yield ['DE89370400440532013000'];
+        yield ['DJ2100010000000154000100186'];
         yield ['DK5000400440116243'];
         yield ['DO28BAGR00000001212453611324'];
         yield ['EE382200221020145685'];
         yield ['EG380019000500000000263180002'];
         yield ['ES9121000418450200051332'];
         yield ['FI2112345600000785'];
+        yield ['FK88SC123456789012'];
         yield ['FO6264600001631634'];
         yield ['FR1420041010050500013M02606'];
         yield ['GB29NWBK60161331926819'];
@@ -65,6 +68,7 @@ final class ValidatorTest extends TestCase
         yield ['GL8964710001000206'];
         yield ['GR1601101250000000012300695'];
         yield ['GT82TRAJ01020000001210029690'];
+        yield ['HN88CABF00000000000250005469'];
         yield ['HR1210010051863000160'];
         yield ['HU42117730161111101800000000'];
         yield ['IE29AIBK93115212345678'];
@@ -86,9 +90,11 @@ final class ValidatorTest extends TestCase
         yield ['MD24AG000225100013104168'];
         yield ['ME25505000012345678951'];
         yield ['MK07250120000058984'];
+        yield ['MN121234123456789123'];
         yield ['MR1300020001010000123456753'];
         yield ['MT84MALT011000012345MTLCAST001S'];
         yield ['MU17BOMM0101101030300200000MUR'];
+        yield ['NI45BAPR00000013000003558124'];
         yield ['NL91ABNA0417164300'];
         yield ['NO9386011117947'];
         yield ['OM810180000001299123456'];
@@ -99,13 +105,16 @@ final class ValidatorTest extends TestCase
         yield ['QA58DOHB00001234567890ABCDEFG'];
         yield ['RO49AAAA1B31007593840000'];
         yield ['RS35260005601001611379'];
+        yield ['RU0304452522540817810538091310419'];
         yield ['SA0380000000608010167519'];
         yield ['SC18SSCB11010000000000001497USD'];
+        yield ['SD2129010501234001'];
         yield ['SE4550000000058398257466'];
         yield ['SI56263300012039086'];
         yield ['SK3112000000198742637541'];
         yield ['SM86U0322509800000000270100'];
-        // yield ['ST68000200010192194210112']; // iban with invalid checksum given by swift
+        yield ['SO211000001001000100141'];
+        yield ['ST23000100010051845310146'];
         yield ['SV62CENR00000000000000700025'];
         yield ['TL380080012345678910157'];
         yield ['TN5910006035183598478831'];
@@ -114,6 +123,7 @@ final class ValidatorTest extends TestCase
         yield ['VA59001123000012345678'];
         yield ['VG96VPVG0000012345678901'];
         yield ['XK051212012345678906'];
+        yield ['YE15CBYE0001018861234567891234'];
     }
 
     /**
