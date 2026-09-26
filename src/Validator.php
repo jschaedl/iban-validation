@@ -152,16 +152,11 @@ final class Validator
      */
     private function validateChecksum(Iban $iban): void
     {
-        $invertedIban = self::convertToBigInt($iban->bban().$iban->countryCode().$iban->checksum());
+        $rearranged = self::convertToBigInt($iban->bban().$iban->countryCode().'00');
+        $validChecksum = str_pad((string) (98 - intval(self::bigIntModulo97($rearranged))), 2, '0', STR_PAD_LEFT);
 
-        if (!preg_match('/^\d+$/', $iban->checksum())) {
-            $validChecksum = 98 - intval(self::bigIntModulo97($invertedIban));
-            throw new InvalidChecksumException($iban->format(), (string) $validChecksum);
-        }
-
-        if ('1' !== self::bigIntModulo97($invertedIban)) {
-            $validChecksum = 98 - intval(self::bigIntModulo97($invertedIban));
-            throw new InvalidChecksumException($iban->format(), (string) $validChecksum);
+        if ($iban->checksum() !== $validChecksum) {
+            throw new InvalidChecksumException($iban->format(), $validChecksum);
         }
     }
 
