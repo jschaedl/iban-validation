@@ -247,6 +247,23 @@ final class ValidatorTest extends TestCase
         $this->validator->validate(new Iban('DE90 3704 0044 0532 0130 00'), throw: true);
     }
 
+    public function test_invalid_checksum_exception_names_the_checksum_that_validates(): void
+    {
+        try {
+            $this->validator->validate(new Iban('DE90 3704 0044 0532 0130 00'), throw: true);
+            self::fail('expected InvalidChecksumException');
+        } catch (InvalidChecksumException $exception) {
+            self::assertSame('89', $exception->getValidChecksum());
+        }
+
+        try {
+            $this->validator->validate(new Iban('SA0080000000608010167519'), throw: true);
+            self::fail('expected InvalidChecksumException');
+        } catch (InvalidChecksumException $exception) {
+            self::assertSame('03', $exception->getValidChecksum());
+        }
+    }
+
     public function test_validations_are_cleared_before_next_validation(): void
     {
         $isValid = $this->validator->validate(new Iban('DE89 3704 0044 053A 013B 00'));
