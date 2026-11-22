@@ -1,5 +1,29 @@
 # CHANGELOG
 
+## Unreleased
+
+### Added
+
+* Added support for PHP 8.6. Thanks to [@joostdebruijn](https://github.com/joostdebruijn)!
+
+### Changed
+
+* Added PHPStan array shape types for the data returned by `RegistryLoaderInterface::load()`. Custom loaders analysed with PHPStan must return data matching this shape. There is no runtime change. Thanks to [@joostdebruijn](https://github.com/joostdebruijn)!
+* Added more specific PHPDoc types for the `Validator` options (`array<string, string>`) and `Validator::getViolations()` (`list<string>`). Thanks to [@joostdebruijn](https://github.com/joostdebruijn)!
+
+### Updated
+
+* Upgraded PHPStan to version 2 (2.3.7), running at level max without ignore rules. Thanks to [@joostdebruijn](https://github.com/joostdebruijn)!
+* Upgraded PHP-CS-Fixer to 3.95.32 and removed the deprecated `PHP_CS_FIXER_IGNORE_ENV` environment variable from the Makefile. Thanks to [@joostdebruijn](https://github.com/joostdebruijn)!
+* Updated GitHub Actions: `actions/checkout` to v7 and `actions/github-script` to v9. Thanks to [@joostdebruijn](https://github.com/joostdebruijn)!
+* Moved the coding standards and static code analysis CI jobs to PHP 8.5. Thanks to [@joostdebruijn](https://github.com/joostdebruijn)!
+
+### Removed
+
+* Dropped support for PHP 8.1. Thanks to [@joostdebruijn](https://github.com/joostdebruijn)!
+
+---
+
 ## [Version 2.7.0](https://github.com/jschaedl/iban-validation/releases/tag/v2.7.0)
 
 Released on December 2nd 2025
