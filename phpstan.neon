@@ -3,4 +3,3 @@ parameters:
         - src
     level:
         max
-    checkMissingIterableValueType: false

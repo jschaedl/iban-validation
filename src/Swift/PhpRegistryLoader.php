@@ -15,11 +15,16 @@ namespace Iban\Validation\Swift;
  * Loads the iban_registry php file.
  *
  * @author Jan Schädlich <mail@janschaedlich.de>
+ *
+ * @phpstan-import-type RegistryData from RegistryLoaderInterface
  */
 final class PhpRegistryLoader implements RegistryLoaderInterface
 {
     public function load(): array
     {
-        return require dirname(__DIR__, 2).'/Resource/iban_registry.php';
+        /** @var RegistryData $registry */
+        $registry = require dirname(__DIR__, 2).'/Resource/iban_registry.php';
+
+        return $registry;
     }
 }

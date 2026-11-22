@@ -31,11 +31,11 @@ coverage: vendor
 
 .PHONY: cs-check
 cs-check: vendor
-	PHP_CS_FIXER_FUTURE_MODE=1 PHP_CS_FIXER_IGNORE_ENV=1 $(PHP_CS_FIXER_BIN) fix --allow-risky=yes --diff --using-cache=no --verbose --dry-run
+	PHP_CS_FIXER_FUTURE_MODE=1 $(PHP_CS_FIXER_BIN) fix --allow-risky=yes --diff --format=txt --using-cache=no --verbose --dry-run
 
 .PHONY: cs-fix
 cs-fix: vendor
-	PHP_CS_FIXER_FUTURE_MODE=1 PHP_CS_FIXER_IGNORE_ENV=1 $(PHP_CS_FIXER_BIN) fix --allow-risky=yes
+	PHP_CS_FIXER_FUTURE_MODE=1 $(PHP_CS_FIXER_BIN) fix --allow-risky=yes
 
 .PHONY: analyze
 analyze: vendor

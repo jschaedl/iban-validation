@@ -12,12 +12,12 @@ jobs:
 
     steps:
       - name: "Checkout"
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: "Setup PHP"
         uses: shivammathur/setup-php@v2
         with:
-          php-version: 8.4
+          php-version: 8.5
           coverage: none
           tools: phive
 
@@ -34,12 +34,12 @@ jobs:
 
     steps:
       - name: "Checkout"
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: "Setup PHP"
         uses: shivammathur/setup-php@v2
         with:
-          php-version: 8.4
+          php-version: 8.5
           coverage: none
           tools: phive
 
@@ -60,13 +60,13 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        php-version: [ '8.1', '8.2', '8.3', '8.4', '8.5' ]
+        php-version: [ '8.2', '8.3', '8.4', '8.5', '8.6' ]
         prefer-lowest: ['', '--prefer-lowest --prefer-stable']
         coverage-driver: [ 'xdebug' ]
 
     steps:
       - name: "Checkout"
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: "Setup PHP"
         uses: shivammathur/setup-php@v2
