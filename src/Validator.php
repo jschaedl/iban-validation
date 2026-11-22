@@ -27,17 +27,30 @@ final class Validator
 {
     private Registry $swiftRegistry;
 
+    /**
+     * @var array<string, string>
+     */
     private array $options;
 
+    /**
+     * @var list<string>
+     */
     private array $violations;
 
+    /**
+     * @param array<string, string> $options
+     */
     public function __construct(array $options = [], ?Registry $swiftRegistry = null)
     {
         $this->swiftRegistry = $swiftRegistry ?? new Registry();
 
         $resolver = new OptionsResolver();
         $this->configureOptions($resolver);
-        $this->options = $resolver->resolve($options);
+
+        // All options are restricted to strings by configureOptions().
+        /** @var array<string, string> $resolvedOptions */
+        $resolvedOptions = $resolver->resolve($options);
+        $this->options = $resolvedOptions;
 
         $this->violations = [];
     }
@@ -97,6 +110,9 @@ final class Validator
         return 0 === count($this->violations);
     }
 
+    /**
+     * @return list<string>
+     */
     public function getViolations(): array
     {
         return $this->violations;

@@ -17,9 +17,14 @@ use Iban\Validation\Swift\Exception\UnsupportedCountryCodeException;
  * Provides access to the loaded data from the iban_registry text file provided by SWIFT.
  *
  * @author Jan Schädlich <mail@janschaedlich.de>
+ *
+ * @phpstan-import-type RegistryData from RegistryLoaderInterface
  */
 final class Registry
 {
+    /**
+     * @var RegistryData
+     */
     private array $registry;
 
     public function __construct(?RegistryLoaderInterface $registryLoader = null)
